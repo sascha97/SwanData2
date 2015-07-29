@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Basic information"
+        android:key="pref_swan_data_basic_information">
+
+        <SwitchPreference
+            android:key="show_swid"
+            android:summary="Show the field SWID in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_bto"
+            android:summary="Show the field BTO in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_darvic"
+            android:summary="Show the field DARVIC in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Sex and breeding information"
+        android:key="pref_swan_data_sex_information">
+
+        <SwitchPreference
+            android:key="show_sex"
+            android:summary="Show the field SEX in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_sex2"
+            android:summary="Show the field (SEX) in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_was_cob"
+            android:summary="Show the field WAS COB in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_was_pen"
+            android:summary="Show the field WAS PEN in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_was_cob_date"
+            android:summary="Show the field WAS COB DATE in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_was_pen_date"
+            android:summary="Show the field WAS PEN DATE in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Age information"
+        android:key="pref_swan_data_age_information">
+
+        <SwitchPreference
+        android:key="show_age"
+        android:summary="Show the field AGE in the List"
+        android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_actual_age"
+            android:summary="Show the field ACTUAL AGE in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_hatched"
+            android:summary="Show the field HATCHED in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_ring_date"
+            android:summary="Show the field RING DATE in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_adob"
+            android:summary="Show the field ADOB in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Previous ringing information"
+        android:key="pref_swan_data_previous_information">
+
+        <SwitchPreference
+            android:key="show_addz"
+            android:summary="Show the field ADDZ in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_addd"
+            android:summary="Show the field ADDD in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_minus_dar"
+            android:summary="Show the field (-)DAR in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_minus_z"
+            android:summary="Show the field (-Z) in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_tag_no"
+            android:summary="Show the field TAG NO in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Parentage information"
+        android:key="pref_swan_data_parentage_information">
+
+        <SwitchPreference
+            android:key="show_cob"
+            android:summary="Show the field COB in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_pen"
+            android:summary="Show the field PEN in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_nest_site"
+            android:summary="Show the field NEST SITE in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_nest_no"
+            android:summary="Show the field NEST NO in List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_rearing_pen"
+            android:summary="Show the field REARING PEN in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_no_cygs"
+            android:summary="Show the field NO CYGS in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_gps"
+            android:summary="Show the field GPS in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Comments information"
+        android:key="pref_swan_data_comments_information">
+
+        <SwitchPreference
+            android:key="show_comments"
+            android:summary="Show the field comments in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_hidden_comments"
+            android:summary="Show the field Hidden comments in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_manual_comments"
+            android:summary="Show the field Manual comments in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_added_swid"
+            android:summary="Show the field ADDED SWID in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_bto_added_swid"
+            android:summary="Show the field BTO ADDED SWID in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Other information"
+        android:key="pref_swan_data_other_information">
+        <SwitchPreference
+            android:key="show_olddar"
+            android:summary="Show the field OLDDAR in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_weight"
+            android:summary="Show the field WEIGHT in the List"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_oldz"
+            android:summary="Show the field OLDZ in the List"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

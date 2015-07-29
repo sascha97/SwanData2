@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="General Settings"
+        android:key="pref_general_settings">
+        <Preference
+            android:key="pref_static_text"
+            android:selectable="false"
+            android:summary="If the following setting is enabled, this will display just non empty fields even though the field is enabled is enabled later on" />
+
+        <SwitchPreference
+            android:key="show_non_empty"
+            android:summary="Show just fields which have contents"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:editTextStyle">@style/SwanData_EditTextStyle</item>
+        <item name="android:textViewStyle">@style/SwanData_TextViewStyle</item>
+    </style>
+
+    <style name="SwanData_EditTextStyle" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textColorHint">@color/hint_grey</item>
+    </style>
+
+    <style name="SwanData_TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+</resources>

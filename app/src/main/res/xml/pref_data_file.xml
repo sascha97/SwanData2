@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="DataFile Settings"
+        android:key="pref_data_file_settings">
+        <Preference
+            android:key="pref_data_file"
+            android:selectable="false"
+            android:summary="The following setting changes the name of the date files, if the name of the data files does not matcvh the name given in here the app will not work correctly." />
+
+        <EditTextPreference
+            android:defaultValue="SwanData"
+            android:key="swan_data_file_name"
+            android:summary="The file name of the data file containing the SwanData. Do not change if you do not know what you are doing..."
+            android:title="SwanData" />
+
+        <EditTextPreference
+            android:defaultValue="SwanCodes"
+            android:key="swan_codes_file_name"
+            android:summary="The file name of the data file containing the SwanCodes. Do not change if you do not know what you are doing..."
+            android:title="SwanCodes" />
+    </PreferenceCategory>
+</PreferenceScreen>
