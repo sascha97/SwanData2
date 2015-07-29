@@ -16,6 +16,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Constants.context = this;
+
         startActivity(new Intent(this, SettingsActivity.class));
     }
 }
