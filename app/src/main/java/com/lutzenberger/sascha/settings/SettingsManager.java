@@ -66,6 +66,51 @@ public final class SettingsManager {
     public static final class Strings {
         public static final String DATA_FILE_SWAN_DATA = "swan_data_file_name";
         public static final String DATA_FILE_SWAN_CODES = "swan_codes_file_name";
+
+        public static final String SWAN_CODES_NAME_STORAGE = "name_storage";
+        public static final String SWAN_CODES_NAME_TUBE = "name_tube";
+        public static final String SWAN_CODES_NAME_BIRD = "name_bird";
+        public static final String SWAN_CODES_NAME_DATE_SAMPLED = "name_date_sampled";
+        public static final String SWAN_CODES_NAME_TIME = "name_time";
+        public static final String SWAN_CODES_NAME_BOX_NUMBER = "name_box_number";
+        public static final String SWAN_CODES_NAME_MEDIA_ALIQUOTED_DATE = "name_media_aliquoted_date";
+        public static final String SWAN_CODES_NAME_NOTES = "name_notes";
+        public static final String SWAN_CODES_NAME_BAD_SAMPLE_COMMENTS = "name_bad_sample_comments";
+
+        public static final String SWAN_DATA_NAME_SWID = "name_swid";
+        public static final String SWAN_DATA_NAME_BTO = "name_bto";
+        public static final String SWAN_DATA_NAME_DARVIC = "name_darvic";
+        public static final String SWAN_DATA_NAME_SEX = "name_sex";
+        public static final String SWAN_DATA_NAME_SEX2 = "name_sex2";
+        public static final String SWAN_DATA_NAME_WAS_COB = "name_was_cob";
+        public static final String SWAN_DATA_NAME_WAS_PEN = "name_was_pen";
+        public static final String SWAN_DATA_NAME_WAS_COB_DATE = "name_was_cob_date";
+        public static final String SWAN_DATA_NAME_WAS_PEN_DATE = "name_was_pen_date";
+        public static final String SWAN_DATA_NAME_AGE = "name_age";
+        public static final String SWAN_DATA_NAME_ACTUAL_AGE = "name_actual_age";
+        public static final String SWAN_DATA_NAME_HATCHED = "name_hatched";
+        public static final String SWAN_DATA_NAME_RING_DATE = "name_ring_date";
+        public static final String SWAN_DATA_NAME_ADOB = "name_adob";
+        public static final String SWAN_DATA_NAME_ADDZ = "name_addz";
+        public static final String SWAN_DATA_NAME_ADDD = "name_addd";
+        public static final String SWAN_DATA_NAME_MINUS_DAR = "name_minus_dar";
+        public static final String SWAN_DATA_NAME_MINUS_Z = "name_minus_z";
+        public static final String SWAN_DATA_NAME_TAG_NO = "name_tag_no";
+        public static final String SWAN_DATA_NAME_COB = "name_cob";
+        public static final String SWAN_DATA_NAME_PEN = "name_pen";
+        public static final String SWAN_DATA_NAME_NEST_SITE = "name_nest_site";
+        public static final String SWAN_DATA_NAME_NEST_NO = "name_nest_no";
+        public static final String SWAN_DATA_NAME_REARING_PEN = "name_rearing_pen";
+        public static final String SWAN_DATA_NAME_NO_CYGS = "name_no_cygs";
+        public static final String SWAN_DATA_NAME_GPS = "name_gps";
+        public static final String SWAN_DATA_NAME_COMMENTS = "name_comments";
+        public static final String SWAN_DATA_NAME_HIDDEN_COMMENTS = "name_hidden_comments";
+        public static final String SWAN_DATA_NAME_MANUAL_COMMENTS = "name_manual_comments";
+        public static final String SWAN_DATA_NAME_ADDED_SWID = "name_added_swid";
+        public static final String SWAN_DATA_NAME_BTO_ADDED_SWID = "name_bto_added_swid";
+        public static final String SWAN_DATA_NAME_OLDDAR = "name_olddar";
+        public static final String SWAN_DATA_NAME_WEIGHT = "name_weight";
+        public static final String SWAN_DATA_NAME_OLDZ = "name_oldz";
     }
 
 

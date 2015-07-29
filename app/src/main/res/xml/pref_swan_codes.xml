@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_storage"
-        android:summary="Show the field Storage in the List" />
+        android:summary="Show the field Storage in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_tube"
-        android:summary="Show the field Tube in the List" />
+        android:summary="Show the field Tube in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_bird"
-        android:summary="Show the field Bird in the list" />
+        android:summary="Show the field Bird in the list"
+        android:defaultValue="true"/>
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_date_sampled"
-        android:summary="Show the field Date sampled in the List" />
+        android:summary="Show the field Date sampled in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_time"
-        android:summary="Show the field Time in the List" />
+        android:summary="Show the field Time in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_box_number"
-        android:summary="Show the field Box number in the List" />
+        android:summary="Show the field Box number in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_media_aliquoted_date"
-        android:summary="Show the field Media aliquoted date in the List" />
+        android:summary="Show the field Media aliquoted date in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_notes"
-        android:summary="Show the field Notes in the List" />
+        android:summary="Show the field Notes in the List"
+        android:defaultValue="true" />
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="show_bad_sample_comments"
-        android:summary="Show the field Bad Sample Comments in the List" />
+        android:summary="Show the field Bad Sample Comments in the List"
+        android:defaultValue="true" />
 </PreferenceScreen>

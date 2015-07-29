@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Basic information"
+        android:key="pref_swan_data_basic_information">
+
+        <EditTextPreference
+            android:key="name_swid"
+            android:title="SWID"
+            android:summary="The name of the SWID column."
+            android:defaultValue="SWID" />
+
+        <EditTextPreference
+            android:key="name_bto"
+            android:title="BTO"
+            android:summary="The name of the BTO column."
+            android:defaultValue="BTO" />
+
+        <EditTextPreference
+            android:key="name_darvic"
+            android:title="DARVIC"
+            android:summary="The name of the DARVIC column."
+            android:defaultValue="DARVIC" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Sex and breeding information"
+        android:key="pref_swan_data_sex_information">
+
+        <EditTextPreference
+            android:key="name_sex"
+            android:title="SEX"
+            android:summary="The name of the SEX column."
+            android:defaultValue="SEX" />
+
+        <EditTextPreference
+            android:key="name_sex2"
+            android:title="(SEX)"
+            android:summary="The name of the (SEX) column."
+            android:defaultValue="(SEX)" />
+
+        <EditTextPreference
+            android:key="name_was_cob"
+            android:title="WAS COB"
+            android:summary="The name of the WAS COB column."
+            android:defaultValue="WAS COB" />
+
+        <EditTextPreference
+            android:key="name_was_pen"
+            android:title="WAS PEN"
+            android:summary="The name of the WAS PEN column."
+            android:defaultValue="WAS PEN" />
+
+        <EditTextPreference
+            android:key="name_was_cob_date"
+            android:title="WAS COB DATE"
+            android:summary="The name of the WAS COB DATE column."
+            android:defaultValue="WAS COB DATE" />
+
+        <EditTextPreference
+            android:key="name_was_pen_date"
+            android:title="WAS PEN DATE"
+            android:summary="The name of the WAS PEN DATE column."
+            android:defaultValue="WAS PEN DATE" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Age information"
+        android:key="pref_swan_data_age_information">
+
+        <EditTextPreference
+            android:key="name_age"
+            android:title="AGE"
+            android:summary="The name of the AGE column."
+            android:defaultValue="AGE" />
+
+        <EditTextPreference
+            android:key="name_actual_age"
+            android:title="ACTUAL AGE"
+            android:summary="The name of the ACTUAL AGE column."
+            android:defaultValue="ACTUAL AGE" />
+
+        <EditTextPreference
+            android:key="name_hatched"
+            android:title="HATCHED"
+            android:summary="The name of the HATCHED column."
+            android:defaultValue="HATCHED" />
+
+        <EditTextPreference
+            android:key="name_ring_date"
+            android:title="RING DATE"
+            android:summary="The name of the RING DATE column."
+            android:defaultValue="RING DATE" />
+
+        <EditTextPreference
+            android:key="name_adob"
+            android:title="ADOB"
+            android:summary="The name of the ADOB column."
+            android:defaultValue="ADOB" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Previous ringing information"
+        android:key="pref_swan_data_previous_information">
+
+        <EditTextPreference
+            android:key="name_addz"
+            android:title="ADDZ"
+            android:summary="The name of the ADDZ column."
+            android:defaultValue="ADDZ" />
+
+        <EditTextPreference
+            android:key="name_addd"
+            android:title="ADDD"
+            android:summary="The name of the ADDD column."
+            android:defaultValue="ADDD" />
+
+        <EditTextPreference
+            android:key="name_minus_dar"
+            android:title="(-)DAR"
+            android:summary="The name of the (-)DAR column."
+            android:defaultValue="(-)DAR" />
+
+        <EditTextPreference
+            android:key="name_minus_z"
+            android:title="(-)Z"
+            android:summary="The name of the (-)Z column."
+            android:defaultValue="(-)Z" />
+
+        <EditTextPreference
+            android:key="name_tag_no"
+            android:title="TAG NO"
+            android:summary="The name of the TAG NO column."
+            android:defaultValue="TAG NO" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Parentage information"
+        android:key="pref_swan_data_parentage_information">
+
+        <EditTextPreference
+            android:key="name_cob"
+            android:title="COB"
+            android:summary="The name of the COB column."
+            android:defaultValue="COB" />
+
+        <EditTextPreference
+            android:key="name_pen"
+            android:title="PEN"
+            android:summary="The name of the PEN column."
+            android:defaultValue="PEN" />
+
+        <EditTextPreference
+            android:key="name_nest_site"
+            android:title="NEST SITE"
+            android:summary="The name of the NEST SITE column."
+            android:defaultValue="NEST SITE" />
+
+        <EditTextPreference
+            android:key="name_nest_no"
+            android:title="NEST NO"
+            android:summary="The name of the NEST NO in List"
+            android:defaultValue="NEST NO" />
+
+        <EditTextPreference
+            android:key="name_rearing_pen"
+            android:title="REARING PEN"
+            android:summary="The name of the REARING PEN column."
+            android:defaultValue="REARING PEN" />
+
+        <EditTextPreference
+            android:key="name_no_cygs"
+            android:title="NO. CYGS"
+            android:summary="The name of the NO. CYGS column."
+            android:defaultValue="NO. CYGS" />
+
+        <EditTextPreference
+            android:key="name_gps"
+            android:title="GPS"
+            android:summary="The name of the GPS column."
+            android:defaultValue="GPS" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Comments information"
+        android:key="pref_swan_data_comments_information">
+
+        <EditTextPreference
+            android:key="name_comments"
+            android:title="Comments"
+            android:summary="The name of the Comments column."
+            android:defaultValue="Comments" />
+
+        <EditTextPreference
+            android:key="name_hidden_comments"
+            android:title="Hidden comments"
+            android:summary="The name of the Hidden comments column."
+            android:defaultValue="Hidden comments" />
+
+        <EditTextPreference
+            android:key="name_manual_comments"
+            android:title="Manual comments"
+            android:summary="The name of the Manual comments column."
+            android:defaultValue="Manual comments" />
+
+        <EditTextPreference
+            android:key="name_added_swid"
+            android:title="ADDED SWID"
+            android:summary="The name of the ADDED SWID column."
+            android:defaultValue="ADDED SWID" />
+
+        <EditTextPreference
+            android:key="name_bto_added_swid"
+            android:title="BTO ADDED SWID"
+            android:summary="The name of the BTO ADDED SWID column."
+            android:defaultValue="BTO ADDED SWID" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Other information"
+        android:key="pref_swan_data_other_information">
+        <EditTextPreference
+            android:key="name_olddar"
+            android:title="OLDDAR"
+            android:summary="The name of the OLDDAR column."
+            android:defaultValue="OLDDAR" />
+
+        <EditTextPreference
+            android:key="name_weight"
+            android:title="WEIGHT"
+            android:summary="The name of the WEIGHT column."
+            android:defaultValue="WEIGHT" />
+
+        <EditTextPreference
+            android:key="name_oldz"
+            android:title="OLDZ"
+            android:summary="The name of the OLDZ column."
+            android:defaultValue="OLDZ" />
+    </PreferenceCategory>
+</PreferenceScreen>

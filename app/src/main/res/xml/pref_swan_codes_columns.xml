@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="name_storage"
+        android:title="Storage"
+        android:summary="The name of the Storage column"
+        android:defaultValue="Storage" />
+
+    <EditTextPreference
+        android:key="name_tube"
+        android:title="Tube"
+        android:summary="The name of the Tube column"
+        android:defaultValue="Tube" />
+
+    <EditTextPreference
+        android:key="name_bird"
+        android:title="Bird"
+        android:summary="The name of the Bird column"
+        android:defaultValue="Bird" />
+
+    <EditTextPreference
+        android:key="name_date_sampled"
+        android:title="Date Sampled"
+        android:summary="The name of the Date Sampled column"
+        android:defaultValue="Date Sampled" />
+
+    <EditTextPreference
+        android:key="name_time"
+        android:title="Time"
+        android:summary="The name of the Time column"
+        android:defaultValue="Time" />
+
+    <EditTextPreference
+        android:key="name_box_number"
+        android:title="Box Number"
+        android:summary="The name of the Box Number column"
+        android:defaultValue="Box Number" />
+
+    <EditTextPreference
+        android:key="name_media_aliquoted_date"
+        android:title="Media Aliquoted Date"
+        android:summary="The name of the Media Aliquoted Date column"
+        android:defaultValue="Media Aliquoted Date" />
+
+    <EditTextPreference
+        android:key="name_notes"
+        android:title="Notes"
+        android:summary="The name of the Notes column"
+        android:defaultValue="Notes" />
+
+    <EditTextPreference
+        android:key="name_bad_sample_comments"
+        android:title="Bad Sample Comments"
+        android:summary="The name of the Bad Sample Comments column"
+        android:defaultValue="Bad Sample Comments" />
+</PreferenceScreen>

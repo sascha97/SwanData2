@@ -107,6 +107,12 @@ public class SettingsActivity extends PreferenceActivity {
                 } else if ("swan_data".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_data);
                     title = "SwanData Settings";
+                } else if("swan_codes_columns".equals(settings)) {
+                    addPreferencesFromResource(R.xml.pref_swan_codes_columns);
+                    title = "SwanCodes Columns Settings";
+                } else if("swan_data_columns".equals(settings)) {
+                    addPreferencesFromResource(R.xml.pref_swan_data_columns);
+                    title = "SwanData Columns Settings";
                 }
             }
 
