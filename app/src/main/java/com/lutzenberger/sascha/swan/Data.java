@@ -7,7 +7,7 @@ package com.lutzenberger.sascha.swan;
  * @version 1.0 - 31.07.2015
  *
  */
-public abstract class Data implements DarvicSearchable {
+public abstract class Data implements CSVWritable, DarvicSearchable {
     /**
      * Returns the AttributeName at the given index.
      *
