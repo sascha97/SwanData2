@@ -38,7 +38,7 @@
         <item>was_cob_date</item>
         <item>was_pen_date</item>
         <item>age</item>
-        <item>actual_age</item>
+        <!--<item>actual_age</item> -->
         <item>hatched</item>
         <item>ring_date</item>
         <item>adob</item>
@@ -76,7 +76,7 @@
         <item>28</item> <!-- was_cob_date -->
         <item>30</item> <!-- was_pen_date -->
         <item>5</item> <!-- age -->
-        <item>33</item> <!-- actual_age -->
+        <!-- <item>33</item> --> <!-- actual_age -->
         <item>6</item> <!-- hatched -->
         <item>8</item> <!-- ring_date -->
         <item>7</item> <!-- adob -->

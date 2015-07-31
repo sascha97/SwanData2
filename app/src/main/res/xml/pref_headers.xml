@@ -18,7 +18,7 @@
 
     <header
         android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
-        android:title="SwanCodes Settings"
+        android:title="SwanCodes Fields"
         android:summary="Used for enabling and disabling certain SwanCode fields.">
         <extra android:name="settings" android:value="swan_codes" />
     </header>
@@ -32,7 +32,7 @@
 
     <header
         android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
-        android:title="SwanData Settings"
+        android:title="SwanData Fields"
         android:summary="Used for enabling and disabling certain SwanData fields.">
         <extra android:name="settings" android:value="swan_data" />
     </header>
