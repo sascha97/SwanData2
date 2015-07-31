@@ -15,15 +15,15 @@
 
     <!-- Configuration for the positions of the items in the swan codes file -->
     <integer-array name="swan_codes_data_file_position">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
+        <item>0</item> <!-- storage -->
+        <item>1</item> <!-- tube -->
+        <item>2</item> <!-- bird -->
+        <item>3</item> <!-- date_sampled -->
+        <item>4</item> <!-- time -->
+        <item>5</item> <!-- box_number -->
+        <item>6</item> <!-- media_aliquoted_date -->
+        <item>7</item> <!-- notes -->
+        <item>8</item> <!-- bad_sample_comments -->
     </integer-array>
 
     <!-- Configuration for the positions items in the swan data file -->
@@ -66,39 +66,39 @@
 
     <!-- Configuration for the positions of the items in the swan data file -->
     <integer-array name="swan_data_data_file_position">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
-        <item>28</item>
-        <item>29</item>
-        <item>30</item>
-        <item>31</item>
-        <item>32</item>
-        <item>33</item>
+        <item>0</item> <!-- swid -->
+        <item>1</item> <!-- bto -->
+        <item>2</item> <!-- darvic -->
+        <item>4</item> <!-- sex -->
+        <item>14</item> <!-- sex2 -->
+        <item>27</item> <!-- was_cob -->
+        <item>29</item> <!-- was_pen -->
+        <item>28</item> <!-- was_cob_date -->
+        <item>30</item> <!-- was_pen_date -->
+        <item>5</item> <!-- age -->
+        <item>33</item> <!-- actual_age -->
+        <item>6</item> <!-- hatched -->
+        <item>8</item> <!-- ring_date -->
+        <item>7</item> <!-- adob -->
+        <item>18</item> <!-- addz -->
+        <item>19</item> <!-- addd -->
+        <item>21</item> <!-- minus_dar -->
+        <item>23</item> <!-- minus_z -->
+        <item>15</item> <!-- tag_no -->
+        <item>11</item> <!-- cob -->
+        <item>12</item> <!-- pen -->
+        <item>10</item> <!-- nest_site -->
+        <item>9</item> <!-- nest_no -->
+        <item>13</item> <!-- rearing_pen -->
+        <item>16</item> <!-- no_cygs -->
+        <item>17</item> <!-- gps -->
+        <item>24</item> <!-- comments -->
+        <item>25</item> <!-- hidden_comments -->
+        <item>26</item> <!-- manual_comments -->
+        <item>31</item> <!-- added_swid -->
+        <item>32</item> <!-- bto_added_swid -->
+        <item>3</item> <!-- olddar -->
+        <item>20</item> <!-- weight -->
+        <item>22</item> <!-- oldz -->
     </integer-array>
 </resources>
