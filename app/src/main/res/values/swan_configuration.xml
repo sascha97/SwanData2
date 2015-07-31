@@ -26,6 +26,19 @@
         <item>8</item> <!-- bad_sample_comments -->
     </integer-array>
 
+    <!-- Configuration for the positions of the header of the swan codes file -->
+    <string-array name="swan_codes_header">
+        <item>Storage</item> <!-- storage -->
+        <item>Tube</item> <!-- tube -->
+        <item>Bird</item> <!-- bird -->
+        <item>Date_sampled</item> <!-- date_sampled -->
+        <item>Time</item> <!-- time -->
+        <item>Box_number</item> <!-- box_number -->
+        <item>Media_aliquoted_date</item> <!-- media_aliquoted_date -->
+        <item>Notes</item> <!-- notes -->
+        <item>Bad_sample_comments</item> <!-- bad_sample_comments -->
+    </string-array>
+
     <!-- Configuration for the positions items in the swan data file -->
     <string-array name="swan_data_attributes">
         <item>swid</item>
@@ -101,4 +114,42 @@
         <item>20</item> <!-- weight -->
         <item>22</item> <!-- oldz -->
     </integer-array>
+
+    <!-- Configuration for the positions of the header of the swan data file -->
+    <string-array name="swan_data_header">
+        <item>SWID</item> <!-- swid -->
+        <item>BTO</item> <!-- bto -->
+        <item>DARVIC</item> <!-- darvic -->
+        <item>SEX</item> <!-- sex -->
+        <item>(SEX)</item> <!-- sex2 -->
+        <item>WAS_COB</item> <!-- was_cob -->
+        <item>WAS_PEN</item> <!-- was_pen -->
+        <item>WAS_COB_DATE</item> <!-- was_cob_date -->
+        <item>WAS_PEN_DATE</item> <!-- was_pen_date -->
+        <item>AGE</item> <!-- age -->
+        <!-- <item>33</item> --> <!-- actual_age -->
+        <item>HATCHED</item> <!-- hatched -->
+        <item>RING DATE</item> <!-- ring_date -->
+        <item>ADOB</item> <!-- adob -->
+        <item>ADDZ</item> <!-- addz -->
+        <item>ADDD</item> <!-- addd -->
+        <item>(-)DAR</item> <!-- minus_dar -->
+        <item>(-)Z</item> <!-- minus_z -->
+        <item>TAG NO</item> <!-- tag_no -->
+        <item>COB</item> <!-- cob -->
+        <item>PEN</item> <!-- pen -->
+        <item>NEST SITE</item> <!-- nest_site -->
+        <item>NEST NO</item> <!-- nest_no -->
+        <item>REARING PEN</item> <!-- rearing_pen -->
+        <item>NO. CYGS</item> <!-- no_cygs -->
+        <item>GPS</item> <!-- gps -->
+        <item>COMMENTS</item> <!-- comments -->
+        <item>HIDDEN_COMMENTS</item> <!-- hidden_comments -->
+        <item>MANUAL_COMMENTS</item> <!-- manual_comments -->
+        <item>ADDED_SWID</item> <!-- added_swid -->
+        <item>BTO_ADDED_SWID</item> <!-- bto_added_swid -->
+        <item>OLDDAR</item> <!-- olddar -->
+        <item>WEIGHT</item> <!-- weight -->
+        <item>OLDZ</item> <!-- oldz -->
+    </string-array>
 </resources>

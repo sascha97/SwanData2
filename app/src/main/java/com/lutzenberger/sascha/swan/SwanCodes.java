@@ -23,6 +23,8 @@ import org.apache.commons.csv.CSVRecord;
 public class SwanCodes extends Data {
     //String array to hold the android name of the attributes
     private static final String[] ATTRIBUTES;
+    //String array to hold the CSV header names
+    private static final String[] HEADER_NAMES;
     //Integer array to hold the position of the items in the data file
     private static final int[] ATTRIBUTES_DATA_FILE_POSITION;
 
@@ -30,8 +32,30 @@ public class SwanCodes extends Data {
         Context c = Constants.context;
 
         ATTRIBUTES = c.getResources().getStringArray(R.array.swan_codes_attributes);
+        HEADER_NAMES = c.getResources().getStringArray(R.array.swan_codes_header);
         ATTRIBUTES_DATA_FILE_POSITION = c.getResources().getIntArray(
                 R.array.swan_codes_data_file_position);
+    }
+
+    /**
+     * Returns the header for the CSV data file.
+     *
+     * @return A String array containing the CSV data file header.
+     */
+    public static String[] getCSVFileHeader(){
+        return getCSVHeaderOrder(HEADER_NAMES);
+    }
+
+    private static String[] getCSVHeaderOrder(final String[] source){
+        int length = ATTRIBUTES.length;
+        String[] dataRecord = new String[length];
+
+        for(int i=0;i<length;i++){
+            int index = ATTRIBUTES_DATA_FILE_POSITION[i];
+            dataRecord[index] = source[i];
+        }
+
+        return dataRecord;
     }
 
     public static SwanCodes getEmptyData(){
@@ -119,14 +143,6 @@ public class SwanCodes extends Data {
 
     @Override
     public String[] getDataRecord() {
-        int length = ATTRIBUTES.length;
-        String[] dataRecord = new String[length];
-
-        for(int i=0;i<length;i++){
-            int index = ATTRIBUTES_DATA_FILE_POSITION[i];
-            dataRecord[index] = attribute_values[i];
-        }
-
-        return dataRecord;
+        return getCSVHeaderOrder(attribute_values);
     }
 }
