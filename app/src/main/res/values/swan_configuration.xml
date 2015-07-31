@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Configuration for the positions items in the swan codes file -->
+    <string-array name="swan_codes_attributes">
+        <item>storage</item>
+        <item>tube</item>
+        <item>bird</item>
+        <item>date_sampled</item>
+        <item>time</item>
+        <item>box_number</item>
+        <item>media_aliquoted_date</item>
+        <item>notes</item>
+        <item>bad_sample_comments</item>
+    </string-array>
+
+    <!-- Configuration for the positions of the items in the swan codes file -->
+    <integer-array name="swan_codes_data_file_position">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </integer-array>
+
+    <!-- Configuration for the positions items in the swan data file -->
+    <string-array name="swan_data_attributes">
+        <item>swid</item>
+        <item>bto</item>
+        <item>darvic</item>
+        <item>sex</item>
+        <item>sex2</item>
+        <item>was_cob</item>
+        <item>was_pen</item>
+        <item>was_cob_date</item>
+        <item>was_pen_date</item>
+        <item>age</item>
+        <item>actual_age</item>
+        <item>hatched</item>
+        <item>ring_date</item>
+        <item>adob</item>
+        <item>addz</item>
+        <item>addd</item>
+        <item>minus_dar</item>
+        <item>minus_z</item>
+        <item>tag_no</item>
+        <item>cob</item>
+        <item>pen</item>
+        <item>nest_site</item>
+        <item>nest_no</item>
+        <item>rearing_pen</item>
+        <item>no_cygs</item>
+        <item>gps</item>
+        <item>comments</item>
+        <item>hidden_comments</item>
+        <item>manual_comments</item>
+        <item>added_swid</item>
+        <item>bto_added_swid</item>
+        <item>olddar</item>
+        <item>weight</item>
+        <item>oldz</item>
+    </string-array>
+
+    <!-- Configuration for the positions of the items in the swan data file -->
+    <integer-array name="swan_data_data_file_position">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+    </integer-array>
+</resources>
