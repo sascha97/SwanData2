@@ -76,7 +76,7 @@ public final class CSVReader {
                 CSVRecord r = recordList.get(i); //Get the record from the CSV file.
 
                 //Constructs the data item
-                SwanData data = new SwanData(r); //i-1 because of zero index list
+                SwanData data = new SwanData(r, i-1); //i-1 because of zero index list
 
                 swanDataList.add(data);
             }
@@ -107,7 +107,7 @@ public final class CSVReader {
                 CSVRecord r = recordList.get(i); //Get the record from the CSV file.
 
                 //Constructs the data item
-                SwanCodes code = new SwanCodes(r); //i-1 because of zero index list
+                SwanCodes code = new SwanCodes(r, i-1); //i-1 because of zero index list
 
                 swanCodesList.add(code);
             }

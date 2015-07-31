@@ -58,14 +58,16 @@ public class SwanData extends Data {
         return dataRecord;
     }
 
-    public static SwanData getEmptyData(){
-        return new SwanData();
+    public static SwanData getEmptyData(int listIndex){
+        return new SwanData(listIndex);
     }
 
     //The array of the attribute_values has to be the same as the length as the array attributes
     private final String[] attribute_values = new String[ATTRIBUTES.length];
 
-    public SwanData(CSVRecord record) {
+    public SwanData(CSVRecord record, int listIndex) {
+        super(listIndex);
+
         for(int i=0;i<ATTRIBUTES.length;i++) {
             //This loads the index of the attribute in the data file
             int index = ATTRIBUTES_DATA_FILE_POSITION[i];
@@ -74,10 +76,11 @@ public class SwanData extends Data {
         }
     }
 
-    private SwanData(){
+    private SwanData(int listIndex){
+        super(listIndex);
+
         for(int i=0;i<ATTRIBUTES.length;i++) {
-            //TODO: change later when TestActivity will not be existent anymore
-            attribute_values[i] = "empty data";
+            attribute_values[i] = "";
         }
     }
 

@@ -8,6 +8,21 @@ package com.lutzenberger.sascha.swan;
  *
  */
 public abstract class Data implements CSVWritable, DarvicSearchable {
+    private final int index;
+
+    public Data(int index){
+        this.index = index;
+    }
+
+    /**
+     * Get the index of the item in the data list.
+     *
+     * @return The index of the item in the data list.
+     */
+    public int getIndex(){
+        return this.index;
+    }
+
     /**
      * Returns the AttributeName at the given index.
      *
