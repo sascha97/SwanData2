@@ -33,4 +33,13 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      */
     public abstract int getNumberOfAttribues();
 
+    /**
+     * This method returns a simple String telling the name of the class
+     *
+     * @return The name of the class
+     */
+    public String getSimpleName(){
+        return getClass().getSimpleName();
+    }
+
 }
