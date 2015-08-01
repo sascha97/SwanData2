@@ -68,7 +68,7 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
         super.onPreExecute();
 
         progressDialog = ProgressDialog.show(context,
-                context.getString(R.string.wait), getMessage());
+                context.getString(R.string.message_wait), getMessage());
     }
 
     //End the ProgressDialog

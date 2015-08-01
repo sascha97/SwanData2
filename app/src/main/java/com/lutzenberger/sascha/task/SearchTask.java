@@ -33,8 +33,8 @@ public class SearchTask<T extends DarvicSearchable> extends
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressDialog = ProgressDialog.show(context, context.getString(R.string.wait),
-                context.getString(R.string.searching_matches));
+        progressDialog = ProgressDialog.show(context, context.getString(R.string.message_wait),
+                context.getString(R.string.message_searching_matches));
     }
 
     //The actual searching is done in here, the first argument of the VARARGS is the DARVIC CODE

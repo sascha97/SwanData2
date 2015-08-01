@@ -46,7 +46,7 @@ public final class Directories {
         }
         //Base directory needs to be existent, if it doesn't exist end method...
         if(!fileExists(BASE_DIRECTORY)) {
-            Toast.makeText(context, context.getString(R.string.base_directory_not_existent),
+            Toast.makeText(context, context.getString(R.string.directory_base_not_existent),
                     Toast.LENGTH_LONG).show();
             return false;
         }
@@ -55,20 +55,20 @@ public final class Directories {
         if(!fileExists(DOCUMENT_DIRECTORY))
             result = createDirectory(DOCUMENT_DIRECTORY);
         if(!result){
-            Toast.makeText(context, context.getString(R.string.failed_create_document_dir),
+            Toast.makeText(context, context.getString(R.string.directory_failed_create_document),
                     Toast.LENGTH_LONG).show();
             return false;
         }
         if(!fileExists(SWAN_DATA_DIRECTORY))
             result = createDirectory(SWAN_DATA_DIRECTORY);
         if(!result){
-            Toast.makeText(context, context.getString(R.string.failed_create_swan_dir),
+            Toast.makeText(context, context.getString(R.string.directory_failed_create_swan),
                     Toast.LENGTH_LONG).show();
             return false;
         }
 
         if(!existent){
-            Toast.makeText(context, context.getString(R.string.created_all_dirs),
+            Toast.makeText(context, context.getString(R.string.directory_all_created),
                     Toast.LENGTH_LONG).show();
         }
 
