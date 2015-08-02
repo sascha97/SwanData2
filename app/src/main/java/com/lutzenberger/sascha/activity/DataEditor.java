@@ -35,10 +35,14 @@ public abstract class DataEditor extends ActionBarActivity {
     private LayoutInflater inflater;
     private SharedPreferences pref;
     private boolean oneItemDisplayed;
+    private boolean newData;
 
-    private Data data;
+    protected Data data;
     private boolean hiddenEmpty;
     private EditText[] editTexts;
+    private View[] views;
+    private TextView message;
+    private LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,27 +53,36 @@ public abstract class DataEditor extends ActionBarActivity {
         final Intent intent = getIntent();
         //Getting the necessary data to be able to tell which data should be displayed
         int fieldPosition = intent.getIntExtra(getString(R.string.intent_field_id), 0);
-        boolean newData = intent.getBooleanExtra(getString(R.string.intent_new_data), false);
+        newData = intent.getBooleanExtra(getString(R.string.intent_new_data), false);
 
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         pref = PreferenceManager.getDefaultSharedPreferences(Constants.context);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.editor);
+        layout = (LinearLayout) findViewById(R.id.editor);
 
         this.data = getData(fieldPosition);
-        hiddenEmpty = getHiddenEmpty(newData);
+        hiddenEmpty = getHiddenEmpty();
 
         editTexts = new EditText[data.getNumberOfAttribues()];
+        views = new View[data.getNumberOfAttribues()];
         for(int i=0;i<data.getNumberOfAttribues();i++) {
             View view = getView(i);
             layout.addView(view);
+            views[i] = view;
         }
+        //Setup message view
+        message = new TextView(DataEditor.this);
+        message.setText("Please change settings to display an item...");
+        layout.addView(message);
 
-        if(!oneItemDisplayed) {
-            TextView message = new TextView(DataEditor.this);
-            message.setText("Please change settings to display an item...");
-            layout.addView(message);
-        }
+        refreshView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        refreshView();
     }
 
     @Override
@@ -110,11 +123,41 @@ public abstract class DataEditor extends ActionBarActivity {
     }
 
     //Used to decide if hidden elements have to be shown
-    private boolean getHiddenEmpty(boolean newData){
-        if(newData)
-            return false;
+    private boolean getHiddenEmpty(){
+        return !newData && pref.getBoolean("show_non_empty", true);
+    }
 
-        return pref.getBoolean("show_non_empty", true);
+    private void refreshView(){
+        hiddenEmpty = getHiddenEmpty();
+        oneItemDisplayed = false;
+
+        for(int i=0;i<views.length;i++){
+            String attributeName = data.getAttributeNameAt(i);
+            boolean visible = pref.getBoolean("show_" + attributeName, true);
+
+            //Set all items visible
+            views[i].setVisibility(View.VISIBLE);
+
+            if(hiddenEmpty) {
+                if(getTrimmedString(editTexts[i]).isEmpty()) {
+                    views[i].setVisibility(View.GONE);
+                } else {
+                    oneItemDisplayed = true;
+                }
+            }
+
+            if(!visible) {
+                views[i].setVisibility(View.GONE);
+            } else {
+                oneItemDisplayed = true;
+            }
+        }
+
+        if(!oneItemDisplayed) {
+            message.setVisibility(View.VISIBLE);
+        } else {
+            message.setVisibility(View.GONE);
+        }
     }
 
     private View getView(int index) {
@@ -128,8 +171,6 @@ public abstract class DataEditor extends ActionBarActivity {
         String attributeName = this.data.getAttributeNameAt(index);
         String data = this.data.getDataAt(index).trim();
 
-        boolean visible = pref.getBoolean("show_" + attributeName, true);
-
         String headerText = pref.getString("name_" + attributeName, "not defined...");
 
         if (attributeName.contains("comment")) {
@@ -139,22 +180,6 @@ public abstract class DataEditor extends ActionBarActivity {
 
         header.setText(headerText);
         content.setText(data);
-
-        if (hiddenEmpty) {
-            if (data.isEmpty()) {
-                view.setVisibility(View.GONE);
-                return view;
-            } else {
-                oneItemDisplayed = true;
-            }
-        }
-
-        if (!visible) {
-            view.setVisibility(View.GONE);
-            return view;
-        } else {
-            oneItemDisplayed = true;
-        }
 
         return view;
     }
