@@ -36,18 +36,17 @@ public final class Directories {
     /**
      * This method returns true if everything is setup correctly if anything fails to do false
      * will be returned
-     * @return If everything is setted up correctly true otherwise false
      */
-    public static boolean setUpIfNotExistent() {
+    public static void setUpIfNotExistent() {
         if(SWAN_DATA_DIRECTORY.exists()) {
             existent = true;
-            return true;
+            return;
         }
         //Base directory needs to be existent, if it doesn't exist end method...
         if(!fileExists(BASE_DIRECTORY)) {
             Toast.makeText(context, context.getString(R.string.directory_base_not_existent),
                     Toast.LENGTH_LONG).show();
-            return false;
+            return;
         }
 
         boolean result = true;
@@ -56,14 +55,14 @@ public final class Directories {
         if(!result){
             Toast.makeText(context, context.getString(R.string.directory_failed_create_document),
                     Toast.LENGTH_LONG).show();
-            return false;
+            return;
         }
         if(!fileExists(SWAN_DATA_DIRECTORY))
             result = createDirectory(SWAN_DATA_DIRECTORY);
         if(!result){
             Toast.makeText(context, context.getString(R.string.directory_failed_create_swan),
                     Toast.LENGTH_LONG).show();
-            return false;
+            return;
         }
 
         if(!existent){
@@ -71,12 +70,11 @@ public final class Directories {
                     Toast.LENGTH_LONG).show();
         }
 
-        return true;
     }
 
     /**
      * Method checking if a directory is already existent.
-     * Returns true if the direcory already exists. Returns false if the directory needs to be
+     * Returns true if the directory already exists. Returns false if the directory needs to be
      *
      * created.
      * @param directory The directory which has to be checked for existence.

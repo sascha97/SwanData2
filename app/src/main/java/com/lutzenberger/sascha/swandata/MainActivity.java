@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.lutzenberger.sascha.activity.DataEditor;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
 import com.lutzenberger.sascha.file.Directories;

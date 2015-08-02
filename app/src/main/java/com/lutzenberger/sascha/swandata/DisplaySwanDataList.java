@@ -2,7 +2,6 @@ package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lutzenberger.sascha.activity.DataListView;
 import com.lutzenberger.sascha.file.DataFileReader;

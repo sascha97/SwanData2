@@ -101,7 +101,7 @@ public class SwanData extends Data {
      *
      * @param listPosition The listPosition of the item to get
      *
-     * @return The data item at this listPostion
+     * @return The data item at this listPosition
      */
     public String getDataAt(int listPosition) {
         if(listPosition < 0 || listPosition >= ATTRIBUTES.length)
@@ -111,11 +111,11 @@ public class SwanData extends Data {
     }
 
     /**
-     * Method to return the size of the array of the attribues.
+     * Method to return the size of the array of the attributes.
      *
      * @return The number of attributes stored.
      */
-    public int getNumberOfAttribues(){
+    public int getNumberOfAttributes(){
         return ATTRIBUTES.length;
     }
 
@@ -149,7 +149,7 @@ public class SwanData extends Data {
 
     @Override
     public void setDataAtIndex(int index, String newData) {
-        if(index < 0 || index >= getNumberOfAttribues())
+        if(index < 0 || index >= getNumberOfAttributes())
             return;
         attribute_values[index] = newData;
     }

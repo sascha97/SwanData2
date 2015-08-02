@@ -1,7 +1,6 @@
 <resources>
     <!-- Basic application Strings -->
     <string name="app_name">SwanData</string>
-    <string name="title_activity_data_editor">DataEditor</string>
     <string name="title_activity_display_swan_code">SwanCode</string>
     <string name="title_activity_display_swan_codes_list">Select one SwanCode</string>
     <string name="title_activity_display_swan_data">SwanData</string>

@@ -5,5 +5,4 @@
 
     <dimen name="text_height">15sp</dimen>
     <dimen name="heading_height">20sp</dimen>
-    <dimen name="header_icon_width">28dp</dimen>
 </resources>

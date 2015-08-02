@@ -59,7 +59,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
 
         String result = "";
         boolean next = false;
-        for(int i=0;i<data.getNumberOfAttribues();i++){
+        for(int i=0;i<data.getNumberOfAttributes();i++){
             String attributeName = data.getAttributeNameAt(i);
             String attribute_header = pref.getString("name_" + attributeName, "");
             boolean visible = pref.getBoolean("show_" + attributeName, true);

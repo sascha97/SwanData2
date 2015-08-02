@@ -8,7 +8,6 @@ import com.lutzenberger.sascha.swan.SwanData;
 
 import com.opencsv.CSVReader;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -58,8 +57,6 @@ public final class DataFileReader {
 
     //Reads in the CSV Swan Data file and returns the list of the records without the headings
     public static void getSwanDataList(String filePath) throws IOException {
-        File file = new File(filePath);
-
         //Overrides old swanDataList if there is one
         swanDataList = new ArrayList<>();
 
@@ -96,8 +93,6 @@ public final class DataFileReader {
 
     //Reads in the CSV Swan Codes data file and returns the list of the records without the headings
     public static void getSwanCodesList(String filePath) throws IOException {
-        File file = new File(filePath);
-
         //Overrides old swanDataList if there is one
         swanCodesList = new ArrayList<>();
 

@@ -3,7 +3,6 @@ package com.lutzenberger.sascha.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lutzenberger.sascha.custom.SwanListAdapter;
-import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.Constants;

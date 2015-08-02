@@ -34,7 +34,6 @@ import com.lutzenberger.sascha.swandata.R;
 public abstract class DataEditor extends ActionBarActivity {
     private LayoutInflater inflater;
     private SharedPreferences pref;
-    private boolean oneItemDisplayed;
     private boolean newData;
 
     protected Data data;
@@ -42,7 +41,6 @@ public abstract class DataEditor extends ActionBarActivity {
     private EditText[] editTexts;
     private View[] views;
     private TextView message;
-    private LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +56,14 @@ public abstract class DataEditor extends ActionBarActivity {
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         pref = PreferenceManager.getDefaultSharedPreferences(Constants.context);
 
-        layout = (LinearLayout) findViewById(R.id.editor);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.editor);
 
         this.data = getData(fieldPosition);
         hiddenEmpty = getHiddenEmpty();
 
-        editTexts = new EditText[data.getNumberOfAttribues()];
-        views = new View[data.getNumberOfAttribues()];
-        for(int i=0;i<data.getNumberOfAttribues();i++) {
+        editTexts = new EditText[data.getNumberOfAttributes()];
+        views = new View[data.getNumberOfAttributes()];
+        for(int i=0;i<data.getNumberOfAttributes();i++) {
             View view = getView(i);
             layout.addView(view);
             views[i] = view;
@@ -129,7 +127,7 @@ public abstract class DataEditor extends ActionBarActivity {
 
     private void refreshView(){
         hiddenEmpty = getHiddenEmpty();
-        oneItemDisplayed = false;
+        boolean oneItemDisplayed = false;
 
         for(int i=0;i<views.length;i++){
             String attributeName = data.getAttributeNameAt(i);

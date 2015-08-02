@@ -15,7 +15,7 @@ import com.lutzenberger.sascha.swandata.R;
 /**
  * This class builds an abstract basis for the FileTasks of this application.
  *
- * The progess dialog is already done in here.
+ * The progress dialog is already done in here.
  *
  * @author Sascha Lutzenberger
  * @version 1.0 - 01.08.2015

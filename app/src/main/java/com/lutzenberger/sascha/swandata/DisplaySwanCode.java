@@ -4,7 +4,6 @@ import com.lutzenberger.sascha.activity.DataEditor;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swan.SwanCodes;
-import com.lutzenberger.sascha.swan.SwanData;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ package com.lutzenberger.sascha.swan;
 public abstract class Data implements CSVWritable, DarvicSearchable {
     private final int index;
 
-    public Data(int index){
+    Data(int index){
         this.index = index;
     }
 
@@ -37,16 +37,16 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      *
      * @param listPosition The listPosition of the item to get
      *
-     * @return The data item at this listPostion
+     * @return The data item at this listPosition
      */
     public abstract String getDataAt(int listPosition);
 
     /**
-     * Method to return the size of the array of the attribues.
+     * Method to return the size of the array of the attributes.
      *
      * @return The number of attributes stored.
      */
-    public abstract int getNumberOfAttribues();
+    public abstract int getNumberOfAttributes();
 
     /**
      * This method returns a simple String telling the name of the class

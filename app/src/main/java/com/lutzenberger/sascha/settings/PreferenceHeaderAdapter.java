@@ -18,13 +18,11 @@ import java.util.List;
  * @author Sascha Lutzenberger
  * @version 1.0 - 29.07.2015
  */
-public class PreferenceHeaderAdapter extends ArrayAdapter<Header>{
+class PreferenceHeaderAdapter extends ArrayAdapter<Header>{
     private final LayoutInflater inflater;
-    private final Context context;
 
     public PreferenceHeaderAdapter(Context context, List<Header> objects) {
         super(context, 0, objects);
-        this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
