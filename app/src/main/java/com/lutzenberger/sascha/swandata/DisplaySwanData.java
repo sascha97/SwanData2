@@ -1,5 +1,9 @@
 package com.lutzenberger.sascha.swandata;
 
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.lutzenberger.sascha.activity.DataEditor;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
@@ -17,6 +21,33 @@ import java.util.List;
 public class DisplaySwanData extends DataEditor {
     private boolean inList = false;
     private List<Data> dataList;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu; this adds items to the action bar if there is room.
+        getMenuInflater().inflate(R.menu.menu_swan_data, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem item = menu.findItem(R.id.menu_search_sample);
+        if(!inList)
+            item.setVisible(false);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menu_search_sample){
+            Intent intent = new Intent(this, DisplaySwanCodesList.class);
+            intent.putExtra(getString(R.string.intent_darvic), data.getDarvic());
+
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected Data getData(int fieldPosition) {
