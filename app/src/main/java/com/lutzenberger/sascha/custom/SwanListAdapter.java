@@ -64,16 +64,16 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
             String attribute_header = pref.getString("name_" + attributeName, "");
             boolean visible = pref.getBoolean("show_" + attributeName, true);
             if(visible){
-                if(showNonEmpty){
-                    if(data.getDataAt(i).isEmpty())
+                if(showNonEmpty) {
+                    if (data.getDataAt(i).isEmpty())
                         continue;
-                    //Adds the delimiter
-                    if(next)
-                        result = result + "\n";
-                    //Adds the result
-                    result = result + attribute_header + "='"+data.getDataAt(i)+"'";
-                    next = true;
                 }
+                //Adds the delimiter
+                if(next)
+                    result = result + "\n";
+                //Adds the result
+                result = result + attribute_header + "='"+data.getDataAt(i)+"'";
+                next = true;
             }
         }
 

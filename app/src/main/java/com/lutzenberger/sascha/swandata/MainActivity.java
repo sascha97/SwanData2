@@ -6,7 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
+import com.lutzenberger.sascha.activity.DataEditor;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
 import com.lutzenberger.sascha.file.Directories;
@@ -17,6 +19,7 @@ import com.lutzenberger.sascha.task.FileTask;
 import java.io.IOException;
 
 public class MainActivity extends ActionBarActivity {
+    private EditText darvic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
         //Loading in the files
         LoadingFiles loadingFiles = new LoadingFiles();
         loadingFiles.execute();
+
+        darvic = (EditText) findViewById(R.id.darvic_entered);
     }
 
     @Override
@@ -48,10 +53,10 @@ public class MainActivity extends ActionBarActivity {
                 reloadDataFiles();
                 return true;
             case R.id.menu_new_swan_code:
-                displayData();
+                //TODO: action
                 return true;
             case R.id.menu_new_swan_data:
-                displayData();
+                //TODO: action
                 return true;
             case R.id.menu_save:
                 updateDataFiles();
@@ -60,6 +65,10 @@ public class MainActivity extends ActionBarActivity {
                 //TODO: action
                 return true;
             case R.id.menu_search_sample:
+                Intent intent = new Intent(this, DisplaySwanCodesList.class);
+                String darvic = this.darvic.getText().toString().trim();
+                intent.putExtra(getString(R.string.darvic), darvic);
+                startActivity(intent);
                 //TODO: action
                 return true;
             case R.id.menu_settings:
@@ -68,11 +77,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void displayData(){
-        Intent intent = new Intent(this, DataEditor.class);
-        startActivity(new Intent(this, DataEditor.class));
     }
 
     private void reloadDataFiles() {

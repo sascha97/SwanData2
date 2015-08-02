@@ -25,8 +25,8 @@
             android:label="@string/settings" >
         </activity>
         <activity
-            android:name=".DataEditor"
-            android:label="@string/title_activity_data_editor" >
+            android:name=".DisplaySwanCodesList"
+            android:label="@string/title_activity_display_swan_codes_list">
         </activity>
     </application>
 

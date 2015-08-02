@@ -137,7 +137,7 @@ public class SwanCodes extends Data {
 
     @Override
     public String getDarvic() {
-        int darvicIndex = getListPosition("darvic");
+        int darvicIndex = getListPosition("bird");
 
         return attribute_values[darvicIndex];
     }

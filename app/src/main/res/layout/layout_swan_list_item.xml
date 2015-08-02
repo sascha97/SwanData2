@@ -7,7 +7,6 @@
         android:id="@+id/list_heading"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:text="Sample Heading"
         android:textStyle="bold" />

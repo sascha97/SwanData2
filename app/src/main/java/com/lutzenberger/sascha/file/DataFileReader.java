@@ -50,10 +50,10 @@ public final class DataFileReader {
      * @return the read in SwanDataList
      */
     public static List<Data> getSwanCodesList() {
-        if(swanDataList == null)
-            swanDataList = new ArrayList<>();
+        if(swanCodesList == null)
+            swanCodesList = new ArrayList<>();
 
-        return swanDataList;
+        return swanCodesList;
     }
 
     //Reads in the CSV Swan Data file and returns the list of the records without the headings
