@@ -3,11 +3,10 @@ package com.lutzenberger.sascha.file;
 import android.os.Environment;
 import android.widget.Toast;
 
+import static com.lutzenberger.sascha.swandata.Constants.context;
 import com.lutzenberger.sascha.swandata.R;
 
 import java.io.File;
-
-import static com.lutzenberger.sascha.swandata.Constants.context;
 
 /**
  * This class handles the directories and the file names of the whole app.

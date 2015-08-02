@@ -6,15 +6,12 @@ import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swan.SwanCodes;
 import com.lutzenberger.sascha.swan.SwanData;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
+import com.opencsv.CSVReader;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -27,12 +24,12 @@ import java.util.List;
  * @version 1.0 - 01.08.2015
  *
  */
-public final class CSVReader {
+public final class DataFileReader {
     private static List<Data> swanDataList;
     private static List<Data> swanCodesList;
 
     //Private constructor
-    private CSVReader(){
+    private DataFileReader(){
     }
 
     /**
@@ -66,17 +63,21 @@ public final class CSVReader {
         //Overrides old swanDataList if there is one
         swanDataList = new ArrayList<>();
 
-        CSVParser parser = null;
+        FileReader fileReader = null;
+        CSVReader reader = null;
         try {
-            parser = CSVParser.parse(file, Charset.defaultCharset(), CSVFormat.DEFAULT);
-            List<CSVRecord> recordList = parser.getRecords(); //Get all the records in the CSV file
+            fileReader = new FileReader(filePath);
+            reader = new CSVReader(fileReader);
+
+            //Get all the records in the CSV file
+            List<String[]> contentList = reader.readAll();
 
             // 1 is used here to get rid of the headings, headings are not required for data handling
-            for (int i = 1; i < recordList.size(); i++) {
-                CSVRecord r = recordList.get(i); //Get the record from the CSV file.
+            for (int i = 1; i < contentList.size(); i++) {
+                String[] record = contentList.get(i); //Get the record from the CSV file.
 
                 //Constructs the data item
-                SwanData data = new SwanData(r, i-1); //i-1 because of zero index list
+                SwanData data = new SwanData(record, i-1); //i-1 because of zero index list
 
                 swanDataList.add(data);
             }
@@ -86,8 +87,10 @@ public final class CSVReader {
             throw e;
         } finally {
             //Close the file parser to free resources
-            if(parser != null)
-                parser.close();
+            if(reader != null)
+                reader.close();
+            else if(fileReader != null)
+                fileReader.close();
         }
     }
 
@@ -97,17 +100,22 @@ public final class CSVReader {
 
         //Overrides old swanDataList if there is one
         swanCodesList = new ArrayList<>();
-        CSVParser parser = null;
+
+        FileReader fileReader = null;
+        CSVReader reader = null;
         try {
-            parser = CSVParser.parse(file, Charset.defaultCharset(), CSVFormat.DEFAULT);
-            List<CSVRecord> recordList = parser.getRecords(); //Get all the records in the CSV file
+            fileReader = new FileReader(filePath);
+            reader = new CSVReader(fileReader);
+
+            //Get all teh records from the CSV file
+            List<String[]> contentList = reader.readAll();
 
             //1 is used here to get rid of the headings, headings are not required for data handling later
-            for (int i = 1; i < recordList.size(); i++) {
-                CSVRecord r = recordList.get(i); //Get the record from the CSV file.
+            for (int i = 1; i < contentList.size(); i++) {
+                String[] record = contentList.get(i); //Get the record from the CSV file.
 
                 //Constructs the data item
-                SwanCodes code = new SwanCodes(r, i-1); //i-1 because of zero index list
+                SwanCodes code = new SwanCodes(record, i-1); //i-1 because of zero index list
 
                 swanCodesList.add(code);
             }
@@ -117,8 +125,10 @@ public final class CSVReader {
             throw e;
         } finally {
             //Close the file parser to free resources
-            if(parser != null)
-                parser.close();
+            if(reader != null)
+                reader.close();
+            else if(fileReader != null)
+                fileReader.close();
         }
     }
 }

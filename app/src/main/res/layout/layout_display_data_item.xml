@@ -18,7 +18,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Sample heading"/>
 
-        <EditText
+        <com.lutzenberger.sascha.custom.CustomEditText
             android:id="@+id/data_item_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

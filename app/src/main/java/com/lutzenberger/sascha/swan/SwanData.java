@@ -5,8 +5,6 @@ import android.content.Context;
 import com.lutzenberger.sascha.swandata.Constants;
 import com.lutzenberger.sascha.swandata.R;
 
-import org.apache.commons.csv.CSVRecord;
-
 
 /**
  * This class represents the SwanCodes and gives the ability of updating the file.
@@ -65,14 +63,14 @@ public class SwanData extends Data {
     //The array of the attribute_values has to be the same as the length as the array attributes
     private final String[] attribute_values = new String[ATTRIBUTES.length];
 
-    public SwanData(CSVRecord record, int listIndex) {
+    public SwanData(String[] record, int listIndex) {
         super(listIndex);
 
         for(int i=0;i<ATTRIBUTES.length;i++) {
             //This loads the index of the attribute in the data file
             int index = ATTRIBUTES_DATA_FILE_POSITION[i];
             //Saves the value of the attribute at the given index.
-            attribute_values[i] = record.get(index);
+            attribute_values[i] = record[index];
         }
     }
 

@@ -1,7 +1,8 @@
 package com.lutzenberger.sascha.swan;
 
 /**
- * This interfaces must be implemented by all classes which want to support the CSVWriter operation.
+ * This interfaces must be implemented by all classes which want to support the DataFileWriter
+ * operation.
  *
  * This is used to get a String array of all the attributes which need to be written to the CSV file
  * from the class.

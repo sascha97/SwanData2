@@ -1,6 +1,5 @@
 package com.lutzenberger.sascha.swan;
 
-
 /**
  * This interfaces must be implemented by all classes which want to be searched by darvic code
  *

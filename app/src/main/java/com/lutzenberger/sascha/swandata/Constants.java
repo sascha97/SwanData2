@@ -2,6 +2,7 @@ package com.lutzenberger.sascha.swandata;
 
 import android.content.Context;
 
+
 /*
  * Constants used (might not the best way to do it but it works).
  *

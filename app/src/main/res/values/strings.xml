@@ -1,14 +1,37 @@
 <resources>
+    <!-- Basic application Strings -->
     <string name="app_name">SwanData</string>
+    <string name="title_activity_data_editor">DataEditor</string>
+    <string name="author">Sascha Lutzenberger - 2015</string>
 
     <string name="settings">Settings</string>
 
-    <string name="title_activity_test">TestActivity</string>
-
     <!-- Directories strings -->
-    <string name="base_directory_not_existent">Base directory does not exist…</string>
-    <string name="failed_create_document_dir">Document directory could not be created…</string>
-    <string name="failed_create_swan_dir">Swan directory could not be created…</string>
-    <string name="created_all_dirs">Working directories have been created…</string>
+    <string name="directory_all_created">Working directories have been created…</string>
+    <string name="directory_base_not_existent">Base directory does not exist…</string>
+    <string name="directory_failed_create_document">Document directory could not be created…</string>
+    <string name="directory_failed_create_swan">Swan directory could not be created…</string>
+
+    <!-- hint fields -->
+    <string name="hint_darvic_code">darvic code</string>
+
+    <!-- Menu Item strings -->
+    <string name="menu_new_swan_code">Add SwanCode</string>
+    <string name="menu_new_swan_data">Add SwanData</string>
+    <string name="menu_reload_files">Reload data files</string>
+    <string name="menu_save">Save DataFiles</string>
+    <string name="menu_search_sample">Search for SwanCodes</string>
+    <string name="menu_search_data">Search for SwanData</string>
+
+    <!-- Messages -->
+    <string name="message_enter_darvic_code">Please enter a DARVIC code:</string>
+    <string name="message_files_processed">Files are being processed…</string>
+    <string name="message_files_updated">Files are being updated…</string>
+    <string name="message_read_failed">Failed reading in the files…</string>
+    <string name="message_read_success">Files successfully read in…</string>
+    <string name="message_searching_matches">Searching for matches…</string>
+    <string name="message_update_failed">Failed updating the files…</string>
+    <string name="message_update_success">Files successfully updated…</string>
+    <string name="message_wait">Please wait</string>
 
 </resources>

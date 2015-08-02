@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.lutzenberger.sascha.swan.Data;
-import com.lutzenberger.sascha.swan.SwanCodes;
 import com.lutzenberger.sascha.swandata.Constants;
 import com.lutzenberger.sascha.swandata.R;
 
