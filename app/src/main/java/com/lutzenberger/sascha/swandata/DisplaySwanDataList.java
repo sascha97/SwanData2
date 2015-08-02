@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.swandata;
 
+import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +31,8 @@ public class DisplaySwanDataList extends DataListView {
     }
 
     @Override
-    protected void showSingleItem(int listPosition) {
-        //TODO: later
-        Toast.makeText(Constants.context, "item at " + listPosition + " pressed", Toast.LENGTH_LONG).show();
+    protected Intent prepareIntent(){
+        return new Intent(this, DisplaySwanData.class);
     }
 
     @Override

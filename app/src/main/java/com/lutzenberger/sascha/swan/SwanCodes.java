@@ -146,4 +146,11 @@ public class SwanCodes extends Data {
     public String[] getDataRecord() {
         return getCSVHeaderOrder(attribute_values);
     }
+
+    @Override
+    public void setDataAtIndex(int index, String newData) {
+        if(index < 0 || index >= getNumberOfAttribues())
+            return;
+        attribute_values[index] = newData;
+    }
 }

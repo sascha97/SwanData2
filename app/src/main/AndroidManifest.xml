@@ -22,16 +22,28 @@
         </activity>
         <activity
             android:name="com.lutzenberger.sascha.settings.SettingsActivity"
-            android:label="@string/settings" >
+            android:label="@string/settings"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".DisplaySwanCodesList"
-            android:label="@string/title_activity_display_swan_codes_list">
+            android:label="@string/title_activity_display_swan_codes_list"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".DisplaySwanDataList"
-            android:label="@string/title_activity_display_swan_data_list">
-
+            android:label="@string/title_activity_display_swan_data_list"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".DisplaySwanData"
+            android:label="@string/title_activity_display_swan_data"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".DisplaySwanCode"
+            android:label="@string/title_activity_display_swan_code"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

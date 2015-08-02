@@ -7,7 +7,7 @@
         android:id="@+id/list_heading"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/heading_height"
         android:text="Sample Heading"
         android:textStyle="bold" />
 
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/list_heading"
-        android:textSize="15sp"
+        android:textSize="@dimen/text_height"
         android:textStyle="italic"
         android:text="Sample content"
         android:paddingLeft="15sp" />

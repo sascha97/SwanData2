@@ -57,4 +57,14 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
         return getClass().getSimpleName();
     }
 
+    /**
+     * This method allows to change data at a certain index.
+     *
+     * If index doesn't exist nothing will be changed
+     *
+     * @param index the index where data has to be changed.
+     * @param newData the new data for the given index.
+     */
+    public abstract void setDataAtIndex(int index, String newData);
+
 }

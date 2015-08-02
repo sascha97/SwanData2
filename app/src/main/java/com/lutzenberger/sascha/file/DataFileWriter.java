@@ -47,7 +47,8 @@ public class DataFileWriter {
         CSVWriter writer = null;
         try {
             fileWriter = new FileWriter(fileName);
-            writer = new CSVWriter(fileWriter);
+            writer = new CSVWriter(fileWriter, CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER);
 
             List<String[]> resultList = new ArrayList<>(list.size() + 1); //all entries + header
             //Adding the HEADER first

@@ -48,29 +48,36 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        String darvic = this.darvic.getText().toString().trim();
+
         switch (item.getItemId()) {
             case R.id.menu_reload_files:
                 reloadDataFiles();
                 return true;
             case R.id.menu_new_swan_code:
-                //TODO: action
+                intent = new Intent(this, DisplaySwanCode.class);
+                intent.putExtra(getString(R.string.intent_field_id), DataFileReader.getSwanCodesList().size());
+                intent.putExtra(getString(R.string.intent_new_data), true);
+                startActivity(intent);
                 return true;
             case R.id.menu_new_swan_data:
-                //TODO: action
+                intent = new Intent(this, DisplaySwanData.class);
+                intent.putExtra(getString(R.string.intent_field_id),DataFileReader.getSwanDataList().size());
+                intent.putExtra(getString(R.string.intent_new_data), true);
+                startActivity(intent);
                 return true;
             case R.id.menu_save:
                 updateDataFiles();
                 return true;
             case R.id.menu_search_data:
-                Intent intent = new Intent(this, DisplaySwanDataList.class);
-                String darvic = this.darvic.getText().toString().trim();
-                intent.putExtra(getString(R.string.darvic), darvic);
+                intent = new Intent(this, DisplaySwanDataList.class);
+                intent.putExtra(getString(R.string.intent_darvic), darvic);
                 startActivity(intent);
                 return true;
             case R.id.menu_search_sample:
                 intent = new Intent(this, DisplaySwanCodesList.class);
-                darvic = this.darvic.getText().toString().trim();
-                intent.putExtra(getString(R.string.darvic), darvic);
+                intent.putExtra(getString(R.string.intent_darvic), darvic);
                 startActivity(intent);
                 return true;
             case R.id.menu_settings:

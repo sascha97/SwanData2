@@ -2,7 +2,9 @@
     <!-- Basic application Strings -->
     <string name="app_name">SwanData</string>
     <string name="title_activity_data_editor">DataEditor</string>
+    <string name="title_activity_display_swan_code">SwanCode</string>
     <string name="title_activity_display_swan_codes_list">Select one SwanCode</string>
+    <string name="title_activity_display_swan_data">SwanData</string>
     <string name="title_activity_display_swan_data_list">Select one SwanData</string>
     <string name="author">Sascha Lutzenberger - 2015</string>
 
@@ -18,7 +20,9 @@
     <string name="hint_darvic_code">darvic code</string>
 
     <!-- Intent Strings -->
-    <string name="darvic">darvic</string>
+    <string name="intent_darvic">darvic</string>
+    <string name="intent_field_id">field_id</string>
+    <string name="intent_new_data">new_data</string>
 
     <!-- Menu Item strings -->
     <string name="menu_new_swan_code">Add SwanCode</string>
@@ -30,6 +34,7 @@
 
     <!-- Messages -->
     <string name="message_enter_darvic_code">Please enter a DARVIC code:</string>
+    <string name="message_entry_updated">Entry has been updated…</string>
     <string name="message_files_processed">Files are being processed…</string>
     <string name="message_files_updated">Files are being updated…</string>
     <string name="message_no_data_found">No data found for this DARVIC code…</string>

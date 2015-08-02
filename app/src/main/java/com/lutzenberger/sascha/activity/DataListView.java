@@ -44,7 +44,7 @@ public abstract class DataListView extends ActionBarActivity {
         //Initializing the activity
         final Intent intent = getIntent();
         //Getting the necessary data to be able to display the data
-        String darvic = intent.getStringExtra(getString(R.string.darvic));
+        String darvic = intent.getStringExtra(getString(R.string.intent_darvic));
 
         //Gets the ListView
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -118,6 +118,16 @@ public abstract class DataListView extends ActionBarActivity {
         arrayAdapter.notifyDataSetChanged();
     }
 
+    //Start the activity of displaying a single item
+    private void showSingleItem(int listIndex){
+        Intent intent = prepareIntent();
+
+        intent.putExtra(getString(R.string.intent_field_id), listIndex);
+        intent.putExtra(getString(R.string.intent_new_data), false);
+
+        startActivity(intent);
+    }
+
     /**
      * This method is used to get a data list which has to be searched by a darvic code
      *
@@ -133,9 +143,7 @@ public abstract class DataListView extends ActionBarActivity {
     protected abstract String getMessageNoData();
 
     /**
-     * This method is here to start a new activity when just one result has to be displayed.
-     *
-     * @param listPosition The list position of the data item
+     * This method is here to get the relevant Intent when a activity should be started
      */
-    protected abstract void showSingleItem(int listPosition);
+    protected abstract Intent prepareIntent();
 }
