@@ -22,7 +22,7 @@
             android:id="@+id/data_item_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textShortMessage"
             android:scrollbars="vertical"
             android:layout_below="@id/data_item_title"
             android:ellipsize="end" />
