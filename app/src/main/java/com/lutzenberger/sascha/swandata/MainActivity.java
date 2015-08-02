@@ -62,14 +62,16 @@ public class MainActivity extends ActionBarActivity {
                 updateDataFiles();
                 return true;
             case R.id.menu_search_data:
-                //TODO: action
-                return true;
-            case R.id.menu_search_sample:
-                Intent intent = new Intent(this, DisplaySwanCodesList.class);
+                Intent intent = new Intent(this, DisplaySwanDataList.class);
                 String darvic = this.darvic.getText().toString().trim();
                 intent.putExtra(getString(R.string.darvic), darvic);
                 startActivity(intent);
-                //TODO: action
+                return true;
+            case R.id.menu_search_sample:
+                intent = new Intent(this, DisplaySwanCodesList.class);
+                darvic = this.darvic.getText().toString().trim();
+                intent.putExtra(getString(R.string.darvic), darvic);
+                startActivity(intent);
                 return true;
             case R.id.menu_settings:
                 startActivity(new Intent(this, SettingsActivity.class));

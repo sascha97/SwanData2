@@ -1,14 +1,12 @@
 package com.lutzenberger.sascha.swandata;
 
-import android.util.Log;
+import android.widget.Toast;
 
 import com.lutzenberger.sascha.activity.DataListView;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
-import com.lutzenberger.sascha.task.SearchTask;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * This is the activity for displaying a SwanCodes result list on the mobile device.
@@ -19,17 +17,8 @@ import java.util.concurrent.ExecutionException;
  */
 public class DisplaySwanCodesList extends DataListView {
     @Override
-    protected List<Data> getMatchingData(String darvic) {
-        List<Data> resultList = null;
-        try{
-            //Gets all the matching data in a AsyncTask so that the UI doesn't freeze
-            List<Data> dataList = DataFileReader.getSwanCodesList();
-            resultList = new SearchTask<>(dataList).execute(darvic).get();
-        } catch (InterruptedException | ExecutionException e) {
-            Log.d("ERROR", e.getMessage());
-        }
-
-        return resultList;
+    protected List<Data> getDataList() {
+        return DataFileReader.getSwanCodesList();
     }
 
     @Override
@@ -40,5 +29,6 @@ public class DisplaySwanCodesList extends DataListView {
     @Override
     protected void showSingleItem(int listPosition) {
         //TODO: later
+        Toast.makeText(Constants.context, "item at " + listPosition + " pressed", Toast.LENGTH_LONG).show();
     }
 }

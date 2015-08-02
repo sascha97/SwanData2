@@ -4,20 +4,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lutzenberger.sascha.custom.SwanListAdapter;
+import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.Constants;
 import com.lutzenberger.sascha.swandata.R;
+import com.lutzenberger.sascha.task.SearchTask;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * This is the abstract activity for displaying a result list on the mobile device.
@@ -34,6 +39,8 @@ public abstract class DataListView extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_list);
 
+        TextView noSamples = (TextView) findViewById(R.id.text_number_sampled);
+
         //Initializing the activity
         final Intent intent = getIntent();
         //Getting the necessary data to be able to display the data
@@ -42,7 +49,14 @@ public abstract class DataListView extends ActionBarActivity {
         //Gets the ListView
         ListView listView = (ListView) findViewById(R.id.listView);
 
-        List<Data> result = getMatchingData(darvic);
+        List<Data> result = null;
+        try{
+            //Gets all the matching data in a AsyncTask so that the UI doesn't freeze
+            List<Data> dataList = getDataList();
+            result = new SearchTask<>(dataList).execute(darvic).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("ERROR", e.getMessage());
+        }
 
         if(result == null || result.size() == 0){
             //Display a message on the screen if no data found and end the activity
@@ -69,6 +83,14 @@ public abstract class DataListView extends ActionBarActivity {
                 showSingleItem(arrayAdapter.getItem(position).getIndex());
             }
         });
+
+        setTextOfNumberSampled(noSamples, darvic);
+    }
+
+    //Hides the TextView for number of sampled
+    //If needed this has to be overwritten
+    protected void setTextOfNumberSampled(TextView noSamples, String darvic){
+        noSamples.setVisibility(View.GONE);
     }
 
     @Override
@@ -97,13 +119,11 @@ public abstract class DataListView extends ActionBarActivity {
     }
 
     /**
-     * This method is used to get the matching data to a DARVIC code
+     * This method is used to get a data list which has to be searched by a darvic code
      *
-     * @param darvic The darvic code
-     *
-     * @return A list with all data matching the darvic code
+     * @return A data list with entries to search
      */
-    protected abstract List<Data> getMatchingData(String darvic);
+    protected abstract List<Data> getDataList();
 
     /**
      * Returns a String with the message which should be displayed when no data is found.

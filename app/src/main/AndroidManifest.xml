@@ -28,6 +28,11 @@
             android:name=".DisplaySwanCodesList"
             android:label="@string/title_activity_display_swan_codes_list">
         </activity>
+        <activity
+            android:name=".DisplaySwanDataList"
+            android:label="@string/title_activity_display_swan_data_list">
+
+        </activity>
     </application>
 
 </manifest>
