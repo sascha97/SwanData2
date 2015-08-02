@@ -6,16 +6,16 @@ import com.lutzenberger.sascha.swan.CSVWritable;
 import com.lutzenberger.sascha.swan.SwanCodes;
 import com.lutzenberger.sascha.swan.SwanData;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
+import com.opencsv.CSVWriter;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * This class represents the CSVWriter and writes the objects to the CSV file when they are changed.
+ * This class represents the DataFileWriter and writes the objects to the CSV file when they are changed.
  *
  * This object is used for the output of all SwanData and SwanCodes to the CSV file, make sure to
  * use the right writer, there will be only two available.
@@ -24,18 +24,18 @@ import java.util.List;
  * @version 1.0 - 01.08.2015
  *
  */
-public class CSVWriter {
-    private CSVWriter() {
+public class DataFileWriter {
+    private DataFileWriter() {
     }
 
     //Minimalistic arguments just the fileName is needed from the Android Application
     public static void updateSwanDataFile(String fileName) throws IOException {
-        updateCSVFile(fileName, SwanData.getCSVFileHeader(), CSVReader.getSwanDataList());
+        updateCSVFile(fileName, SwanData.getCSVFileHeader(), DataFileReader.getSwanDataList());
     }
 
     //Minimalistic arguments just the file name is needed from the Android Application
     public static void updateSwanCodesFile(String fileName) throws IOException {
-        updateCSVFile(fileName, SwanCodes.getCSVFileHeader(), CSVReader.getSwanCodesList());
+        updateCSVFile(fileName, SwanCodes.getCSVFileHeader(), DataFileReader.getSwanCodesList());
     }
 
     //Private method for writing makes it easier to change <? extends CSVWritable> makes sure
@@ -43,30 +43,33 @@ public class CSVWriter {
     private static void updateCSVFile(String fileName, String[] header,
                                       List<? extends CSVWritable> list) throws IOException{
         //Try catch with resources is not possible
-        FileWriter writer = null;
-        CSVPrinter printer = null;
+        FileWriter fileWriter = null;
+        CSVWriter writer = null;
         try {
-            writer = new FileWriter(fileName);
-            printer = new CSVPrinter(writer, CSVFormat.DEFAULT);
+            fileWriter = new FileWriter(fileName);
+            writer = new CSVWriter(fileWriter);
 
-            //Writing the HEADER first
-            printer.printRecord(header);
+            List<String[]> resultList = new ArrayList<>(list.size() + 1); //all entries + header
+            //Adding the HEADER first
+            resultList.add(header);
             for (CSVWritable writable : list) {
-                //Writing all the records
-                printer.printRecord(writable.getDataRecord());
+                //Adding all the records
+                resultList.add(writable.getDataRecord());
             }
+            writer.writeAll(resultList);
         } catch (IOException e) {
             Log.d("ERROR", e.getMessage()); //Log the error on the debug console
             //Rethrows the exception. Resources should be freed
             throw e;
         } finally {
             //Needs to be called to free resources and to flush the FileWriter
-            if(printer != null)
-                printer.flush();
-            if(writer != null)
+            if(writer != null){
+                writer.flush();
                 writer.close();
-            if(printer != null)
-                printer.close();
+            } else if(fileWriter != null){
+                fileWriter.flush();
+                fileWriter.close();
+            }
         }
     }
 }
