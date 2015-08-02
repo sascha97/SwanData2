@@ -25,16 +25,16 @@
 
     <header
         android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
-        android:title="SwanCodes Column Names"
-        android:summary="Used for changing the column names of the SwanCodes fields.">
-        <extra android:name="settings" android:value="swan_codes_columns" />
+        android:title="SwanData Fields"
+        android:summary="Used for enabling and disabling certain SwanData fields.">
+        <extra android:name="settings" android:value="swan_data" />
     </header>
 
     <header
         android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
-        android:title="SwanData Fields"
-        android:summary="Used for enabling and disabling certain SwanData fields.">
-        <extra android:name="settings" android:value="swan_data" />
+        android:title="SwanCodes Column Names"
+        android:summary="Used for changing the column names of the SwanCodes fields.">
+        <extra android:name="settings" android:value="swan_codes_columns" />
     </header>
 
     <header
