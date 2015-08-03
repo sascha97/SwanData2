@@ -31,9 +31,11 @@ public class DisplaySwanData extends DataEditor {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
-        MenuItem item = menu.findItem(R.id.menu_search_sample);
-        if(!inList)
-            item.setVisible(false);
+        MenuItem sample = menu.findItem(R.id.menu_search_sample);
+
+        if(!inList) {
+            sample.setVisible(false);
+        }
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -45,7 +47,9 @@ public class DisplaySwanData extends DataEditor {
             intent.putExtra(getString(R.string.intent_darvic), data.getDarvic());
 
             startActivity(intent);
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -59,7 +63,12 @@ public class DisplaySwanData extends DataEditor {
             return dataList.get(fieldPosition);
         }
         //Get new data
-        return SwanData.getEmptyData(dataList.size()); //size() - 1 is the last element
+        return SwanData.getEmptyData(); //size() - 1 is the last element
+    }
+
+    @Override
+    protected void onDelete(int index) {
+        dataList.remove(index);
     }
 
     @Override
@@ -67,9 +76,7 @@ public class DisplaySwanData extends DataEditor {
         if(inList)
             return;
 
-        System.out.println("fieldPosition: " + data.getIndex());
-
-        dataList.add(data.getIndex(), data);
+        dataList.add(data);
         inList = true;
     }
 }

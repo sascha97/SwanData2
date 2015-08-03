@@ -38,7 +38,6 @@ public abstract class DataEditor extends ActionBarActivity {
 
     protected Data data;
     private boolean hiddenEmpty;
-    private EditText[] editTexts;
     private View[] views;
     private TextView message;
 
@@ -61,7 +60,6 @@ public abstract class DataEditor extends ActionBarActivity {
         this.data = getData(fieldPosition);
         hiddenEmpty = getHiddenEmpty();
 
-        editTexts = new EditText[data.getNumberOfAttributes()];
         views = new View[data.getNumberOfAttributes()];
         for(int i=0;i<data.getNumberOfAttributes();i++) {
             View view = getView(i);
@@ -91,6 +89,17 @@ public abstract class DataEditor extends ActionBarActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem edit = menu.findItem(R.id.menu_edit);
+
+        if(newData) {
+            edit.setVisible(false);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_settings:
@@ -99,10 +108,24 @@ public abstract class DataEditor extends ActionBarActivity {
             case R.id.menu_save:
                 saveButtonClicked();
                 return true;
+            case R.id.menu_edit:
+                editClicked(item);
+                return true;
+            case R.id.menu_delete:
+                deleteClicked();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * This method is used to delete data from the list.
+     * Activity will be ended with finish() afterwards.
+     *
+     * @param index The index at which data should be deleted
+     */
+    protected abstract void onDelete(int index);
 
     /**
      * This method is used to pass in the data item which has to be displayed.
@@ -125,19 +148,57 @@ public abstract class DataEditor extends ActionBarActivity {
         return !newData && pref.getBoolean("show_non_empty", true);
     }
 
+    //This method hanldes when delete is clicked
+    private void deleteClicked() {
+        onDelete(data.getIndex());
+
+        finish();
+    }
+
+    private void editClicked(MenuItem item) {
+        newData = true;
+        //Hide the edit button afterwards
+        item.setVisible(false);
+
+        refreshView();
+    }
+
+    private View getView(int index) {
+        View view = inflater.inflate(R.layout.layout_display_data_item, null);
+        EditText content = (EditText) view.findViewById(R.id.data_item_text);
+
+        String attributeName = this.data.getAttributeNameAt(index);
+        String data = this.data.getDataAt(index).trim();
+
+        if (attributeName.contains("comment")) {
+            content.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+            content.setMaxLines(5);
+        }
+
+        content.setText(data);
+
+        return view;
+    }
+
     private void refreshView(){
         hiddenEmpty = getHiddenEmpty();
         boolean oneItemDisplayed = false;
 
         for(int i=0;i<views.length;i++){
+            TextView header = (TextView) views[i].findViewById(R.id.data_item_title);
+            EditText content = (EditText) views[i].findViewById(R.id.data_item_text);
+
             String attributeName = data.getAttributeNameAt(i);
             boolean visible = pref.getBoolean("show_" + attributeName, true);
+
+            String headerText = pref.getString("name_" + attributeName, "not defined...");
+            header.setText(headerText);
 
             //Set all items visible
             views[i].setVisibility(View.VISIBLE);
 
             if(hiddenEmpty) {
-                if(getTrimmedString(editTexts[i]).isEmpty()) {
+                if(getTrimmedString(content).isEmpty()) {
                     views[i].setVisibility(View.GONE);
                 } else {
                     oneItemDisplayed = true;
@@ -158,33 +219,10 @@ public abstract class DataEditor extends ActionBarActivity {
         }
     }
 
-    private View getView(int index) {
-        View view = inflater.inflate(R.layout.layout_display_data_item, null);
-        TextView header = (TextView) view.findViewById(R.id.data_item_title);
-        EditText content = (EditText) view.findViewById(R.id.data_item_text);
-
-        //Add EditText to editTexts list
-        editTexts[index] = content;
-
-        String attributeName = this.data.getAttributeNameAt(index);
-        String data = this.data.getDataAt(index).trim();
-
-        String headerText = pref.getString("name_" + attributeName, "not defined...");
-
-        if (attributeName.contains("comment")) {
-            content.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-            content.setMaxLines(5);
-        }
-
-        header.setText(headerText);
-        content.setText(data);
-
-        return view;
-    }
-
     private void saveButtonClicked() {
-        for(int i=0;i<editTexts.length;i++) {
-            data.setDataAtIndex(i, getTrimmedString(editTexts[i]));
+        for(int i=0;i<views.length;i++) {
+            EditText content = (EditText) views[i].findViewById(R.id.data_item_text);
+            data.setDataAtIndex(i, getTrimmedString(content));
         }
 
         Toast.makeText(Constants.context, getString(R.string.message_entry_updated),

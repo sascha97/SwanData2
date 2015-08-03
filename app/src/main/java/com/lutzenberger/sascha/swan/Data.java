@@ -8,11 +8,7 @@ package com.lutzenberger.sascha.swan;
  *
  */
 public abstract class Data implements CSVWritable, DarvicSearchable {
-    private final int index;
-
-    Data(int index){
-        this.index = index;
-    }
+    private int index;
 
     /**
      * Get the index of the item in the data list.
@@ -21,6 +17,16 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      */
     public int getIndex(){
         return this.index;
+    }
+
+    /**
+     * This method is used to set the index from the search activity, so that the data knows at
+     * which position of the list the data is.
+     *
+     * @param index The index at the list
+     */
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     /**

@@ -56,16 +56,14 @@ public class SwanData extends Data {
         return dataRecord;
     }
 
-    public static SwanData getEmptyData(int listIndex){
-        return new SwanData(listIndex);
+    public static SwanData getEmptyData(){
+        return new SwanData();
     }
 
     //The array of the attribute_values has to be the same as the length as the array attributes
     private final String[] attribute_values = new String[ATTRIBUTES.length];
 
-    public SwanData(String[] record, int listIndex) {
-        super(listIndex);
-
+    public SwanData(String[] record) {
         for(int i=0;i<ATTRIBUTES.length;i++) {
             //This loads the index of the attribute in the data file
             int index = ATTRIBUTES_DATA_FILE_POSITION[i];
@@ -74,9 +72,7 @@ public class SwanData extends Data {
         }
     }
 
-    private SwanData(int listIndex){
-        super(listIndex);
-
+    private SwanData(){
         for(int i=0;i<ATTRIBUTES.length;i++) {
             attribute_values[i] = "";
         }

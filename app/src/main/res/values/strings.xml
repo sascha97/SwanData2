@@ -24,6 +24,8 @@
     <string name="intent_new_data">new_data</string>
 
     <!-- Menu Item strings -->
+    <string name="menu_delete">Delete</string>
+    <string name="menu_edit">Edit</string>
     <string name="menu_new_swan_code">Add SwanCode</string>
     <string name="menu_new_swan_data">Add SwanData</string>
     <string name="menu_reload_files">Reload data files</string>

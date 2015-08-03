@@ -31,6 +31,7 @@ import java.util.concurrent.ExecutionException;
  */
 public abstract class DataListView extends ActionBarActivity {
     private SwanListAdapter arrayAdapter;
+    private String darvic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,34 +43,14 @@ public abstract class DataListView extends ActionBarActivity {
         //Initializing the activity
         final Intent intent = getIntent();
         //Getting the necessary data to be able to display the data
-        String darvic = intent.getStringExtra(getString(R.string.intent_darvic));
+        darvic = intent.getStringExtra(getString(R.string.intent_darvic));
 
         //Gets the ListView
         ListView listView = (ListView) findViewById(R.id.listView);
-
-        List<Data> result = null;
-        try{
-            //Gets all the matching data in a AsyncTask so that the UI doesn't freeze
-            List<Data> dataList = getDataList();
-            result = new SearchTask<>(dataList).execute(darvic).get();
-        } catch (InterruptedException | ExecutionException e) {
-            Log.d("ERROR", e.getMessage());
-        }
-
-        if(result == null || result.size() == 0){
-            //Display a message on the screen if no data found and end the activity
-            Toast.makeText(Constants.context, getMessageNoData(), Toast.LENGTH_LONG).show();
-            finish();
-        } else if(result.size() == 1) {
-            //If just one data item found, there is no point in displaying a list
-            //Therefore data should be displayed in the right activity
-            showSingleItem(result.get(0).getIndex());
-            finish();
-        }
-
         //The adapter used to display the data in the list
         arrayAdapter = new SwanListAdapter();
-        arrayAdapter.addAll(result);
+
+        whatToDisplay(searchData());
 
         listView.setAdapter(arrayAdapter);
 
@@ -112,8 +93,38 @@ public abstract class DataListView extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        //Update the List just in case anything has changed
-        arrayAdapter.notifyDataSetChanged();
+        //Clear array adapter, because items could be deleted
+        arrayAdapter.clear();
+        //Add items to adapter, set up the data in the adapter again
+        whatToDisplay(searchData());
+    }
+
+    private List<Data> searchData() {
+        List<Data> result = null;
+        try{
+            //Gets all the matching data in a AsyncTask so that the UI doesn't freeze
+            List<Data> dataList = getDataList();
+            result = new SearchTask(dataList).execute(darvic).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("ERROR", e.getMessage());
+        }
+
+        return result;
+    }
+
+    private void whatToDisplay(List<Data> result) {
+        if(result == null || result.size() == 0){
+            //Display a message on the screen if no data found and end the activity
+            Toast.makeText(Constants.context, getMessageNoData(), Toast.LENGTH_LONG).show();
+            finish();
+        } else if(result.size() == 1) {
+            //If just one data item found, there is no point in displaying a list
+            //Therefore data should be displayed in the right activity
+            showSingleItem(result.get(0).getIndex());
+            finish();
+        }
+
+        arrayAdapter.addAll(result);
     }
 
     //Start the activity of displaying a single item

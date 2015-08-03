@@ -3,7 +3,7 @@
     <Preference
         android:key="pref_data_file"
         android:selectable="false"
-        android:summary="The following setting changes the name of the date files, if the name of the data files does not matcvh the name given in here the app will not work correctly." />
+        android:summary="The following setting changes the name of the date files, if the name of the data files does not match the name given in here the app will not work correctly." />
 
     <EditTextPreference
         android:defaultValue="SwanData"

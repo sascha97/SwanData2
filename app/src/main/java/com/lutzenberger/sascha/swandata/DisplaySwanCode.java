@@ -28,7 +28,12 @@ public class DisplaySwanCode extends DataEditor {
             return dataList.get(fieldPosition);
         }
         //Get new data
-        return SwanCodes.getEmptyData(dataList.size()); //size() - 1 is the last element
+        return SwanCodes.getEmptyData();
+    }
+
+    @Override
+    protected void onDelete(int index) {
+        dataList.remove(index);
     }
 
     @Override
@@ -36,9 +41,7 @@ public class DisplaySwanCode extends DataEditor {
         if(inList)
             return;
 
-        System.out.println("fieldPosition: " + data.getIndex());
-
-        dataList.add(data.getIndex(), data);
+        dataList.add(data);
         inList = true;
     }
 }

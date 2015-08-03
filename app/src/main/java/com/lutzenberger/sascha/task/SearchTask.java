@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import static com.lutzenberger.sascha.swandata.Constants.context;
 import com.lutzenberger.sascha.swan.DarvicSearchable;
+import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.R;
 
 import java.util.ArrayList;
@@ -20,12 +21,12 @@ import java.util.List;
  * @version 1.0 - 01.08.2015
  *
  */
-public class SearchTask<T extends DarvicSearchable> extends
-        AsyncTask<String, Integer, List<T>> {
+public class SearchTask extends
+        AsyncTask<String, Integer, List<Data>> {
     private ProgressDialog progressDialog;
-    private final List<T> dataList;
+    private final List<Data> dataList;
 
-    public SearchTask(List<T> dataList){
+    public SearchTask(List<Data> dataList){
         this.dataList = dataList;
     }
 
@@ -39,24 +40,27 @@ public class SearchTask<T extends DarvicSearchable> extends
 
     //The actual searching is done in here, the first argument of the VARARGS is the DARVIC CODE
     @Override
-    protected final List<T> doInBackground(String... params) {
+    protected final List<Data> doInBackground(String... params) {
         //Parameter search
         String darvic = params[0].trim();
 
-        List<T> resultList = new ArrayList<>();
+        List<Data> resultList = new ArrayList<>();
 
-        for(T data : dataList)
+        for(int i=0;i<dataList.size();i++) {
+            Data data = dataList.get(i);
             if(darvic.equalsIgnoreCase(data.getDarvic())) {
-                //T is either of the Type SwanData or SwanCodes
                 resultList.add(data);
+                //Set the index of the current position to the data
+                data.setIndex(i);
             }
+        }
 
         return resultList;
     }
 
     //End the ProgressDialog
     @Override
-    protected void onPostExecute(List<T> resultList) {
+    protected void onPostExecute(List<Data> resultList) {
         super.onPostExecute(resultList);
         progressDialog.dismiss();
     }

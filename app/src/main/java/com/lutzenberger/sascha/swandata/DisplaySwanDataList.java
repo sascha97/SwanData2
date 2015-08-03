@@ -38,7 +38,7 @@ public class DisplaySwanDataList extends DataListView {
     protected void setTextOfNumberSampled(TextView noSamples, String darvic) {
         int noOfSamples = 0;
         try {
-            noOfSamples = new SearchTask<>(DataFileReader.getSwanCodesList()).
+            noOfSamples = new SearchTask(DataFileReader.getSwanCodesList()).
                     execute(darvic).get().size();
         } catch (InterruptedException | ExecutionException e){
             e.printStackTrace();
