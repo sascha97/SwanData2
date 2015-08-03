@@ -30,4 +30,9 @@ public class DisplaySwanCodesList extends DataListView {
     protected Intent prepareIntent(){
         return new Intent(this, DisplaySwanCode.class);
     }
+
+    @Override
+    protected void onDelete(int index){
+        DataFileReader.getSwanCodesList().remove(index);
+    }
 }

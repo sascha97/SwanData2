@@ -45,4 +45,9 @@ public class DisplaySwanDataList extends DataListView {
         }
         noSamples.setText(getString(R.string.message_number_of_samples, noOfSamples));
     }
+
+    @Override
+    protected void onDelete(int index){
+        DataFileReader.getSwanDataList().remove(index);
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lutzenberger.sascha.custom.DeleteDialogFragment;
+import com.lutzenberger.sascha.custom.DialogListener;
 import com.lutzenberger.sascha.custom.SwanListAdapter;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.swan.Data;
@@ -29,9 +32,10 @@ import java.util.concurrent.ExecutionException;
  * @version 1.0 - 02.08.2015
  *
  */
-public abstract class DataListView extends ActionBarActivity {
+public abstract class DataListView extends ActionBarActivity implements DialogListener {
     private SwanListAdapter arrayAdapter;
     private String darvic;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,8 @@ public abstract class DataListView extends ActionBarActivity {
 
         listView.setAdapter(arrayAdapter);
 
+        registerForContextMenu(listView);
+
         //If list item is clicked make sure to show the item in new activity
         //no lambdas are used because project should also be compile when using JDK 1.7
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,6 +76,27 @@ public abstract class DataListView extends ActionBarActivity {
     //If needed this has to be overwritten
     protected void setTextOfNumberSampled(TextView noSamples, String darvic){
         noSamples.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.context_menu_list, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menu_delete) {
+            AdapterView.AdapterContextMenuInfo info =
+                    (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+            index = arrayAdapter.getItem(info.position).getIndex();
+
+            deletedClicked();
+            return true;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
     @Override
@@ -93,9 +120,19 @@ public abstract class DataListView extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        //Clear array adapter, because items could be deleted
-        arrayAdapter.clear();
         //Add items to adapter, set up the data in the adapter again
+        //Also clears the array adapter
+        whatToDisplay(searchData());
+    }
+
+    @Override
+    public void onDialogNegativeClick() {
+    }
+
+    @Override
+    public void onDialogPositiveClick() {
+        onDelete(index);
+
         whatToDisplay(searchData());
     }
 
@@ -112,7 +149,14 @@ public abstract class DataListView extends ActionBarActivity {
         return result;
     }
 
+    private void deletedClicked() {
+        DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
+        deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
+    }
+
     private void whatToDisplay(List<Data> result) {
+        arrayAdapter.clear();
+
         if(result == null || result.size() == 0){
             //Display a message on the screen if no data found and end the activity
             Toast.makeText(Constants.context, getMessageNoData(), Toast.LENGTH_LONG).show();
@@ -155,4 +199,12 @@ public abstract class DataListView extends ActionBarActivity {
      * This method is here to get the relevant Intent when a activity should be started
      */
     protected abstract Intent prepareIntent();
+
+    /**
+     * This method is used to delete data from the list.
+     * Activity will be ended with finish() afterwards.
+     *
+     * @param index The index at which data should be deleted
+     */
+    protected abstract void onDelete(int index);
 }

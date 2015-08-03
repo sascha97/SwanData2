@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.task;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
@@ -34,8 +35,11 @@ public class SearchTask extends
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressDialog = ProgressDialog.show(context, context.getString(R.string.message_wait),
-                context.getString(R.string.message_searching_matches));
+
+        progressDialog = new ProgressDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        progressDialog.setTitle(context.getString(R.string.message_wait));
+        progressDialog.setMessage(context.getString(R.string.message_searching_matches));
+        progressDialog.show();
     }
 
     //The actual searching is done in here, the first argument of the VARARGS is the DARVIC CODE

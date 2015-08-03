@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lutzenberger.sascha.custom.DeleteDialogFragment;
+import com.lutzenberger.sascha.custom.DialogListener;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.Constants;
@@ -31,7 +33,7 @@ import com.lutzenberger.sascha.swandata.R;
  * @version 1.0 - 02.08.2015
  *
  */
-public abstract class DataEditor extends ActionBarActivity {
+public abstract class DataEditor extends ActionBarActivity implements DialogListener {
     private LayoutInflater inflater;
     private SharedPreferences pref;
     private boolean newData;
@@ -90,10 +92,14 @@ public abstract class DataEditor extends ActionBarActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem delete = menu.findItem(R.id.menu_delete);
         MenuItem edit = menu.findItem(R.id.menu_edit);
+        MenuItem settings = menu.findItem(R.id.menu_settings);
 
         if(newData) {
+            delete.setVisible(false);
             edit.setVisible(false);
+            settings.setVisible(false);
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -117,6 +123,18 @@ public abstract class DataEditor extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDialogNegativeClick() {
+        Toast.makeText(Constants.context,"Item not deleted", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDialogPositiveClick() {
+        onDelete(data.getIndex());
+        Toast.makeText(Constants.context,"Item deleted", Toast.LENGTH_LONG).show();
+        finish();
     }
 
     /**
@@ -148,13 +166,13 @@ public abstract class DataEditor extends ActionBarActivity {
         return !newData && pref.getBoolean("show_non_empty", true);
     }
 
-    //This method hanldes when delete is clicked
+    //This method handles when delete is clicked
     private void deleteClicked() {
-        onDelete(data.getIndex());
-
-        finish();
+        DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
+        deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
 
+    //This method handles when edit is clicked
     private void editClicked(MenuItem item) {
         newData = true;
         //Hide the edit button afterwards
@@ -181,6 +199,9 @@ public abstract class DataEditor extends ActionBarActivity {
     }
 
     private void refreshView(){
+        //Redraw the options menu
+        invalidateOptionsMenu();
+
         hiddenEmpty = getHiddenEmpty();
         boolean oneItemDisplayed = false;
 

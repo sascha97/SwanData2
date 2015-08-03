@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.task;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -67,8 +68,10 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
     protected final void onPreExecute() {
         super.onPreExecute();
 
-        progressDialog = ProgressDialog.show(context,
-                context.getString(R.string.message_wait), getMessage());
+        progressDialog = new ProgressDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        progressDialog.setTitle(context.getString(R.string.message_wait));
+        progressDialog.setMessage(getMessage());
+        progressDialog.show();
     }
 
     //End the ProgressDialog
