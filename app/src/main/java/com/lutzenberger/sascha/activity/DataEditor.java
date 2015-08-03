@@ -53,33 +53,43 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
         //Getting the necessary data to be able to tell which data should be displayed
         int fieldPosition = intent.getIntExtra(getString(R.string.intent_field_id), 0);
         newData = intent.getBooleanExtra(getString(R.string.intent_new_data), false);
-
+        //Setting up the inflater for loading layouts later
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //Load the preferences
         pref = PreferenceManager.getDefaultSharedPreferences(Constants.context);
 
+        //Get the layout from the root view
         LinearLayout layout = (LinearLayout) findViewById(R.id.editor);
 
+        //Set the data
         this.data = getData(fieldPosition);
+        //gets the boolean flag to indicate if empty data should be hidden
         hiddenEmpty = getHiddenEmpty();
 
+        //initialize the view array, so that just enough views are stored here
         views = new View[data.getNumberOfAttributes()];
         for(int i=0;i<data.getNumberOfAttributes();i++) {
+            //Gets the created view
             View view = getView(i);
+            //Adds the view to the root element
             layout.addView(view);
+            //Adds the view to the array views
             views[i] = view;
         }
-        //Setup message view
+        //Setup message view if no data will be displayed
         message = new TextView(DataEditor.this);
         message.setText("Please change settings to display an item...");
+        //Add the view to the root element
         layout.addView(message);
 
+        //refresh the view, this only changes visibility and the texts to be displayed
         refreshView();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
+        //refresh the view, if resumed to make sure to respond to any changes in visibility
         refreshView();
     }
 
@@ -92,10 +102,12 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
+        //Get menu items which are not necessary to be displayed in a edit view
         MenuItem delete = menu.findItem(R.id.menu_delete);
         MenuItem edit = menu.findItem(R.id.menu_edit);
         MenuItem settings = menu.findItem(R.id.menu_settings);
 
+        //If in edit view, hide those menu items
         if(newData) {
             delete.setVisible(false);
             edit.setVisible(false);
@@ -168,6 +180,8 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
     //This method handles when delete is clicked
     private void deleteClicked() {
+        //Displays the delete dialog, the handling of the actions is done over an interface
+        //which is already implemented in this activity.
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
@@ -181,7 +195,9 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
         refreshView();
     }
 
+    //This menu creates a view for an data entry
     private View getView(int index) {
+        //Inflates the view from its layout file
         View view = inflater.inflate(R.layout.layout_display_data_item, null);
         EditText content = (EditText) view.findViewById(R.id.data_item_text);
 
@@ -202,37 +218,51 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
         //Redraw the options menu
         invalidateOptionsMenu();
 
+        //refreshes hiddenEmpty
         hiddenEmpty = getHiddenEmpty();
+        //Set oneItemDisplayed to false because at the moment no item will be shown
         boolean oneItemDisplayed = false;
 
+        //Iterate through all the views
         for(int i=0;i<views.length;i++){
+            //Load the TextView which represents the column name
             TextView header = (TextView) views[i].findViewById(R.id.data_item_title);
+            //Get the edit text which represents the content
             EditText content = (EditText) views[i].findViewById(R.id.data_item_text);
 
+            //Get the attribute name of the column
             String attributeName = data.getAttributeNameAt(i);
+            //Checks if this column is visible
             boolean visible = pref.getBoolean("show_" + attributeName, true);
 
+            //Loads the name for the attribute which should be displayed as heading
             String headerText = pref.getString("name_" + attributeName, "not defined...");
+            //Set the heading
             header.setText(headerText);
 
             //Set all items visible
             views[i].setVisibility(View.VISIBLE);
 
+            //If empty data should be hidden
             if(hiddenEmpty) {
+                //checks if data is empty
                 if(getTrimmedString(content).isEmpty()) {
+                    //hides the data
                     views[i].setVisibility(View.GONE);
-                } else {
-                    oneItemDisplayed = true;
                 }
             }
-
+            //Hides the data if it should not be visible
             if(!visible) {
                 views[i].setVisibility(View.GONE);
-            } else {
-                oneItemDisplayed = true;
             }
+
+            //This changes oneItemDisplayed to true if no item was displayed yet and one will be
+            //visible
+            if(!oneItemDisplayed && views[i].getVisibility() == View.VISIBLE)
+                oneItemDisplayed = true;
         }
 
+        //If no item is displayed show a message no item is displayed
         if(!oneItemDisplayed) {
             message.setVisibility(View.VISIBLE);
         } else {
@@ -240,18 +270,24 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
         }
     }
 
+    //Action if save button is clicked
     private void saveButtonClicked() {
+        //Update the data item by updating the data with the corresponding String of the EditText
         for(int i=0;i<views.length;i++) {
             EditText content = (EditText) views[i].findViewById(R.id.data_item_text);
+            //Get a valid trimmed CSV string
             data.setDataAtIndex(i, getTrimmedString(content));
         }
 
+        //If data has updated show a Toast to notify the user
         Toast.makeText(Constants.context, getString(R.string.message_entry_updated),
                 Toast.LENGTH_LONG).show();
 
+        //Call on update
         onUpdate(data);
     }
 
+    //This method returns a trimmed String with all ',' replaced by ';'
     @NonNull
     private String getTrimmedString(EditText editText){
         return editText.getText().toString().trim().replaceAll(",",";");
