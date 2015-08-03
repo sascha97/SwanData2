@@ -36,13 +36,14 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
     private SwanListAdapter arrayAdapter;
     private String darvic;
     private int index;
+    private TextView noSamples;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_list);
 
-        TextView noSamples = (TextView) findViewById(R.id.text_number_sampled);
+        noSamples = (TextView) findViewById(R.id.text_number_sampled);
 
         //Initializing the activity
         final Intent intent = getIntent();
@@ -54,10 +55,12 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
         //The adapter used to display the data in the list
         arrayAdapter = new SwanListAdapter();
 
-        whatToDisplay(searchData());
+        //decides which view has to be applied based on the search
+        whatToDisplay();
 
+        //set the adapter to the list view
         listView.setAdapter(arrayAdapter);
-
+        //allow the list view to have a context menu
         registerForContextMenu(listView);
 
         //If list item is clicked make sure to show the item in new activity
@@ -68,8 +71,6 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
                 showSingleItem(arrayAdapter.getItem(position).getIndex());
             }
         });
-
-        setTextOfNumberSampled(noSamples, darvic);
     }
 
     //Hides the TextView for number of sampled
@@ -81,18 +82,15 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+        //Inflates the context menu from the file
         getMenuInflater().inflate(R.menu.context_menu_list, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        //handles the event when delete is clicked
         if(item.getItemId() == R.id.menu_delete) {
-            AdapterView.AdapterContextMenuInfo info =
-                    (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
-            index = arrayAdapter.getItem(info.position).getIndex();
-
-            deletedClicked();
+            deletedClicked(item);
             return true;
         }
 
@@ -109,6 +107,7 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //handles the event when settings is clicked
         if(item.getItemId() == R.id.menu_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
@@ -122,20 +121,24 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
         super.onResume();
         //Add items to adapter, set up the data in the adapter again
         //Also clears the array adapter
-        whatToDisplay(searchData());
+        whatToDisplay();
     }
 
     @Override
     public void onDialogNegativeClick() {
+        //Nothing should happen when the Cancel button of delete is clicked
     }
 
     @Override
     public void onDialogPositiveClick() {
+        //Call the method which is deleting the item
         onDelete(index);
 
-        whatToDisplay(searchData());
+        //Immediately refresh the view because the old one is not longer valid
+        whatToDisplay();
     }
 
+    //Search the data for matches
     private List<Data> searchData() {
         List<Data> result = null;
         try{
@@ -149,32 +152,54 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
         return result;
     }
 
-    private void deletedClicked() {
+    //Will be executed if user clicks on delete in the context menu
+    private void deletedClicked(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        //Get the index of the data in the list
+        index = arrayAdapter.getItem(info.position).getIndex();
+
+        //Displays the dialog to give the user a chance to cancel the action
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
 
-    private void whatToDisplay(List<Data> result) {
+    //This method takes care of what will be displayed result is the data which has to be displayed
+    private void whatToDisplay() {
+        //Gets the list of what has to be displayed
+        List<Data> result = searchData();
+
+        //remove all items from the adapter view
         arrayAdapter.clear();
 
+        //If nothing has to be displayed end activity
         if(result == null || result.size() == 0){
             //Display a message on the screen if no data found and end the activity
             Toast.makeText(Constants.context, getMessageNoData(), Toast.LENGTH_LONG).show();
             finish();
+            return;
+        //If one item has been found display this in the right activity
         } else if(result.size() == 1) {
             //If just one data item found, there is no point in displaying a list
             //Therefore data should be displayed in the right activity
             showSingleItem(result.get(0).getIndex());
             finish();
+            return;
         }
 
+        //Refreshes the String for displaying the number of samples just in case of deletions
+        setTextOfNumberSampled(noSamples, darvic);
+        //Add all results to the array adapter
         arrayAdapter.addAll(result);
     }
 
     //Start the activity of displaying a single item
     private void showSingleItem(int listIndex){
+        //Gets the right intent do display the data into
         Intent intent = prepareIntent();
 
+        //gives the intent the required information
         intent.putExtra(getString(R.string.intent_field_id), listIndex);
         intent.putExtra(getString(R.string.intent_new_data), false);
 
