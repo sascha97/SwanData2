@@ -1,6 +1,5 @@
 package com.lutzenberger.sascha.swandata;
 
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -9,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.lutzenberger.sascha.custom.DeleteDialogFragment;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
 import com.lutzenberger.sascha.file.Directories;

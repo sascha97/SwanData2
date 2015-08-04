@@ -36,6 +36,7 @@ public class SearchTask extends
         super.onPreExecute();
 
         progressDialog = new ProgressDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        progressDialog.setCancelable(false);
         progressDialog.setTitle(context.getString(R.string.message_wait));
         progressDialog.setMessage(context.getString(R.string.message_searching_matches));
         progressDialog.show();
