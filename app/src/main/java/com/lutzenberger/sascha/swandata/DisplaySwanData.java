@@ -26,7 +26,9 @@ public class DisplaySwanData extends DataEditor {
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu; this adds items to the action bar if there is room.
         getMenuInflater().inflate(R.menu.menu_swan_data, menu);
-        return true;
+
+        //Inflates the parents option menu which is also necessary to have
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
