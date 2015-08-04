@@ -13,4 +13,10 @@ import android.content.Context;
 public class Constants {
     //The Context of the application
     public static Context context;
+    //The flag indicating any change
+    public static boolean changed = false;
+
+    public static void hasChanged() {
+        changed = true;
+    }
 }

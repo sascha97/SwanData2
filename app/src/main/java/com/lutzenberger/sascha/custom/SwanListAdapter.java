@@ -67,7 +67,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
             String attributeName = data.getAttributeNameAt(i);
             //get the String what name is to display on the application based on the attribute name
             String attribute_header = pref.getString("name_" + attributeName, "");
-            //get the setting wheater the attribute will be shown or not based on the attribute name
+            //get the setting weather the attribute will be shown or not based on the attribute name
             boolean visible = pref.getBoolean("show_" + attributeName, true);
             //when visible look what has to be displayed
             if(visible){

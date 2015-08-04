@@ -1,23 +1,24 @@
 package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.lutzenberger.sascha.custom.DialogListener;
+import com.lutzenberger.sascha.custom.SaveChangesDialogFragment;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
 import com.lutzenberger.sascha.file.Directories;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.task.FileTask;
 
-
 import java.io.IOException;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements DialogListener {
     private EditText darvic;
 
     @Override
@@ -36,6 +37,16 @@ public class MainActivity extends ActionBarActivity {
         loadingFiles.execute();
 
         darvic = (EditText) findViewById(R.id.darvic_entered);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(Constants.changed) {
+            SaveChangesDialogFragment saveChangesDialogFragment = new SaveChangesDialogFragment();
+            saveChangesDialogFragment.show(getFragmentManager(), "save_changes");
+        }
     }
 
     @Override
@@ -87,9 +98,23 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onDialogNegativeClick() {
+    }
+
+    @Override
+    public void onDialogPositiveClick() {
+        updateDataFiles();
+
+        Constants.changed = false;
+    }
+
     //Reloads the data files
     private void reloadDataFiles() {
+        //Reload the data from the files
         new LoadingFiles().execute();
+        //Reset the change to the default value
+        Constants.changed = false;
     }
 
     //Updates the data files

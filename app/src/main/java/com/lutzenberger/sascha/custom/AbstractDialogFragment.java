@@ -10,10 +10,10 @@ import android.support.annotation.DrawableRes;
 
 
 /**
- * This class is the abstract basis for every dialog used in this applicaiton.
+ * This class is the abstract basis for every dialog used in this application.
  *
  * This class already handles the DialogListener and the building of the Dialog.
- * The subclasses only need to override the given methods to change what has to be dispalyed
+ * The subclasses only need to override the given methods to change what has to be displayed
  *
  * @author Sascha Lutzenberger
  * @version 1.0 - 04.08.2015

@@ -138,6 +138,9 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
         //Call the method which is deleting the item
         onDelete(index);
 
+        //Set the changes flag
+        Constants.hasChanged();
+
         //Immediately refresh the view because the old one is not longer valid
         whatToDisplay();
     }

@@ -4,10 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -147,6 +147,8 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
         onDelete(data.getIndex());
         Toast.makeText(Constants.context,Constants.context.getString(R.string.message_deleted_data),
                 Toast.LENGTH_LONG).show();
+        //Set the flag that something has changed
+        Constants.hasChanged();
         finish();
     }
 
@@ -287,6 +289,8 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
         //Call on update
         onUpdate(data);
+        //set the changed flag
+        Constants.hasChanged();
         //make sure new data is no new data anymore and refresh the view to hide not wanted columns
         newData = false;
         refreshView();
