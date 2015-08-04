@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -139,13 +140,13 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
     @Override
     public void onDialogNegativeClick() {
-        Toast.makeText(Constants.context,"Item not deleted", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onDialogPositiveClick() {
         onDelete(data.getIndex());
-        Toast.makeText(Constants.context,"Item deleted", Toast.LENGTH_LONG).show();
+        Toast.makeText(Constants.context,Constants.context.getString(R.string.message_deleted_data),
+                Toast.LENGTH_LONG).show();
         finish();
     }
 
@@ -197,7 +198,8 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
     //This menu creates a view for an data entry
     private View getView(int index) {
-        //Inflates the view from its layout file
+        //Inflates the view from its layout file (suppresses warning)
+        @SuppressLint("InflateParams")
         View view = inflater.inflate(R.layout.layout_display_data_item, null);
         EditText content = (EditText) view.findViewById(R.id.data_item_text);
 
@@ -285,6 +287,9 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
         //Call on update
         onUpdate(data);
+        //make sure new data is no new data anymore and refresh the view to hide not wanted columns
+        newData = false;
+        refreshView();
     }
 
     //This method returns a trimmed String with all ',' replaced by ';'

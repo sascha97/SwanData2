@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import static com.lutzenberger.sascha.swandata.Constants.context;
-import com.lutzenberger.sascha.swan.DarvicSearchable;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.R;
 

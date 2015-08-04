@@ -27,8 +27,10 @@ public class SwanData extends Data {
     private static final int[] ATTRIBUTES_DATA_FILE_POSITION;
 
     static {
+        //Loads the context from Constants.context
         Context c = Constants.context;
 
+        //Load the resources from the context
         ATTRIBUTES = c.getResources().getStringArray(R.array.swan_data_attributes);
         HEADER_NAMES = c.getResources().getStringArray(R.array.swan_data_header);
         ATTRIBUTES_DATA_FILE_POSITION = c.getResources().getIntArray(
@@ -48,6 +50,7 @@ public class SwanData extends Data {
         int length = ATTRIBUTES.length;
         String[] dataRecord = new String[length];
 
+        //This loop sorts the attribute values in that order they are in the data file
         for(int i=0;i<length;i++){
             int index = ATTRIBUTES_DATA_FILE_POSITION[i];
             dataRecord[index] = source[i];
@@ -86,9 +89,11 @@ public class SwanData extends Data {
      * @return A string containing the name of the attribute
      */
     public String getAttributeNameAt(int index){
+        //if index is not in list return an empty String
         if(index < 0 || index >= ATTRIBUTES.length)
             return "";
 
+        //return the attribute name
         return ATTRIBUTES[index];
     }
 
@@ -100,9 +105,11 @@ public class SwanData extends Data {
      * @return The data item at this listPosition
      */
     public String getDataAt(int listPosition) {
+        //if index is not in list return an empty String
         if(listPosition < 0 || listPosition >= ATTRIBUTES.length)
             return "";
 
+        //return the data at this attribute
         return attribute_values[listPosition];
     }
 
@@ -133,6 +140,7 @@ public class SwanData extends Data {
 
     @Override
     public String getDarvic() {
+        //the index of the the column representing the darvic code
         int darvicIndex = getListPosition("darvic");
 
         return attribute_values[darvicIndex];
@@ -140,6 +148,7 @@ public class SwanData extends Data {
 
     @Override
     public String[] getDataRecord() {
+        //gets all attributes in the order they have to be written to the data file
         return getCSVHeaderOrder(attribute_values);
     }
 
@@ -147,6 +156,7 @@ public class SwanData extends Data {
     public void setDataAtIndex(int index, String newData) {
         if(index < 0 || index >= getNumberOfAttributes())
             return;
+        //sets the data at the given index to the new data
         attribute_values[index] = newData;
     }
 }

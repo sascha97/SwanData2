@@ -57,14 +57,23 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
         //if true only nonEmpty fields will be shown
         boolean showNonEmpty = pref.getBoolean("show_non_empty", true);
 
+        //Set the string to display as an empty string
         String result = "";
+        //if a previous item has been added to result
         boolean next = false;
+        //Iterate over all attributes data has
         for(int i=0;i<data.getNumberOfAttributes();i++){
+            //get the internal used attribute name, to load its settings
             String attributeName = data.getAttributeNameAt(i);
+            //get the String what name is to display on the application based on the attribute name
             String attribute_header = pref.getString("name_" + attributeName, "");
+            //get the setting wheater the attribute will be shown or not based on the attribute name
             boolean visible = pref.getBoolean("show_" + attributeName, true);
+            //when visible look what has to be displayed
             if(visible){
+                //if hide empty values is enabled check if value is empty
                 if(showNonEmpty) {
+                    //if value is empty go to next attribute
                     if (data.getDataAt(i).isEmpty())
                         continue;
                 }
@@ -73,6 +82,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
                     result = result + "\n";
                 //Adds the result
                 result = result + attribute_header + "='"+data.getDataAt(i)+"'";
+                //the delimiter will be needed next time
                 next = true;
             }
         }

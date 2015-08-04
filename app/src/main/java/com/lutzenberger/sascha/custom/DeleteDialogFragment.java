@@ -11,7 +11,9 @@ import android.os.Bundle;
 import com.lutzenberger.sascha.swandata.R;
 
 /**
- * This class handles the DeleteDialog
+ * This class handles the DeleteDialog. If this class is used by any activity the activity needs
+ * to implement the DialogListener. The DialogListener methods are called when the user clicks
+ * a on one button on the Dialog.
  *
  * @author Sascha Lutzenberger
  * @version 1.0 - 03.08.2015
@@ -24,10 +26,10 @@ public class DeleteDialogFragment extends DialogFragment {
         //Use the BuilderClass for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),
                 AlertDialog.THEME_DEVICE_DEFAULT_DARK);
-        builder.setMessage("Delete this data?");
-        builder.setTitle("Confirm delete");
+        builder.setMessage("This will delete the selected data from your device. This can not be undone.");
+        builder.setTitle("Delete data?");
         builder.setIcon(R.drawable.ic_delete);
-        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Delete now", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialogListener.onDialogPositiveClick();
@@ -50,7 +52,7 @@ public class DeleteDialogFragment extends DialogFragment {
         try {
             dialogListener = (DialogListener) activity;
         } catch (ClassCastException e) {
-            System.out.println("NOT SUPPORTED");
+            e.printStackTrace();
         }
     }
 }

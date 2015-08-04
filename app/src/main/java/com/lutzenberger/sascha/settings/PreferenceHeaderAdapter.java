@@ -18,7 +18,8 @@ import java.util.List;
  * @author Sascha Lutzenberger
  * @version 1.0 - 29.07.2015
  */
-class PreferenceHeaderAdapter extends ArrayAdapter<Header>{
+class PreferenceHeaderAdapter extends ArrayAdapter<Header> {
+    //The layout inflater to inflate the layout
     private final LayoutInflater inflater;
 
     public PreferenceHeaderAdapter(Context context, List<Header> objects) {
@@ -35,18 +36,21 @@ class PreferenceHeaderAdapter extends ArrayAdapter<Header>{
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        TextView title;
-        TextView summary;
+        TextView title; //The title of the header
+        TextView summary; //The content of the header
 
+        //Loads the layout
         if(convertView == null)
             convertView = inflater.inflate(R.layout.pref_header_item_layout, parent, false);
 
+        //Initializes the components
         title = (TextView) convertView.findViewById(android.R.id.title);
         summary = (TextView) convertView.findViewById(android.R.id.summary);
 
         //Get the data
         Header header = getItem(position);
 
+        //Sets the data to the components
         title.setText(header.getTitle(getContext().getResources()));
         summary.setText(header.getSummary(getContext().getResources()));
 

@@ -92,6 +92,10 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
         if(item.getItemId() == R.id.menu_delete) {
             deletedClicked(item);
             return true;
+        //handles the even when open is clicked
+        } else if(item.getItemId() == R.id.menu_open) {
+            openClicked(item);
+            return true;
         }
 
         return super.onContextItemSelected(item);
@@ -163,6 +167,17 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
         //Displays the dialog to give the user a chance to cancel the action
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
+    }
+
+    //Will be executed if user clicks on open in the context menu
+    private void openClicked(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        //Get the index of the data in the list
+        index = arrayAdapter.getItem(info.position).getIndex();
+        //display single data
+        showSingleItem(index);
     }
 
     //This method takes care of what will be displayed result is the data which has to be displayed

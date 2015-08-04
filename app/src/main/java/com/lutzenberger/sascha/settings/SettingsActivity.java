@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.settings;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
@@ -28,6 +30,7 @@ public class SettingsActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Set up toolbar for action bar.
         ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
         View content = root.getChildAt(0);
         LinearLayout toolbarContainer = (LinearLayout) View.inflate(this, R.layout.pref_layout,
@@ -37,6 +40,7 @@ public class SettingsActivity extends PreferenceActivity {
         toolbarContainer.addView(content);
         root.addView(toolbarContainer);
 
+        //Setup toolbar with back button
         mToolbar = (Toolbar) toolbarContainer.findViewById(R.id.toolbar);
         mToolbar.setTitle(getTitle());
         mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -50,6 +54,7 @@ public class SettingsActivity extends PreferenceActivity {
 
     @Override
     public void setListAdapter(ListAdapter adapter){
+        //Set own list adapter so that my custom layout will be loaded
         if(adapter == null){
             super.setListAdapter(null);
         } else {
@@ -60,9 +65,11 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     public void onBuildHeaders(List<Header> target) {
         this.headers = target;
+        //Load the headers from the resource file
         loadHeadersFromResource(R.xml.pref_headers, target);
     }
 
+    //isValidFragment() is required since a vulnerability was fixed
     @Override
     protected boolean isValidFragment(String fragmentName) {
         return SettingsFragment.class.getName().equals(fragmentName);
@@ -83,7 +90,7 @@ public class SettingsActivity extends PreferenceActivity {
             SettingsActivity activity = (SettingsActivity) getActivity();
             String title = "";
 
-            //Loading the preferences
+            //Loading the preferences and the title
             String settings = getArguments().getString("settings");
             if(settings != null) {
                 if ("general".equals(settings)) {

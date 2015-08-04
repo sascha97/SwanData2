@@ -89,10 +89,12 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Reloads the data files
     private void reloadDataFiles() {
         new LoadingFiles().execute();
     }
 
+    //Updates the data files
     private void updateDataFiles() {
         new UpdatingFiles().execute();
     }

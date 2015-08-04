@@ -28,12 +28,14 @@
     <string name="menu_edit">Edit</string>
     <string name="menu_new_swan_code">Add SwanCode</string>
     <string name="menu_new_swan_data">Add SwanData</string>
+    <string name="menu_open">Open data</string>
     <string name="menu_reload_files">Reload data files</string>
     <string name="menu_save">Save DataFiles</string>
     <string name="menu_search_sample">Search for SwanCodes</string>
     <string name="menu_search_data">Search for SwanData</string>
 
     <!-- Messages -->
+    <string name="message_deleted_data">Deleted selected data</string>
     <string name="message_enter_darvic_code">Please enter a DARVIC code:</string>
     <string name="message_entry_updated">Entry has been updated…</string>
     <string name="message_files_processed">Files are being processed…</string>

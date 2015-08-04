@@ -50,6 +50,8 @@ public final class Directories {
         }
 
         boolean result = true;
+        //Create the documents directory if it doesn't exist if it fails to do so it exits the
+        // method
         if(!fileExists(DOCUMENT_DIRECTORY))
             result = createDirectory(DOCUMENT_DIRECTORY);
         if(!result){
@@ -57,6 +59,8 @@ public final class Directories {
                     Toast.LENGTH_LONG).show();
             return;
         }
+        //Creates the SwanData directory if it doesn't exist if it fails to do so it exits the
+        //method
         if(!fileExists(SWAN_DATA_DIRECTORY))
             result = createDirectory(SWAN_DATA_DIRECTORY);
         if(!result){

@@ -33,7 +33,9 @@ public class DisplaySwanCode extends DataEditor {
 
     @Override
     protected void onDelete(int index) {
-        dataList.remove(index);
+        //If data is in list delete the data otherwise don't delete the data
+        if(inList)
+            dataList.remove(index);
     }
 
     @Override
@@ -41,6 +43,9 @@ public class DisplaySwanCode extends DataEditor {
         if(inList)
             return;
 
+        //Set the index of the data to add
+        data.setIndex(dataList.size());
+        //Add the data to the data list
         dataList.add(data);
         inList = true;
     }

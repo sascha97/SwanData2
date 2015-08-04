@@ -37,9 +37,11 @@ public final class DataFileReader {
      * @return the read in SwanDataList
      */
     public static List<Data> getSwanDataList() {
+        //if no list is existent create an empty ArrayList
         if(swanDataList == null)
             swanDataList = new ArrayList<>();
 
+        //returns the data list
         return swanDataList;
     }
 
@@ -49,9 +51,11 @@ public final class DataFileReader {
      * @return the read in SwanDataList
      */
     public static List<Data> getSwanCodesList() {
+        //if no list is existent create an empty ArrayList
         if(swanCodesList == null)
             swanCodesList = new ArrayList<>();
 
+        //returns the data list
         return swanCodesList;
     }
 
@@ -69,7 +73,8 @@ public final class DataFileReader {
             //Get all the records in the CSV file
             List<String[]> contentList = reader.readAll();
 
-            // 1 is used here to get rid of the headings, headings are not required for data handling
+            //1 is used here to get rid of the headings, headings are not required for later
+            //data handling
             for (int i = 1; i < contentList.size(); i++) {
                 String[] record = contentList.get(i); //Get the record from the CSV file.
 
@@ -102,10 +107,11 @@ public final class DataFileReader {
             fileReader = new FileReader(filePath);
             reader = new CSVReader(fileReader);
 
-            //Get all teh records from the CSV file
+            //Get all the records from the CSV file
             List<String[]> contentList = reader.readAll();
 
-            //1 is used here to get rid of the headings, headings are not required for data handling later
+            //1 is used here to get rid of the headings, headings are not required for later
+            //data handling
             for (int i = 1; i < contentList.size(); i++) {
                 String[] record = contentList.get(i); //Get the record from the CSV file.
 
