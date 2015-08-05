@@ -5,15 +5,14 @@
     android:background="?android:attr/activatedBackgroundIndicator"
     android:baselineAligned="false"
     android:gravity="center_vertical"
-    android:minHeight="48dp"
-    android:paddingRight="?android:attr/scrollbarSize" >
+    android:minHeight="48dp" >
 
     <RelativeLayout
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dip"
-        android:layout_marginLeft="20dip"
-        android:layout_marginRight="6dip"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="6dip"
         android:layout_marginEnd="6dip"
         android:layout_weight="1" >
