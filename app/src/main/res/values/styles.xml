@@ -7,7 +7,7 @@
         <item name="android:editTextStyle">@style/SwanData_EditTextStyle</item>
         <item name="android:textViewStyle">@style/SwanData_TextViewStyle</item>
 
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
 

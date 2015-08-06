@@ -1,7 +1,6 @@
 package com.lutzenberger.sascha.settings;
 
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -20,8 +19,7 @@ import java.util.List;
  * @version 1.0 - 29.07.2015
  *
  */
-public class SettingsActivity extends PreferenceActivity {
-    private Toolbar mToolbar;
+public class SettingsActivity extends AppCompatPreferenceActivity {
     private List<Header> headers;
 
     @Override
@@ -39,11 +37,14 @@ public class SettingsActivity extends PreferenceActivity {
         root.addView(toolbarContainer);
 
         //Setup toolbar with back button
-        mToolbar = (Toolbar) toolbarContainer.findViewById(R.id.toolbar);
-        mToolbar.setTitle(getTitle());
-        mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        Toolbar toolbar = (Toolbar) toolbarContainer.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+
+        //Using the AppCompat way of setting up the toolbar
+        setSupportActionBar(toolbar);
+
         //Just react when the navigation icon is clicked
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -106,14 +107,15 @@ public class SettingsActivity extends PreferenceActivity {
                     title = "SwanData Settings";
                 } else if("swan_codes_columns".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_codes_columns);
-                    title = "SwanCodes Columns Settings";
+                    title = "Column Settings";
                 } else if("swan_data_columns".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_data_columns);
-                    title = "SwanData Columns Settings";
+                    title = "Column Settings";
                 }
             }
 
-            activity.mToolbar.setTitle(title);
+            //Using the AppCompat way of updating the title
+            activity.getSupportActionBar().setTitle(title);
         }
     }
 }
