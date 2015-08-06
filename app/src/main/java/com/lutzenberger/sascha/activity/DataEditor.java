@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,7 +33,7 @@ import com.lutzenberger.sascha.swandata.R;
  * @version 1.0 - 02.08.2015
  *
  */
-public abstract class DataEditor extends ActionBarActivity implements DialogListener {
+public abstract class DataEditor extends BaseActivity implements DialogListener {
     private LayoutInflater inflater;
     private SharedPreferences pref;
     private boolean newData;
@@ -85,6 +84,8 @@ public abstract class DataEditor extends ActionBarActivity implements DialogList
 
         //refresh the view, this only changes visibility and the texts to be displayed
         refreshView();
+
+        setToolbar();
     }
 
     @Override

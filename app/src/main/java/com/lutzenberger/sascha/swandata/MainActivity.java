@@ -3,11 +3,11 @@ package com.lutzenberger.sascha.swandata;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.lutzenberger.sascha.activity.BaseActivity;
 import com.lutzenberger.sascha.custom.DialogListener;
 import com.lutzenberger.sascha.custom.SaveChangesDialogFragment;
 import com.lutzenberger.sascha.file.DataFileReader;
@@ -18,7 +18,7 @@ import com.lutzenberger.sascha.task.FileTask;
 
 import java.io.IOException;
 
-public class MainActivity extends ActionBarActivity implements DialogListener {
+public class MainActivity extends BaseActivity implements DialogListener {
     private EditText darvic;
 
     @Override
@@ -37,6 +37,8 @@ public class MainActivity extends ActionBarActivity implements DialogListener {
         loadingFiles.execute();
 
         darvic = (EditText) findViewById(R.id.darvic_entered);
+
+        setToolbar();
     }
 
     @Override

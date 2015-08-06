@@ -2,7 +2,6 @@ package com.lutzenberger.sascha.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -32,7 +31,7 @@ import java.util.concurrent.ExecutionException;
  * @version 1.0 - 02.08.2015
  *
  */
-public abstract class DataListView extends ActionBarActivity implements DialogListener {
+public abstract class DataListView extends BaseActivity implements DialogListener {
     private SwanListAdapter arrayAdapter;
     private String darvic;
     private int index;
@@ -71,6 +70,8 @@ public abstract class DataListView extends ActionBarActivity implements DialogLi
                 showSingleItem(arrayAdapter.getItem(position).getIndex());
             }
         });
+
+        setToolbar();
     }
 
     //Hides the TextView for number of sampled
