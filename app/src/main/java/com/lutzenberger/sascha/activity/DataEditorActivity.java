@@ -17,8 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lutzenberger.sascha.custom.DeleteDialogFragment;
-import com.lutzenberger.sascha.custom.DialogListener;
+import com.lutzenberger.sascha.custom.dialog.DeleteDialogFragment;
+import com.lutzenberger.sascha.custom.dialog.DialogListener;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.Constants;
@@ -30,10 +30,10 @@ import com.lutzenberger.sascha.swandata.R;
  * This class already handles the display and updating of the data entry.
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 02.08.2015
+ * @version 1.01 - 08.08.2015
  *
  */
-public abstract class DataEditor extends BaseActivity implements DialogListener {
+public abstract class DataEditorActivity extends BaseActivity implements DialogListener {
     private LayoutInflater inflater;
     private SharedPreferences pref;
     private boolean newData;
@@ -62,7 +62,7 @@ public abstract class DataEditor extends BaseActivity implements DialogListener 
         LinearLayout layout = (LinearLayout) findViewById(R.id.editor);
 
         //Set the data
-        this.data = getData(fieldPosition);
+        data = getData(fieldPosition);
         //gets the boolean flag to indicate if empty data should be hidden
         hiddenEmpty = getHiddenEmpty();
 
@@ -77,8 +77,8 @@ public abstract class DataEditor extends BaseActivity implements DialogListener 
             views[i] = view;
         }
         //Setup message view if no data will be displayed
-        message = new TextView(DataEditor.this);
-        message.setText("Please change settings to display an item...");
+        message = new TextView(this);
+        message.setText(getString(R.string.message_change_settings_to_display));
         //Add the view to the root element
         layout.addView(message);
 
@@ -206,7 +206,7 @@ public abstract class DataEditor extends BaseActivity implements DialogListener 
         View view = inflater.inflate(R.layout.layout_display_data_item, null);
         EditText content = (EditText) view.findViewById(R.id.data_item_text);
 
-        String attributeName = this.data.getAttributeNameAt(index);
+        String attributeName = data.getAttributeNameAt(index);
         String data = this.data.getDataAt(index).trim();
 
         if (attributeName.contains("comment")) {
@@ -241,7 +241,8 @@ public abstract class DataEditor extends BaseActivity implements DialogListener 
             boolean visible = pref.getBoolean("show_" + attributeName, true);
 
             //Loads the name for the attribute which should be displayed as heading
-            String headerText = pref.getString("name_" + attributeName, "not defined...");
+            String headerText = pref.getString("name_" + attributeName,
+                    getString(R.string.messsage_column_header_not_defined));
             //Set the heading
             header.setText(headerText);
 

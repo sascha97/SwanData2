@@ -1,9 +1,8 @@
 package com.lutzenberger.sascha.swan;
 
-import android.content.Context;
-
-import com.lutzenberger.sascha.swandata.Constants;
 import com.lutzenberger.sascha.swandata.R;
+
+import static com.lutzenberger.sascha.swandata.Constants.context;
 
 
 /**
@@ -15,7 +14,7 @@ import com.lutzenberger.sascha.swandata.R;
  * everything has to be read and written to the file again, so therefore this is required.
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 31.07.2015
+ * @version 1.01 - 31.07.2015
  *
  */
 public class SwanData extends Data {
@@ -27,13 +26,10 @@ public class SwanData extends Data {
     private static final int[] ATTRIBUTES_DATA_FILE_POSITION;
 
     static {
-        //Loads the context from Constants.context
-        Context c = Constants.context;
-
         //Load the resources from the context
-        ATTRIBUTES = c.getResources().getStringArray(R.array.swan_data_attributes);
-        HEADER_NAMES = c.getResources().getStringArray(R.array.swan_data_header);
-        ATTRIBUTES_DATA_FILE_POSITION = c.getResources().getIntArray(
+        ATTRIBUTES = context.getResources().getStringArray(R.array.swan_data_attributes);
+        HEADER_NAMES = context.getResources().getStringArray(R.array.swan_data_header);
+        ATTRIBUTES_DATA_FILE_POSITION = context.getResources().getIntArray(
                 R.array.swan_data_data_file_position);
     }
 
@@ -88,6 +84,7 @@ public class SwanData extends Data {
      *
      * @return A string containing the name of the attribute
      */
+    @Override
     public String getAttributeNameAt(int index){
         //if index is not in list return an empty String
         if(index < 0 || index >= ATTRIBUTES.length)
@@ -104,6 +101,7 @@ public class SwanData extends Data {
      *
      * @return The data item at this listPosition
      */
+    @Override
     public String getDataAt(int listPosition) {
         //if index is not in list return an empty String
         if(listPosition < 0 || listPosition >= ATTRIBUTES.length)
@@ -118,6 +116,7 @@ public class SwanData extends Data {
      *
      * @return The number of attributes stored.
      */
+    @Override
     public int getNumberOfAttributes(){
         return ATTRIBUTES.length;
     }

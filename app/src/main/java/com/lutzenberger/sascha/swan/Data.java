@@ -16,7 +16,7 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      * @return The index of the item in the data list.
      */
     public int getIndex(){
-        return this.index;
+        return index;
     }
 
     /**

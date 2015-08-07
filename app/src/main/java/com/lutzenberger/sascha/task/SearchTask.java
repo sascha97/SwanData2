@@ -4,12 +4,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-import static com.lutzenberger.sascha.swandata.Constants.context;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.lutzenberger.sascha.swandata.Constants.context;
 
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
  * This uses an AsyncTask so that the UI doesn't freeze when the searching data takes some time...
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 01.08.2015
+ * @version 1.01 - 01.08.2015
  *
  */
 public class SearchTask extends
@@ -64,8 +65,8 @@ public class SearchTask extends
 
     //End the ProgressDialog
     @Override
-    protected void onPostExecute(List<Data> resultList) {
-        super.onPostExecute(resultList);
+    protected void onPostExecute(List<Data> result) {
+        super.onPostExecute(result);
         progressDialog.dismiss();
     }
 }

@@ -1,11 +1,11 @@
 package com.lutzenberger.sascha.settings;
 
 import android.content.Context;
+import android.preference.PreferenceActivity.Header;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.preference.PreferenceActivity.Header;
 import android.widget.TextView;
 
 import com.lutzenberger.sascha.swandata.R;
@@ -16,7 +16,7 @@ import java.util.List;
  * Own list adapter to match the headers to the view, with a custom layout for the header
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 29.07.2015
+ * @version 1.01 - 08.08.2015
  */
 class PreferenceHeaderAdapter extends ArrayAdapter<Header> {
     //The layout inflater to inflate the layout
@@ -24,16 +24,9 @@ class PreferenceHeaderAdapter extends ArrayAdapter<Header> {
 
     public PreferenceHeaderAdapter(Context context, List<Header> objects) {
         super(context, 0, objects);
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param position
-     * @param convertView
-     * @param parent
-     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         TextView title; //The title of the header

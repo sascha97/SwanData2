@@ -1,4 +1,4 @@
-package com.lutzenberger.sascha.custom;
+package com.lutzenberger.sascha.custom.dialog;
 
 /**
  * This is the Listener which has to be implemented by every activity if the activity wants to

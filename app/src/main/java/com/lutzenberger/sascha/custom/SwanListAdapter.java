@@ -17,7 +17,7 @@ import com.lutzenberger.sascha.swandata.R;
  * Own list adapter to match the data to a list view
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 31.07.2015
+ * @version 1.01 - 08.08.2015
  *
  */
 public class SwanListAdapter extends ArrayAdapter<Data> {
@@ -26,20 +26,13 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
 
     public SwanListAdapter() {
         super(Constants.context, 0);
-        this.inflater = (LayoutInflater) Constants.context.getSystemService(
+        inflater = (LayoutInflater) Constants.context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
         //Get the preferences to load the preferences later
         pref = PreferenceManager.getDefaultSharedPreferences(Constants.context);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param position
-     * @param convertView
-     * @param parent
-     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView heading; //Is used to display a "heading" on the ListItem
@@ -81,7 +74,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
                 }
                 //Adds the delimiter
                 if(next)
-                    result = result + "\n";
+                    result += "\n";
                 //Adds the result
                 result = result + attributeHeader + "='"+data.getDataAt(i)+"'";
                 //the delimiter will be needed next time
@@ -91,7 +84,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
 
         //If no data is to display, display this message
         if(result.isEmpty())
-            result = "No displayable data";
+            result = Constants.context.getString(R.string.message_no_displayable_data);
 
         //Setting the heading and the content to the ListItem
         heading.setText(data.getSimpleName() + " " + (position + 1));

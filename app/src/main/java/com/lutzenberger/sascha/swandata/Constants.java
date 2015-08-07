@@ -7,10 +7,13 @@ import android.content.Context;
  * Constants used (might not the best way to do it but it works).
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 29.07.2015
+ * @version 1.1 - 08.08.2015
  *
  */
-public class Constants {
+public final class Constants {
+    private Constants() {
+    }
+
     //The Context of the application
     public static Context context;
     //The flag indicating any change

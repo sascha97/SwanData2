@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.lutzenberger.sascha.activity.DataEditor;
+import com.lutzenberger.sascha.activity.DataEditorActivity;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swan.SwanData;
@@ -18,7 +18,7 @@ import java.util.List;
  * @version 1.0 - 02.08.2015
  *
  */
-public class DisplaySwanData extends DataEditor {
+public class SwanDataEditorActivity extends DataEditorActivity {
     private boolean inList = false;
     private List<Data> dataList;
 
@@ -49,7 +49,7 @@ public class DisplaySwanData extends DataEditor {
         //This here just handles the new items of the menu which are not handled by the base class
         //already
         if(item.getItemId() == R.id.menu_search_sample){
-            Intent intent = new Intent(this, DisplaySwanCodesList.class);
+            Intent intent = new Intent(this, SwanCodeListActivity.class);
             intent.putExtra(getString(R.string.intent_darvic), data.getDarvic());
 
             startActivity(intent);
@@ -69,7 +69,7 @@ public class DisplaySwanData extends DataEditor {
             return dataList.get(fieldPosition);
         }
         //Get new data
-        return SwanData.getEmptyData(); //size() - 1 is the last element
+        return SwanData.getEmptyData();
     }
 
     @Override

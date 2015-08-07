@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 
+import com.lutzenberger.sascha.activity.AppCompatPreferenceActivity;
 import com.lutzenberger.sascha.swandata.R;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * Android settings activity to show the settings
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 29.07.2015
+ * @version 1.05 - 08.08.2015
  *
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
@@ -64,7 +65,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     public void onBuildHeaders(List<Header> target) {
-        this.headers = target;
+        headers = target;
         //Load the headers from the resource file
         loadHeadersFromResource(R.xml.pref_headers, target);
     }
@@ -95,22 +96,22 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             if(settings != null) {
                 if ("general".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_general);
-                    title = "General Settings";
+                    title = getString(R.string.settings_general_settings);
                 } else if ("data_file".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_data_file);
-                    title = "DataFile Settings";
+                    title = getString(R.string.settings_data_file_settings);
                 } else if ("swan_codes".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_codes);
-                    title = "SwanCodes Settings";
+                    title = getString(R.string.settings_swan_code_settings);
                 } else if ("swan_data".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_data);
-                    title = "SwanData Settings";
+                    title = getString(R.string.settings_swan_data_settings);
                 } else if("swan_codes_columns".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_codes_columns);
-                    title = "Column Settings";
+                    title = getString(R.string.settings_column_name_settings);
                 } else if("swan_data_columns".equals(settings)) {
                     addPreferencesFromResource(R.xml.pref_swan_data_columns);
-                    title = "Column Settings";
+                    title = getString(R.string.settings_column_name_settings);
                 }
             }
 

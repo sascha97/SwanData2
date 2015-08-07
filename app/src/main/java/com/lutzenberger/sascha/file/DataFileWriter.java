@@ -5,7 +5,6 @@ import android.util.Log;
 import com.lutzenberger.sascha.swan.CSVWritable;
 import com.lutzenberger.sascha.swan.SwanCodes;
 import com.lutzenberger.sascha.swan.SwanData;
-
 import com.opencsv.CSVWriter;
 
 import java.io.FileWriter;
@@ -24,7 +23,7 @@ import java.util.List;
  * @version 1.0 - 01.08.2015
  *
  */
-public class DataFileWriter {
+public final class DataFileWriter {
     private DataFileWriter() {
     }
 

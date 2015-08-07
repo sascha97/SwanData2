@@ -26,22 +26,22 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".DisplaySwanCodesList"
+            android:name=".SwanCodeListActivity"
             android:label="@string/title_activity_display_swan_codes_list"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".DisplaySwanDataList"
+            android:name=".SwanDataListActivity"
             android:label="@string/title_activity_display_swan_data_list"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".DisplaySwanData"
+            android:name=".SwanDataEditorActivity"
             android:label="@string/title_activity_display_swan_data"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".DisplaySwanCode"
+            android:name=".SwanCodeEditorActivity"
             android:label="@string/title_activity_display_swan_code"
             android:screenOrientation="portrait">
         </activity>

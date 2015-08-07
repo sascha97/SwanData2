@@ -7,10 +7,11 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import static com.lutzenberger.sascha.swandata.Constants.context;
 import com.lutzenberger.sascha.file.Directories;
 import com.lutzenberger.sascha.swandata.Constants;
 import com.lutzenberger.sascha.swandata.R;
+
+import static com.lutzenberger.sascha.swandata.Constants.context;
 
 
 /**
@@ -19,7 +20,7 @@ import com.lutzenberger.sascha.swandata.R;
  * The progress dialog is already done in here.
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 01.08.2015
+ * @version 1.01 - 08.08.2015
  *
  */
 public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
@@ -30,7 +31,7 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
     protected final String swanCodesFileName;
     protected final String swanDataFileName;
 
-    public FileTask(){
+    protected FileTask(){
         //Get the file path
         fileDirectory = Directories.SWAN_DATA_DIRECTORY.toString();
 
@@ -60,7 +61,7 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
 
     //This method is called when an error occurs during file handling
     public final void errorOccurred(){
-        this.successful = false;
+        successful = false;
     }
 
     //Start showing the ProgressDialog
@@ -77,8 +78,8 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
 
     //End the ProgressDialog
     @Override
-    protected final void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+    protected final void onPostExecute(Void result) {
+        super.onPostExecute(result);
 
         String message = getMessage(successful);
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();

@@ -1,4 +1,4 @@
-package com.lutzenberger.sascha.custom;
+package com.lutzenberger.sascha.custom.dialog;
 
 
 import com.lutzenberger.sascha.swandata.R;
@@ -9,7 +9,7 @@ import com.lutzenberger.sascha.swandata.R;
  * a on one button on the Dialog.
  *
  * @author Sascha Lutzenberger
- * @version 1.1 - 04.08.2015
+ * @version 1.11 - 08.08.2015
  *
  */
 public class DeleteDialogFragment extends AbstractDialogFragment {
@@ -20,21 +20,21 @@ public class DeleteDialogFragment extends AbstractDialogFragment {
 
     @Override
     String getTitle() {
-        return "Delete data?";
+        return getString(R.string.dialog_delete_title);
     }
 
     @Override
     String getMessage() {
-        return "This will delete the selected data from your device. This can not be undone.";
+        return getString(R.string.dialog_delete_message);
     }
 
     @Override
     String getPositiveButtonText() {
-        return "Delete now";
+        return getString(R.string.dialog_delete_positive_button);
     }
 
     @Override
     String getNegativeButtonText() {
-        return "Cancel";
+        return getString(R.string.dialog_cancel);
     }
 }

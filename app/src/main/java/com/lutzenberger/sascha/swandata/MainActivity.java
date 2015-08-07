@@ -8,8 +8,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.lutzenberger.sascha.activity.BaseActivity;
-import com.lutzenberger.sascha.custom.DialogListener;
-import com.lutzenberger.sascha.custom.SaveChangesDialogFragment;
+import com.lutzenberger.sascha.custom.dialog.DialogListener;
+import com.lutzenberger.sascha.custom.dialog.SaveChangesDialogFragment;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
 import com.lutzenberger.sascha.file.Directories;
@@ -68,14 +68,16 @@ public class MainActivity extends BaseActivity implements DialogListener {
                 reloadDataFiles();
                 return true;
             case R.id.menu_new_swan_code:
-                intent = new Intent(this, DisplaySwanCode.class);
-                intent.putExtra(getString(R.string.intent_field_id), DataFileReader.getSwanCodesList().size());
+                intent = new Intent(this, SwanCodeEditorActivity.class);
+                intent.putExtra(getString(R.string.intent_field_id),
+                        DataFileReader.getSwanCodesList().size());
                 intent.putExtra(getString(R.string.intent_new_data), true);
                 startActivity(intent);
                 return true;
             case R.id.menu_new_swan_data:
-                intent = new Intent(this, DisplaySwanData.class);
-                intent.putExtra(getString(R.string.intent_field_id),DataFileReader.getSwanDataList().size());
+                intent = new Intent(this, SwanDataEditorActivity.class);
+                intent.putExtra(getString(R.string.intent_field_id),
+                        DataFileReader.getSwanDataList().size());
                 intent.putExtra(getString(R.string.intent_new_data), true);
                 startActivity(intent);
                 return true;
@@ -83,12 +85,12 @@ public class MainActivity extends BaseActivity implements DialogListener {
                 updateDataFiles();
                 return true;
             case R.id.menu_search_data:
-                intent = new Intent(this, DisplaySwanDataList.class);
+                intent = new Intent(this, SwanDataListActivity.class);
                 intent.putExtra(getString(R.string.intent_darvic), darvic);
                 startActivity(intent);
                 return true;
             case R.id.menu_search_sample:
-                intent = new Intent(this, DisplaySwanCodesList.class);
+                intent = new Intent(this, SwanCodeListActivity.class);
                 intent.putExtra(getString(R.string.intent_darvic), darvic);
                 startActivity(intent);
                 return true;
@@ -150,17 +152,11 @@ public class MainActivity extends BaseActivity implements DialogListener {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected String getMessage() {
             return getString(R.string.message_files_updated);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected String getMessage(boolean successful) {
             if(successful)
@@ -193,17 +189,11 @@ public class MainActivity extends BaseActivity implements DialogListener {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected String getMessage() {
             return getString(R.string.message_files_processed);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected String getMessage(boolean successful){
             if(successful)

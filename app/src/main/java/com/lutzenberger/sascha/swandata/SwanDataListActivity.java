@@ -3,7 +3,7 @@ package com.lutzenberger.sascha.swandata;
 import android.content.Intent;
 import android.widget.TextView;
 
-import com.lutzenberger.sascha.activity.DataListView;
+import com.lutzenberger.sascha.activity.DataListActivity;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.task.SearchTask;
@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
  * @version 1.0 - 02.08.2015
  *
  */
-public class DisplaySwanDataList extends DataListView {
+public class SwanDataListActivity extends DataListActivity {
     @Override
     protected List<Data> getDataList() {
         return DataFileReader.getSwanDataList();
@@ -31,7 +31,7 @@ public class DisplaySwanDataList extends DataListView {
 
     @Override
     protected Intent prepareIntent(){
-        return new Intent(this, DisplaySwanData.class);
+        return new Intent(this, SwanDataEditorActivity.class);
     }
 
     @Override

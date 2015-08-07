@@ -1,4 +1,4 @@
-package com.lutzenberger.sascha.custom;
+package com.lutzenberger.sascha.custom.dialog;
 
 import com.lutzenberger.sascha.swandata.R;
 
@@ -8,7 +8,7 @@ import com.lutzenberger.sascha.swandata.R;
  * a on one button on the Dialog.
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 04.08.2015
+ * @version 1.01 - 08.08.2015
  *
  */
 public class SaveChangesDialogFragment extends AbstractDialogFragment {
@@ -19,21 +19,21 @@ public class SaveChangesDialogFragment extends AbstractDialogFragment {
 
     @Override
     String getTitle() {
-        return "Save changes?";
+        return getString(R.string.dialog_save_title);
     }
 
     @Override
     String getMessage() {
-        return "Do you want to save your changes now?";
+        return getString(R.string.dialog_save_message);
     }
 
     @Override
     String getPositiveButtonText() {
-        return "Save now";
+        return getString(R.string.dialog_save_positive_button);
     }
 
     @Override
     String getNegativeButtonText() {
-        return "Save later";
+        return getString(R.string.dialog_save_negative_button);
     }
 }

@@ -2,7 +2,7 @@ package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
 
-import com.lutzenberger.sascha.activity.DataListView;
+import com.lutzenberger.sascha.activity.DataListActivity;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0 - 02.08.2015
  *
  */
-public class DisplaySwanCodesList extends DataListView {
+public class SwanCodeListActivity extends DataListActivity {
     @Override
     protected List<Data> getDataList() {
         return DataFileReader.getSwanCodesList();
@@ -28,7 +28,7 @@ public class DisplaySwanCodesList extends DataListView {
 
     @Override
     protected Intent prepareIntent(){
-        return new Intent(this, DisplaySwanCode.class);
+        return new Intent(this, SwanCodeEditorActivity.class);
     }
 
     @Override

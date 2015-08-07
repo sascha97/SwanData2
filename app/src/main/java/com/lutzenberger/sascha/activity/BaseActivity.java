@@ -13,7 +13,7 @@ import com.lutzenberger.sascha.swandata.R;
  * @version 1.0 - 06.08.2015
  *
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected void setToolbar() {
         //Set Toolbar to act as Actionbar for this Activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -1,4 +1,4 @@
-package com.lutzenberger.sascha.custom;
+package com.lutzenberger.sascha.custom.dialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;

@@ -2,12 +2,22 @@
     <!-- Basic application Strings -->
     <string name="app_name">SwanData</string>
     <string name="title_activity_display_swan_code">SwanCode</string>
-    <string name="title_activity_display_swan_codes_list">Select one SwanCode</string>
+    <string name="title_activity_display_swan_codes_list">Select a Sample</string>
     <string name="title_activity_display_swan_data">SwanData</string>
-    <string name="title_activity_display_swan_data_list">Select one SwanData</string>
+    <string name="title_activity_display_swan_data_list">Select a Swan</string>
     <string name="author">Sascha Lutzenberger - 2015</string>
 
     <string name="settings">Settings</string>
+
+    <!-- Dialog strings -->
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_delete_message">This will delete the selected data from your device. This can not be undone.</string>
+    <string name="dialog_delete_positive_button">Delete now</string>
+    <string name="dialog_delete_title">Delete data?</string>
+    <string name="dialog_save_message">Do you want to save your changes now?</string>
+    <string name="dialog_save_negative_button">Save later</string>
+    <string name="dialog_save_positive_button">Save now</string>
+    <string name="dialog_save_title">Save changes?</string>
 
     <!-- Directories strings -->
     <string name="directory_all_created">Working directories have been created…</string>
@@ -35,12 +45,15 @@
     <string name="menu_search_data">Search for SwanData</string>
 
     <!-- Messages -->
+    <string name="message_change_settings_to_display">Please change settings to display an item…</string>
+    <string name="messsage_column_header_not_defined">not defined…</string>
     <string name="message_deleted_data">Deleted selected data</string>
     <string name="message_enter_darvic_code">Please enter a DARVIC code:</string>
     <string name="message_entry_updated">Entry has been updated…</string>
     <string name="message_files_processed">Files are being processed…</string>
     <string name="message_files_updated">Files are being updated…</string>
     <string name="message_no_data_found">No data found for this DARVIC code…</string>
+    <string name="message_no_displayable_data">No displayable data</string>
     <string name="message_no_smaples_found">No samples found for this DARVIC code…</string>
     <string name="message_number_of_samples">The swan was sampled %1$s times.</string>
     <string name="message_read_failed">Failed reading in the files…</string>
@@ -50,4 +63,10 @@
     <string name="message_update_success">Files successfully updated…</string>
     <string name="message_wait">Please wait</string>
 
+    <!-- Settings strings -->
+    <string name="settings_column_name_settings">Column Settings</string>
+    <string name="settings_data_file_settings">DataFile Settings</string>
+    <string name="settings_general_settings">General Settings</string>
+    <string name="settings_swan_code_settings">SwanCode Settings</string>
+    <string name="settings_swan_data_settings">SwanData Settings</string>
 </resources>

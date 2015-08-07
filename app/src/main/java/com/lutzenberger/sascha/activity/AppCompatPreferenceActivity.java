@@ -1,4 +1,4 @@
-package com.lutzenberger.sascha.settings;
+package com.lutzenberger.sascha.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import android.view.ViewGroup;
  * @author Sascha Lutzenberger
  * @version 1.0 - 07.08.2015
  */
-abstract class AppCompatPreferenceActivity extends PreferenceActivity {
+public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;
 
@@ -106,6 +106,7 @@ abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().onDestroy();
     }
 
+    @Override
     public void invalidateOptionsMenu() {
         getDelegate().invalidateOptionsMenu();
     }

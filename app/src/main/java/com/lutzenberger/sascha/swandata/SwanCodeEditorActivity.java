@@ -1,6 +1,6 @@
 package com.lutzenberger.sascha.swandata;
 
-import com.lutzenberger.sascha.activity.DataEditor;
+import com.lutzenberger.sascha.activity.DataEditorActivity;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swan.SwanCodes;
@@ -14,7 +14,7 @@ import java.util.List;
  * @version 1.0 - 02.08.2015
  *
  */
-public class DisplaySwanCode extends DataEditor {
+public class SwanCodeEditorActivity extends DataEditorActivity {
     private boolean inList = false;
     private List<Data> dataList;
 

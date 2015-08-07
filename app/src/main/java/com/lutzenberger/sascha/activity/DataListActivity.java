@@ -12,9 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lutzenberger.sascha.custom.DeleteDialogFragment;
-import com.lutzenberger.sascha.custom.DialogListener;
 import com.lutzenberger.sascha.custom.SwanListAdapter;
+import com.lutzenberger.sascha.custom.dialog.DeleteDialogFragment;
+import com.lutzenberger.sascha.custom.dialog.DialogListener;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.Constants;
@@ -28,10 +28,10 @@ import java.util.concurrent.ExecutionException;
  * This is the abstract activity for displaying a result list on the mobile device.
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 02.08.2015
+ * @version 1.01 - 08.08.2015
  *
  */
-public abstract class DataListView extends BaseActivity implements DialogListener {
+public abstract class DataListActivity extends BaseActivity implements DialogListener {
     private SwanListAdapter arrayAdapter;
     private String darvic;
     private int index;
@@ -193,7 +193,7 @@ public abstract class DataListView extends BaseActivity implements DialogListene
         arrayAdapter.clear();
 
         //If nothing has to be displayed end activity
-        if(result == null || result.size() == 0){
+        if(result == null || result.isEmpty()){
             //Display a message on the screen if no data found and end the activity
             Toast.makeText(Constants.context, getMessageNoData(), Toast.LENGTH_LONG).show();
             finish();
