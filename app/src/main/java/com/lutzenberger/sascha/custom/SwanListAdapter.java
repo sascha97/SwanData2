@@ -22,11 +22,15 @@ import com.lutzenberger.sascha.swandata.R;
  */
 public class SwanListAdapter extends ArrayAdapter<Data> {
     private final LayoutInflater inflater;
+    private final SharedPreferences pref;
 
     public SwanListAdapter() {
         super(Constants.context, 0);
         this.inflater = (LayoutInflater) Constants.context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
+
+        //Get the preferences to load the preferences later
+        pref = PreferenceManager.getDefaultSharedPreferences(Constants.context);
     }
 
     /**
@@ -52,8 +56,6 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
         //Get the ListItem
         Data data = getItem(position);
 
-        //Get the preferences to load the preferences later
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(Constants.context);
         //if true only nonEmpty fields will be shown
         boolean showNonEmpty = pref.getBoolean("show_non_empty", true);
 
@@ -66,7 +68,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
             //get the internal used attribute name, to load its settings
             String attributeName = data.getAttributeNameAt(i);
             //get the String what name is to display on the application based on the attribute name
-            String attribute_header = pref.getString("name_" + attributeName, "");
+            String attributeHeader = pref.getString("name_" + attributeName, "");
             //get the setting weather the attribute will be shown or not based on the attribute name
             boolean visible = pref.getBoolean("show_" + attributeName, true);
             //when visible look what has to be displayed
@@ -81,7 +83,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
                 if(next)
                     result = result + "\n";
                 //Adds the result
-                result = result + attribute_header + "='"+data.getDataAt(i)+"'";
+                result = result + attributeHeader + "='"+data.getDataAt(i)+"'";
                 //the delimiter will be needed next time
                 next = true;
             }
