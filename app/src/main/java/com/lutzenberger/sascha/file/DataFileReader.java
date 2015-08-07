@@ -5,7 +5,6 @@ import android.util.Log;
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swan.SwanCodes;
 import com.lutzenberger.sascha.swan.SwanData;
-
 import com.opencsv.CSVReader;
 
 import java.io.FileReader;
@@ -79,7 +78,7 @@ public final class DataFileReader {
                 String[] record = contentList.get(i); //Get the record from the CSV file.
 
                 //Constructs the data item
-                SwanData data = new SwanData(record); //i-1 because of zero index list
+                SwanData data = new SwanData(record);
 
                 swanDataList.add(data);
             }
@@ -116,7 +115,7 @@ public final class DataFileReader {
                 String[] record = contentList.get(i); //Get the record from the CSV file.
 
                 //Constructs the data item
-                SwanCodes code = new SwanCodes(record); //i-1 because of zero index list
+                SwanCodes code = new SwanCodes(record);
 
                 swanCodesList.add(code);
             }
