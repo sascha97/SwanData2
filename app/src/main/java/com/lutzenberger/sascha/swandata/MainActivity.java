@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
     public void onResume() {
         super.onResume();
 
-        if(Constants.changed) {
+        if(Constants.isChanged()) {
             SaveChangesDialogFragment saveChangesDialogFragment = new SaveChangesDialogFragment();
             saveChangesDialogFragment.show(getFragmentManager(), "save_changes");
         }
@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
     public void onDialogPositiveClick() {
         updateDataFiles();
 
-        Constants.changed = false;
+        Constants.resetChanged();
     }
 
     //Reloads the data files
@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
         //Reload the data from the files
         new LoadingFiles().execute();
         //Reset the change to the default value
-        Constants.changed = false;
+        Constants.resetChanged();
     }
 
     //Updates the data files

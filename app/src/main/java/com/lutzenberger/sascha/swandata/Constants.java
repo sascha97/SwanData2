@@ -14,9 +14,17 @@ public class Constants {
     //The Context of the application
     public static Context context;
     //The flag indicating any change
-    public static boolean changed = false;
+    private static boolean changed = false;
 
     public static void hasChanged() {
         changed = true;
+    }
+
+    public static void resetChanged() {
+        changed = false;
+    }
+
+    public static boolean isChanged() {
+        return changed;
     }
 }
