@@ -17,7 +17,7 @@ import com.lutzenberger.sascha.swandata.R;
  * Own list adapter to match the data to a list view
  *
  * @author Sascha Lutzenberger
- * @version 1.01 - 08.08.2015
+ * @version 1.1 - 09.08.2015
  *
  */
 public class SwanListAdapter extends ArrayAdapter<Data> {
@@ -35,16 +35,23 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView heading; //Is used to display a "heading" on the ListItem
-        TextView content; //Is used o display the "content" on the ListItem
+        //The ViewHolder which is holding all the UI elements
+        ViewHolder holder;
 
         //If no View exists load it from the file
-        if(convertView == null)
+        if(convertView == null) {
             convertView = inflater.inflate(R.layout.layout_swan_list_item, parent, false);
 
-        //Initialising the TextViews
-        heading = (TextView) convertView.findViewById(R.id.list_heading);
-        content = (TextView) convertView.findViewById(R.id.list_content);
+            //Set up the ViewHolder
+            holder = new ViewHolder();
+            //Initializing the TextViews
+            holder.heading = (TextView) convertView.findViewById(R.id.list_heading);
+            holder.content = (TextView) convertView.findViewById(R.id.list_content);
+            //Set the holder to the convert view
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
         //Get the ListItem
         Data data = getItem(position);
@@ -87,9 +94,15 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
             result = Constants.context.getString(R.string.message_no_displayable_data);
 
         //Setting the heading and the content to the ListItem
-        heading.setText(data.getSimpleName() + " " + (position + 1));
-        content.setText(result);
+        holder.heading.setText(data.getSimpleName() + " " + (position + 1));
+        holder.content.setText(result);
 
         return convertView;
+    }
+
+    //This is recommended by the android API guides to reduce the calls of findViewById()
+    private static class ViewHolder {
+        private TextView heading; //Is used to display a "heading" on the ListItem
+        private TextView content; //Is used o display the "content" on the ListItem
     }
 }

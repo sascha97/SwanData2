@@ -30,7 +30,7 @@ import com.lutzenberger.sascha.swandata.R;
  * This class already handles the display and updating of the data entry.
  *
  * @author Sascha Lutzenberger
- * @version 1.01 - 08.08.2015
+ * @version 1.1 - 09.08.2015
  *
  */
 public abstract class DataEditorActivity extends BaseActivity implements DialogListener {
@@ -204,17 +204,22 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
         //Inflates the view from its layout file (suppresses warning)
         @SuppressLint("InflateParams")
         View view = inflater.inflate(R.layout.layout_display_data_item, null);
-        EditText content = (EditText) view.findViewById(R.id.data_item_text);
+
+        //Creates a new ViewHolder to hold all the elements of the UI
+        ViewHolder holder = new ViewHolder();
+        holder.header = (TextView) view.findViewById(R.id.data_item_title);
+        holder.content = (EditText) view.findViewById(R.id.data_item_text);
 
         String attributeName = data.getAttributeNameAt(index);
         String data = this.data.getDataAt(index).trim();
 
         if (attributeName.contains("comment")) {
-            content.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-            content.setMaxLines(5);
+            holder.content.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+            holder.content.setMaxLines(5);
         }
 
-        content.setText(data);
+        holder.content.setText(data);
+        view.setTag(holder);
 
         return view;
     }
@@ -230,10 +235,8 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
 
         //Iterate through all the views
         for(int i=0;i<views.length;i++){
-            //Load the TextView which represents the column name
-            TextView header = (TextView) views[i].findViewById(R.id.data_item_title);
-            //Get the edit text which represents the content
-            EditText content = (EditText) views[i].findViewById(R.id.data_item_text);
+            //Load the ViewHolder which holds all UI elements
+            ViewHolder holder = (ViewHolder) views[i].getTag();
 
             //Get the attribute name of the column
             String attributeName = data.getAttributeNameAt(i);
@@ -244,7 +247,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
             String headerText = pref.getString("name_" + attributeName,
                     getString(R.string.messsage_column_header_not_defined));
             //Set the heading
-            header.setText(headerText);
+            holder.header.setText(headerText);
 
             //Set all items visible
             views[i].setVisibility(View.VISIBLE);
@@ -252,7 +255,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
             //If empty data should be hidden
             if(hiddenEmpty) {
                 //checks if data is empty
-                if(getTrimmedString(content).isEmpty()) {
+                if(getTrimmedString(holder.content).isEmpty()) {
                     //hides the data
                     views[i].setVisibility(View.GONE);
                 }
@@ -280,9 +283,11 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
     private void saveButtonClicked() {
         //Update the data item by updating the data with the corresponding String of the EditText
         for(int i=0;i<views.length;i++) {
-            EditText content = (EditText) views[i].findViewById(R.id.data_item_text);
+            //Gets the ViewHolder which is holding all the UI elements
+            ViewHolder holder = (ViewHolder) views[i].getTag();
+
             //Get a valid trimmed CSV string
-            data.setDataAtIndex(i, getTrimmedString(content));
+            data.setDataAtIndex(i, getTrimmedString(holder.content));
         }
 
         //If data has updated show a Toast to notify the user
@@ -302,5 +307,11 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
     @NonNull
     private String getTrimmedString(EditText editText){
         return editText.getText().toString().trim().replaceAll(",",";");
+    }
+
+    //This is recommended by the android API guides to reduce the calls of findViewById()
+    private static class ViewHolder {
+        private TextView header;
+        private EditText content;
     }
 }
