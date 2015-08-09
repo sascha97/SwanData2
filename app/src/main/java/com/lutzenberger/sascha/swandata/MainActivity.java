@@ -45,6 +45,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
     public void onResume() {
         super.onResume();
 
+        //If the data files have changed display a dialog and ask the user what to do
         if(Constants.isChanged()) {
             SaveChangesDialogFragment saveChangesDialogFragment = new SaveChangesDialogFragment();
             saveChangesDialogFragment.show(getFragmentManager(), "save_changes");
@@ -64,9 +65,11 @@ public class MainActivity extends BaseActivity implements DialogListener {
         String darvic = this.darvic.getText().toString().trim();
 
         switch (item.getItemId()) {
+            //If user clicks on the button for reloading the files reload them
             case R.id.menu_reload_files:
                 reloadDataFiles();
                 return true;
+            //if user wants to add a new swan code start the activity to do so
             case R.id.menu_new_swan_code:
                 intent = new Intent(this, SwanCodeEditorActivity.class);
                 intent.putExtra(getString(R.string.intent_field_id),
@@ -74,6 +77,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
                 intent.putExtra(getString(R.string.intent_new_data), true);
                 startActivity(intent);
                 return true;
+            //if user wants to add new swan data start the activity to do so
             case R.id.menu_new_swan_data:
                 intent = new Intent(this, SwanDataEditorActivity.class);
                 intent.putExtra(getString(R.string.intent_field_id),
@@ -81,19 +85,23 @@ public class MainActivity extends BaseActivity implements DialogListener {
                 intent.putExtra(getString(R.string.intent_new_data), true);
                 startActivity(intent);
                 return true;
+            //This saves the data loaded from the files to the data files again
             case R.id.menu_save:
                 updateDataFiles();
                 return true;
+            //search the data, if user clicks on the search SwanData button on the toolbar
             case R.id.menu_search_data:
                 intent = new Intent(this, SwanDataListActivity.class);
                 intent.putExtra(getString(R.string.intent_darvic), darvic);
                 startActivity(intent);
                 return true;
+            //search the data, if user clicks on the search SwanCodes button on the toolbar
             case R.id.menu_search_sample:
                 intent = new Intent(this, SwanCodeListActivity.class);
                 intent.putExtra(getString(R.string.intent_darvic), darvic);
                 startActivity(intent);
                 return true;
+            //Open the settings menu in a new activity
             case R.id.menu_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
@@ -108,8 +116,9 @@ public class MainActivity extends BaseActivity implements DialogListener {
 
     @Override
     public void onDialogPositiveClick() {
+        //Write the data to the data files
         updateDataFiles();
-
+        //No changes are made anymore
         Constants.resetChanged();
     }
 
