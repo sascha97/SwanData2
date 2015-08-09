@@ -19,7 +19,7 @@ import java.util.List;
  * And lists make it easier to write it into a file again.
  *
  * @author Sascha Lutzenberger
- * @version 1.0 - 01.08.2015
+ * @version 1.01 - 09.08.2015
  *
  */
 public final class DataFileReader {
@@ -60,9 +60,6 @@ public final class DataFileReader {
 
     //Reads in the CSV Swan Data file and returns the list of the records without the headings
     public static void getSwanDataList(String filePath) throws IOException {
-        //Overrides old swanDataList if there is one
-        swanDataList = new ArrayList<>();
-
         FileReader fileReader = null;
         CSVReader reader = null;
         try {
@@ -71,6 +68,10 @@ public final class DataFileReader {
 
             //Get all the records in the CSV file
             List<String[]> contentList = reader.readAll();
+
+            //Overrides old swanDataList if there is one
+            //Make sure 50 items could be added to the list without having to resize the list.
+            swanDataList = new ArrayList<>(contentList.size() + 49);
 
             //1 is used here to get rid of the headings, headings are not required for later
             //data handling
@@ -97,9 +98,6 @@ public final class DataFileReader {
 
     //Reads in the CSV Swan Codes data file and returns the list of the records without the headings
     public static void getSwanCodesList(String filePath) throws IOException {
-        //Overrides old swanDataList if there is one
-        swanCodesList = new ArrayList<>();
-
         FileReader fileReader = null;
         CSVReader reader = null;
         try {
@@ -108,6 +106,10 @@ public final class DataFileReader {
 
             //Get all the records from the CSV file
             List<String[]> contentList = reader.readAll();
+
+            //Overrides old swanCodesList if there is one
+            //Make sure 50 items could be added to the list without having to resize the list.
+            swanCodesList = new ArrayList<>(contentList.size() + 49);
 
             //1 is used here to get rid of the headings, headings are not required for later
             //data handling
