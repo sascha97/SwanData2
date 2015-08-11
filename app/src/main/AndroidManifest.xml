@@ -45,6 +45,11 @@
             android:label="@string/title_activity_display_swan_code"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.lutzenberger.sascha.settings.SaveSettingsActivity"
+            android:label="Export Import Settings"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

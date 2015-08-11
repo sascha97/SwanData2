@@ -2,7 +2,6 @@ package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ import com.lutzenberger.sascha.custom.dialog.SaveChangesDialogFragment;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
 import com.lutzenberger.sascha.file.Directories;
+import com.lutzenberger.sascha.file.PreferenceFileUtils;
 import com.lutzenberger.sascha.settings.SettingsActivity;
 import com.lutzenberger.sascha.task.FileTask;
 
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
         //SetUp the Basic Application needs
         Constants.context = this;
         //Load in all preferences
-        loadInPreferencesDefaultValues();
+        PreferenceFileUtils.loadInPreferencesDefaultValues();
         //Set up the directories
         Directories.setUpIfNotExistent();
         //Loading in the files
@@ -209,15 +209,5 @@ public class MainActivity extends BaseActivity implements DialogListener {
                 return getString(R.string.message_read_success);
             return getString(R.string.message_read_failed);
         }
-    }
-
-    private void loadInPreferencesDefaultValues(){
-        //Load in the default Settings, this does not reset preferences back to their default value
-        PreferenceManager.setDefaultValues(Constants.context, R.xml.pref_data_file, true);
-        PreferenceManager.setDefaultValues(Constants.context, R.xml.pref_general, true);
-        PreferenceManager.setDefaultValues(Constants.context, R.xml.pref_swan_codes, true);
-        PreferenceManager.setDefaultValues(Constants.context, R.xml.pref_swan_codes_columns, true);
-        PreferenceManager.setDefaultValues(Constants.context, R.xml.pref_swan_data, true);
-        PreferenceManager.setDefaultValues(Constants.context, R.xml.pref_swan_data_columns, true);
     }
 }

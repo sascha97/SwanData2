@@ -43,4 +43,12 @@
         android:summary="Used for changing the column names of the SwanData fields.">
         <extra android:name="settings" android:value="swan_data_columns" />
     </header>
+    <header
+        android:title="Export/Import Settings"
+        android:summary="Used for exporting or importing the settings from another device.">
+        <intent
+            android:targetPackage="com.lutzenberger.sascha.swandata"
+            android:targetClass="com.lutzenberger.sascha.settings.SaveSettingsActivity"
+            />
+    </header>
 </preference-headers>

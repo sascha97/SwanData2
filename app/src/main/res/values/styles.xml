@@ -19,4 +19,29 @@
     <style name="SwanData_TextViewStyle" parent="android:Widget.TextView">
         <item name="android:textColor">@color/text_black</item>
     </style>
+
+    <style name="button_base">
+        <item name="android:textColor">#FBFBFB</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="button_export" parent="button_base">
+        <item name="android:background">#303030</item>
+    </style>
+
+    <style name="button_import" parent="button_base">
+        <item name="android:background">#199148</item>
+    </style>
+
+    <style name="button_reset" parent="button_base">
+        <item name="android:background">#E52F0A</item>
+    </style>
 </resources>
