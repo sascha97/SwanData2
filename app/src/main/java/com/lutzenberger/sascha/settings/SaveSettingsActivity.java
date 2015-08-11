@@ -48,5 +48,13 @@ public class SaveSettingsActivity extends BaseActivity {
         });
 
         setToolbar();
+
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

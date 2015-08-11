@@ -14,9 +14,11 @@ import com.lutzenberger.sascha.swandata.R;
  *
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    protected Toolbar toolbar;
+
     protected void setToolbar() {
         //Set Toolbar to act as Actionbar for this Activity
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         //To avoid java.lang.NullPointerException
