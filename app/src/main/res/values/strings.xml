@@ -23,6 +23,7 @@
     <string name="directory_all_created">Working directories have been created…</string>
     <string name="directory_base_not_existent">Base directory does not exist…</string>
     <string name="directory_failed_create_document">Document directory could not be created…</string>
+    <string name="directory_failed_create_settings">Settings directeory could not be created…</string>
     <string name="directory_failed_create_swan">Swan directory could not be created…</string>
 
     <!-- hint fields -->
