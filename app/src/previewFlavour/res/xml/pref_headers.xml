@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header
+        android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
+        android:title="General Settings"
+        android:summary="To change what is displayed in the entire app.">
+        <extra android:name="settings" android:value="general" />
+    </header>
+
+    <header
+        android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
+        android:title="DataFile Settings"
+        android:summary="Change the name of the data file. (Could break the app)">
+        <extra android:name="settings" android:value="data_file" />
+    </header>
+
+    <header
+        android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
+        android:title="SwanCodes Fields"
+        android:summary="Used for enabling and disabling certain SwanCode fields.">
+        <extra android:name="settings" android:value="swan_codes" />
+    </header>
+
+    <header
+        android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
+        android:title="SwanData Fields"
+        android:summary="Used for enabling and disabling certain SwanData fields.">
+        <extra android:name="settings" android:value="swan_data" />
+    </header>
+
+    <header
+        android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
+        android:title="SwanCodes Column Names"
+        android:summary="Used for changing the column names of the SwanCodes fields.">
+        <extra android:name="settings" android:value="swan_codes_columns" />
+    </header>
+
+    <header
+        android:fragment="com.lutzenberger.sascha.settings.SettingsActivity$SettingsFragment"
+        android:title="SwanData Column Names"
+        android:summary="Used for changing the column names of the SwanData fields.">
+        <extra android:name="settings" android:value="swan_data_columns" />
+    </header>
+    <header
+        android:title="Export/Import Settings"
+        android:summary="Used for exporting or importing the settings from another device.">
+        <intent
+            android:targetPackage="com.lutzenberger.sascha.swandata.preview"
+            android:targetClass="com.lutzenberger.sascha.settings.SaveSettingsActivity"
+            />
+    </header>
+</preference-headers>

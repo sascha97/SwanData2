@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
@@ -38,7 +38,9 @@
                 android:id="@+id/button_export_settings"
                 android:text="@string/export_settings"
                 android:drawableLeft="@drawable/ic_settings_export"
-                style="@style/button_export" />
+                android:drawableStart="@drawable/ic_settings_export"
+                android:background="@drawable/export_button"
+                style="@style/button_base" />
 
             <include layout="@layout/divider" />
 
@@ -60,7 +62,9 @@
                 android:id="@+id/button_import_settings"
                 android:text="@string/import_settings"
                 android:drawableLeft="@drawable/ic_settings_import"
-                style="@style/button_import" />
+                android:drawableStart="@drawable/ic_settings_import"
+                android:background="@drawable/import_button"
+                style="@style/button_base" />
 
             <include layout="@layout/divider" />
 
@@ -82,7 +86,9 @@
                 android:id="@+id/button_reset_settings"
                 android:text="@string/reset_default_settings"
                 android:drawableLeft="@drawable/ic_delete"
-                style="@style/button_reset" />
+                android:drawableStart="@drawable/ic_delete"
+                android:background="@drawable/reset_button"
+                style="@style/button_base" />
 
         </LinearLayout>
     </ScrollView>

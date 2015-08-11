@@ -5,4 +5,5 @@
 
     <dimen name="text_height">15sp</dimen>
     <dimen name="heading_height">20sp</dimen>
+    <dimen name="button_radius">8dp</dimen>
 </resources>

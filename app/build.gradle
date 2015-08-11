@@ -8,7 +8,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName '2.0.0 B2'
+        versionName '2.0.0'
     }
     buildTypes {
         release {
@@ -17,6 +17,13 @@ android {
         }
     }
     productFlavors {
+        previewFlavour {
+            applicationId "com.lutzenberger.sascha.swandata.preview"
+            versionName '2.0.0 B2'
+        }
+        releaseFlavour {
+            applicationId "com.lutzenberger.sascha.swandata"
+        }
     }
 }
 
