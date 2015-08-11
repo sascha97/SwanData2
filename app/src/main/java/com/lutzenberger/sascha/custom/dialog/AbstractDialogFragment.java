@@ -1,12 +1,12 @@
 package com.lutzenberger.sascha.custom.dialog;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 
 
 /**
@@ -46,15 +46,14 @@ abstract class AbstractDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    @Override
-    public void onAttach(Activity activity){
-        super.onAttach(activity);
-
-        try {
-            dialogListener = (DialogListener) activity;
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-        }
+    /**
+     * This method sets the DialogListener, this method is needed to specify the dialog listener
+     * added.
+     *
+     * @param dialogListener The dialog listener to add, non null only
+     */
+    public void addDialogListener(@NonNull DialogListener dialogListener) {
+        this.dialogListener = dialogListener;
     }
 
     /**

@@ -37,6 +37,7 @@
             <Button
                 android:id="@+id/button_export_settings"
                 android:text="@string/export_settings"
+                android:drawableLeft="@drawable/ic_settings_export"
                 style="@style/button_export" />
 
             <include layout="@layout/divider" />
@@ -58,6 +59,7 @@
             <Button
                 android:id="@+id/button_import_settings"
                 android:text="@string/import_settings"
+                android:drawableLeft="@drawable/ic_settings_import"
                 style="@style/button_import" />
 
             <include layout="@layout/divider" />
@@ -79,6 +81,7 @@
             <Button
                 android:id="@+id/button_reset_settings"
                 android:text="@string/reset_default_settings"
+                android:drawableLeft="@drawable/ic_delete"
                 style="@style/button_reset" />
 
         </LinearLayout>

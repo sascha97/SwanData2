@@ -47,7 +47,7 @@
         </activity>
         <activity
             android:name="com.lutzenberger.sascha.settings.SaveSettingsActivity"
-            android:label="Export Import Settings"
+            android:label="@string/title_activity_export_import_settings"
             android:screenOrientation="portrait">
         </activity>
     </application>

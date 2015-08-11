@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
         //If the data files have changed display a dialog and ask the user what to do
         if(Constants.isChanged()) {
             SaveChangesDialogFragment saveChangesDialogFragment = new SaveChangesDialogFragment();
+            saveChangesDialogFragment.addDialogListener(this);
             saveChangesDialogFragment.show(getFragmentManager(), "save_changes");
         }
     }

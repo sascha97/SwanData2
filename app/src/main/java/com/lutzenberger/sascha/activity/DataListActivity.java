@@ -170,6 +170,7 @@ public abstract class DataListActivity extends BaseActivity implements DialogLis
 
         //Displays the dialog to give the user a chance to cancel the action
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
+        deleteDialogFragment.addDialogListener(this);
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
 

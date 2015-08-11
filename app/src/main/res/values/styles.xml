@@ -42,6 +42,6 @@
     </style>
 
     <style name="button_reset" parent="button_base">
-        <item name="android:background">#E52F0A</item>
+        <item name="android:background">#E51A24</item>
     </style>
 </resources>

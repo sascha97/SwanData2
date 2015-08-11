@@ -5,6 +5,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.lutzenberger.sascha.activity.BaseActivity;
+import com.lutzenberger.sascha.custom.dialog.DialogListener;
+import com.lutzenberger.sascha.custom.dialog.ExportSettingsDialogFragment;
+import com.lutzenberger.sascha.custom.dialog.ImportSettingsDialogFragment;
+import com.lutzenberger.sascha.custom.dialog.ResetSettingsDialogFragment;
 import com.lutzenberger.sascha.file.PreferenceFileUtils;
 import com.lutzenberger.sascha.swandata.R;
 
@@ -31,19 +35,28 @@ public class SaveSettingsActivity extends BaseActivity {
         exportSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferenceFileUtils.exportSharedPreferences();
+                ExportSettingsDialogFragment exportSettingsDialogFragment = new
+                        ExportSettingsDialogFragment();
+                exportSettingsDialogFragment.addDialogListener(exportSettingsListener);
+                exportSettingsDialogFragment.show(getFragmentManager(), "export_settings");
             }
         });
         importSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferenceFileUtils.importSharedPreferences();
+                ImportSettingsDialogFragment importSettingsDialogFragment = new
+                        ImportSettingsDialogFragment();
+                importSettingsDialogFragment.addDialogListener(importSettingsListener);
+                importSettingsDialogFragment.show(getFragmentManager(), "import_settings");
             }
         });
         resetSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferenceFileUtils.resetDefaultSettings();
+                ResetSettingsDialogFragment resetSettingsDialogFragment = new
+                        ResetSettingsDialogFragment();
+                resetSettingsDialogFragment.addDialogListener(resetSettingsListener);
+                resetSettingsDialogFragment.show(getFragmentManager(), "reset_settings");
             }
         });
 
@@ -57,4 +70,37 @@ public class SaveSettingsActivity extends BaseActivity {
             }
         });
     }
+
+    private DialogListener exportSettingsListener = new DialogListener() {
+        @Override
+        public void onDialogPositiveClick() {
+            PreferenceFileUtils.exportSharedPreferences();
+        }
+
+        @Override
+        public void onDialogNegativeClick() {
+        }
+    };
+
+    private DialogListener importSettingsListener = new DialogListener() {
+        @Override
+        public void onDialogPositiveClick() {
+            PreferenceFileUtils.importSharedPreferences();
+        }
+
+        @Override
+        public void onDialogNegativeClick() {
+        }
+    };
+
+    private DialogListener resetSettingsListener = new DialogListener() {
+        @Override
+        public void onDialogPositiveClick() {
+            PreferenceFileUtils.resetDefaultSettings();
+        }
+
+        @Override
+        public void onDialogNegativeClick() {
+        }
+    };
 }

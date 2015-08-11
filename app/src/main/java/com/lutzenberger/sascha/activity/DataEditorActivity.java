@@ -187,6 +187,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
         //Displays the delete dialog, the handling of the actions is done over an interface
         //which is already implemented in this activity.
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
+        deleteDialogFragment.addDialogListener(this);
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
 
