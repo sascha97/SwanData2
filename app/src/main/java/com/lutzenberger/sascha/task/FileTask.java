@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 import com.lutzenberger.sascha.file.Directories;
@@ -50,6 +51,7 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
      * @param successful if the operation was completed successfully.
      * @return The message for a successfully completed operation.
      */
+    @NonNull
     protected abstract String getMessage(boolean successful);
 
     /**
@@ -57,6 +59,7 @@ public abstract class FileTask extends AsyncTask<Void, Integer, Void> {
      *
      * @return The message for the ProgressDialog
      */
+    @NonNull
     protected abstract String getMessage();
 
     //This method is called when an error occurs during file handling

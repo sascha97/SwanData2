@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.swan;
 
+import android.support.annotation.NonNull;
+
 /**
  * This interfaces must be implemented by all classes which want to support the DataFileWriter
  * operation.
@@ -19,5 +21,6 @@ public interface CSVWritable {
      *
      * @return A string array with the data record.
      */
+    @NonNull
     String[] getDataRecord();
 }

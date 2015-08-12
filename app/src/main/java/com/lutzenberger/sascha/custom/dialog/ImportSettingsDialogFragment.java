@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.custom.dialog;
 
+import android.support.annotation.NonNull;
+
 import com.lutzenberger.sascha.swandata.R;
 
 /**
@@ -17,21 +19,25 @@ public class ImportSettingsDialogFragment extends AbstractDialogFragment {
         return R.drawable.ic_settings_import;
     }
 
+    @NonNull
     @Override
     String getTitle() {
         return getString(R.string.import_settings);
     }
 
+    @NonNull
     @Override
     String getMessage() {
         return getString(R.string.import_settings_summary);
     }
 
+    @NonNull
     @Override
     String getPositiveButtonText() {
         return getString(R.string.import_settings);
     }
 
+    @NonNull
     @Override
     String getNegativeButtonText() {
         return getString(R.string.dialog_cancel);

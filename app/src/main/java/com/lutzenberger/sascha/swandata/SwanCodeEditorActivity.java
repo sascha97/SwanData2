@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.swandata;
 
+import android.support.annotation.NonNull;
+
 import com.lutzenberger.sascha.activity.DataEditorActivity;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.swan.Data;
@@ -18,6 +20,7 @@ public class SwanCodeEditorActivity extends DataEditorActivity {
     private boolean inList = false;
     private List<Data> dataList;
 
+    @NonNull
     @Override
     protected Data getData(int fieldPosition) {
         dataList = DataFileReader.getSwanCodesList();
@@ -39,7 +42,7 @@ public class SwanCodeEditorActivity extends DataEditorActivity {
     }
 
     @Override
-    protected void onUpdate(Data data) {
+    protected void onUpdate(@NonNull Data data) {
         if(inList)
             return;
 

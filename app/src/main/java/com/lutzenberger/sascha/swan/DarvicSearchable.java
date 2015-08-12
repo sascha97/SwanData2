@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.swan;
 
+import android.support.annotation.NonNull;
+
 /**
  * This interfaces must be implemented by all classes which want to be searched by darvic code
  *
@@ -13,5 +15,6 @@ public interface DarvicSearchable {
      *
      * @return the darvic code
      */
+    @NonNull
     String getDarvic();
 }

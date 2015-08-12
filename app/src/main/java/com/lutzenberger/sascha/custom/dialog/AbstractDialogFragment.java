@@ -68,6 +68,7 @@ abstract class AbstractDialogFragment extends DialogFragment {
      *
      * @return A String representing the Title of the Dialog
      */
+    @NonNull
     abstract String getTitle();
 
 
@@ -76,6 +77,7 @@ abstract class AbstractDialogFragment extends DialogFragment {
      *
      * @return A String representing the Message of the Dialog
      */
+    @NonNull
     abstract String getMessage();
 
     /**
@@ -84,6 +86,7 @@ abstract class AbstractDialogFragment extends DialogFragment {
      *
      * @return The text of the positive button
      */
+    @NonNull
     abstract String getPositiveButtonText();
 
     /**
@@ -92,5 +95,6 @@ abstract class AbstractDialogFragment extends DialogFragment {
      *
      * @return The text of the negative button
      */
+    @NonNull
     abstract String getNegativeButtonText();
 }

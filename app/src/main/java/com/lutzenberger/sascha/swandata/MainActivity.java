@@ -2,6 +2,7 @@ package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -162,11 +163,13 @@ public class MainActivity extends BaseActivity implements DialogListener {
             return null;
         }
 
+        @NonNull
         @Override
         protected String getMessage() {
             return getString(R.string.message_files_updated);
         }
 
+        @NonNull
         @Override
         protected String getMessage(boolean successful) {
             if(successful)
@@ -199,11 +202,13 @@ public class MainActivity extends BaseActivity implements DialogListener {
             return null;
         }
 
+        @NonNull
         @Override
         protected String getMessage() {
             return getString(R.string.message_files_processed);
         }
 
+        @NonNull
         @Override
         protected String getMessage(boolean successful){
             if(successful)

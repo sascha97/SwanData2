@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.swan;
 
+import android.support.annotation.NonNull;
+
 /**
  * This class is the Base class of all Data load from data files.
  *
@@ -36,6 +38,7 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      *
      * @return A string containing the name of the attribute
      */
+    @NonNull
     public abstract  String getAttributeNameAt(int index);
 
     /**
@@ -45,6 +48,7 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      *
      * @return The data item at this listPosition
      */
+    @NonNull
     public abstract String getDataAt(int listPosition);
 
     /**
@@ -59,6 +63,7 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      *
      * @return The name of the class
      */
+    @NonNull
     public String getSimpleName(){
         return getClass().getSimpleName();
     }
@@ -67,10 +72,9 @@ public abstract class Data implements CSVWritable, DarvicSearchable {
      * This method allows to change data at a certain index.
      *
      * If index doesn't exist nothing will be changed
-     *
-     * @param index the index where data has to be changed.
+     *  @param index the index where data has to be changed.
      * @param newData the new data for the given index.
      */
-    public abstract void setDataAtIndex(int index, String newData);
+    public abstract void setDataAtIndex(int index, @NonNull String newData);
 
 }

@@ -4,6 +4,7 @@ package com.lutzenberger.sascha.file;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 import com.lutzenberger.sascha.swandata.R;
@@ -28,7 +29,9 @@ import static com.lutzenberger.sascha.swandata.Constants.context;
  * @version 1.0 - 11.08.2015
  */
 public final class PreferenceFileUtils {
+    @NonNull
     private static final SharedPreferences PREFERENCES;
+    @NonNull
     private static final File SETTINGS_FILE;
 
     static {

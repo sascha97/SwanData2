@@ -44,7 +44,7 @@
         <extra android:name="settings" android:value="swan_data_columns" />
     </header>
     <header
-        android:title="Export/Import Settings"
+        android:title="Backup and reset"
         android:summary="Used for exporting or importing the settings from another device.">
         <intent
             android:targetPackage="com.lutzenberger.sascha.swandata"

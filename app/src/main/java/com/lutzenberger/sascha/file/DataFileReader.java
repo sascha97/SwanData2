@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.file;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.lutzenberger.sascha.swan.Data;
@@ -35,6 +36,7 @@ public final class DataFileReader {
      *
      * @return the read in SwanDataList
      */
+    @NonNull
     public static List<Data> getSwanDataList() {
         //if no list is existent create an empty ArrayList
         if(swanDataList == null)
@@ -49,6 +51,7 @@ public final class DataFileReader {
      *
      * @return the read in SwanDataList
      */
+    @NonNull
     public static List<Data> getSwanCodesList() {
         //if no list is existent create an empty ArrayList
         if(swanCodesList == null)

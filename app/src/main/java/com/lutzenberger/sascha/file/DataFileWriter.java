@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.file;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.lutzenberger.sascha.swan.CSVWritable;
@@ -28,19 +29,19 @@ public final class DataFileWriter {
     }
 
     //Minimalistic arguments just the fileName is needed from the Android Application
-    public static void updateSwanDataFile(String fileName) throws IOException {
+    public static void updateSwanDataFile(@NonNull String fileName) throws IOException {
         updateCSVFile(fileName, SwanData.getCSVFileHeader(), DataFileReader.getSwanDataList());
     }
 
     //Minimalistic arguments just the file name is needed from the Android Application
-    public static void updateSwanCodesFile(String fileName) throws IOException {
+    public static void updateSwanCodesFile(@NonNull String fileName) throws IOException {
         updateCSVFile(fileName, SwanCodes.getCSVFileHeader(), DataFileReader.getSwanCodesList());
     }
 
     //Private method for writing makes it easier to change <? extends CSVWritable> makes sure
     //that all the elements of the list are objects with the data type of CSVWritable
-    private static void updateCSVFile(String fileName, String[] header,
-                                      List<? extends CSVWritable> list) throws IOException{
+    private static void updateCSVFile(@NonNull String fileName, @NonNull String[] header,
+                                      @NonNull List<? extends CSVWritable> list) throws IOException{
         //Try catch with resources is not possible
         FileWriter fileWriter = null;
         CSVWriter writer = null;

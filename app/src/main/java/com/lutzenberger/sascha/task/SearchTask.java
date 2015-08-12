@@ -3,6 +3,7 @@ package com.lutzenberger.sascha.task;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 
 import com.lutzenberger.sascha.swan.Data;
 import com.lutzenberger.sascha.swandata.R;
@@ -22,12 +23,12 @@ import static com.lutzenberger.sascha.swandata.Constants.context;
  * @version 1.01 - 01.08.2015
  *
  */
-public class SearchTask extends
-        AsyncTask<String, Integer, List<Data>> {
+public class SearchTask extends AsyncTask<String, Integer, List<Data>> {
     private ProgressDialog progressDialog;
+    @NonNull
     private final List<Data> dataList;
 
-    public SearchTask(List<Data> dataList){
+    public SearchTask(@NonNull List<Data> dataList){
         this.dataList = dataList;
     }
 

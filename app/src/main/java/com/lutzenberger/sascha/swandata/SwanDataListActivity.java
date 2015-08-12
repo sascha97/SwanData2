@@ -1,6 +1,7 @@
 package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.widget.TextView;
 
 import com.lutzenberger.sascha.activity.DataListActivity;
@@ -19,23 +20,26 @@ import java.util.concurrent.ExecutionException;
  *
  */
 public class SwanDataListActivity extends DataListActivity {
+    @NonNull
     @Override
     protected List<Data> getDataList() {
         return DataFileReader.getSwanDataList();
     }
 
+    @NonNull
     @Override
     protected String getMessageNoData() {
         return getString(R.string.message_no_data_found);
     }
 
+    @NonNull
     @Override
     protected Intent prepareIntent(){
         return new Intent(this, SwanDataEditorActivity.class);
     }
 
     @Override
-    protected void setTextOfNumberSampled(TextView noSamples, String darvic) {
+    protected void setTextOfNumberSampled(@NonNull TextView noSamples, @NonNull String darvic) {
         int noOfSamples = 0;
         try {
             noOfSamples = new SearchTask(DataFileReader.getSwanCodesList()).

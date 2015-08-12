@@ -5,17 +5,17 @@
     <string name="title_activity_display_swan_codes_list">Select a Sample</string>
     <string name="title_activity_display_swan_data">SwanData</string>
     <string name="title_activity_display_swan_data_list">Select a Swan</string>
-    <string name="title_activity_export_import_settings">Export &amp; Import </string>
+    <string name="title_activity_export_import_settings">Backup &amp; Reset </string>
     <string name="author">Sascha Lutzenberger - 2015</string>
 
     <string name="settings">Settings</string>
 
     <!-- Application Settings strings -->
-    <string name="export_settings">Export Settings</string>
-    <string name="export_settings_summary">All the settings will be exported to the preferences file stored in the SwanData directory. (If a previous backup exists, this will overwrite the previous backup)</string>
-    <string name="import_settings">Import Settings</string>
-    <string name="import_settings_summary">The settings will be loaded from the preferences file in the SwanData directory. This will override all the settings in this program, if any settings are not defined in the preferences file, the default values will be loaded.</string>
-    <string name="reset_default_settings">Reset Default Settings</string>
+    <string name="export_settings">Backup Settings</string>
+    <string name="export_settings_summary">All the settings will be backed up to the preferences file stored in the SwanData directory. (If a previous backup exists, this will overwrite the previous backup)</string>
+    <string name="import_settings">Restore Settings</string>
+    <string name="import_settings_summary">The settings will be restored from the preferences file in the SwanData directory. This will override all the settings in this program, if any settings are not defined in the preferences file, the default values will be loaded.</string>
+    <string name="reset_default_settings">Reset Settings</string>
     <string name="reset_default_settings_summary">All the settings will be restored to their default values.</string>
 
     <!-- Dialog strings -->

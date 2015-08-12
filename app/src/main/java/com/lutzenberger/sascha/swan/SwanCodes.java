@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.swan;
 
+import android.support.annotation.NonNull;
+
 import com.lutzenberger.sascha.swandata.R;
 
 import static com.lutzenberger.sascha.swandata.Constants.context;
@@ -38,10 +40,12 @@ public class SwanCodes extends Data {
      *
      * @return A String array containing the CSV data file header.
      */
+    @NonNull
     public static String[] getCSVFileHeader(){
         return getCSVHeaderOrder(HEADER_NAMES);
     }
 
+    @NonNull
     private static String[] getCSVHeaderOrder(final String[] source){
         int length = ATTRIBUTES.length;
         String[] dataRecord = new String[length];
@@ -55,6 +59,7 @@ public class SwanCodes extends Data {
         return dataRecord;
     }
 
+    @NonNull
     public static SwanCodes getEmptyData(){
         return new SwanCodes();
     }
@@ -84,6 +89,7 @@ public class SwanCodes extends Data {
      *
      * @return A string containing the name of the attribute
      */
+    @NonNull
     @Override
     public String getAttributeNameAt(int index){
         //if index is not in list return an empty String
@@ -101,6 +107,7 @@ public class SwanCodes extends Data {
      *
      * @return The data item at this listPosition
      */
+    @NonNull
     @Override
     public String getDataAt(int listPosition) {
         //if index is not in list return an empty string
@@ -128,7 +135,7 @@ public class SwanCodes extends Data {
      * @param columnName The column name
      * @return The index of the data in the list.
      */
-    private static int getListPosition(String columnName) {
+    private static int getListPosition(@NonNull String columnName) {
         for(int i=0;i<ATTRIBUTES.length;i++) {
             if(columnName.equals(ATTRIBUTES[i]))
                 return i;
@@ -137,6 +144,7 @@ public class SwanCodes extends Data {
         return -1;
     }
 
+    @NonNull
     @Override
     public String getDarvic() {
         //the index of the the column representing the darvic code
@@ -145,6 +153,7 @@ public class SwanCodes extends Data {
         return attribute_values[darvicIndex];
     }
 
+    @NonNull
     @Override
     public String[] getDataRecord() {
         //gets all attributes in the order they have to be written to the data file
@@ -152,7 +161,7 @@ public class SwanCodes extends Data {
     }
 
     @Override
-    public void setDataAtIndex(int index, String newData) {
+    public void setDataAtIndex(int index, @NonNull String newData) {
         if(index < 0 || index >= getNumberOfAttributes())
             return;
         //sets the data at the given index to the new data

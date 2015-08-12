@@ -1,6 +1,7 @@
 package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import com.lutzenberger.sascha.activity.DataListActivity;
 import com.lutzenberger.sascha.file.DataFileReader;
@@ -16,16 +17,19 @@ import java.util.List;
  *
  */
 public class SwanCodeListActivity extends DataListActivity {
+    @NonNull
     @Override
     protected List<Data> getDataList() {
         return DataFileReader.getSwanCodesList();
     }
 
+    @NonNull
     @Override
     protected String getMessageNoData() {
         return getString(R.string.message_no_smaples_found);
     }
 
+    @NonNull
     @Override
     protected Intent prepareIntent(){
         return new Intent(this, SwanCodeEditorActivity.class);

@@ -37,20 +37,23 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
     public View getView(int position, View convertView, ViewGroup parent) {
         //The ViewHolder which is holding all the UI elements
         ViewHolder holder;
+        View view;
 
         //If no View exists load it from the file
         if(convertView == null) {
-            convertView = inflater.inflate(R.layout.layout_swan_list_item, parent, false);
+            view = inflater.inflate(R.layout.layout_swan_list_item, parent, false);
 
             //Set up the ViewHolder
             holder = new ViewHolder();
             //Initializing the TextViews
-            holder.heading = (TextView) convertView.findViewById(R.id.list_heading);
-            holder.content = (TextView) convertView.findViewById(R.id.list_content);
-            //Set the holder to the convert view
-            convertView.setTag(holder);
+            holder.heading = (TextView) view.findViewById(R.id.list_heading);
+            holder.content = (TextView) view.findViewById(R.id.list_content);
+            //Set the ViewHolder to the convert view
+            view.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            view = convertView;
+            //Load the ViewHolder from the view
+            holder = (ViewHolder) view.getTag();
         }
 
         //Get the ListItem
@@ -97,7 +100,7 @@ public class SwanListAdapter extends ArrayAdapter<Data> {
         holder.heading.setText(data.getSimpleName() + " " + (position + 1));
         holder.content.setText(result);
 
-        return convertView;
+        return view;
     }
 
     //This is recommended by the android API guides to reduce the calls of findViewById()

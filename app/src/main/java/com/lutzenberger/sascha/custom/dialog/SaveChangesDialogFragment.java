@@ -1,5 +1,7 @@
 package com.lutzenberger.sascha.custom.dialog;
 
+import android.support.annotation.NonNull;
+
 import com.lutzenberger.sascha.swandata.R;
 
 /**
@@ -17,21 +19,25 @@ public class SaveChangesDialogFragment extends AbstractDialogFragment {
         return R.drawable.ic_save;
     }
 
+    @NonNull
     @Override
     String getTitle() {
         return getString(R.string.dialog_save_title);
     }
 
+    @NonNull
     @Override
     String getMessage() {
         return getString(R.string.dialog_save_message);
     }
 
+    @NonNull
     @Override
     String getPositiveButtonText() {
         return getString(R.string.dialog_save_positive_button);
     }
 
+    @NonNull
     @Override
     String getNegativeButtonText() {
         return getString(R.string.dialog_save_negative_button);

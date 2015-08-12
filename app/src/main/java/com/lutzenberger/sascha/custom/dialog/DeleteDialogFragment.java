@@ -1,6 +1,8 @@
 package com.lutzenberger.sascha.custom.dialog;
 
 
+import android.support.annotation.NonNull;
+
 import com.lutzenberger.sascha.swandata.R;
 
 /**
@@ -18,21 +20,25 @@ public class DeleteDialogFragment extends AbstractDialogFragment {
         return R.drawable.ic_delete;
     }
 
+    @NonNull
     @Override
     String getTitle() {
         return getString(R.string.dialog_delete_title);
     }
 
+    @NonNull
     @Override
     String getMessage() {
         return getString(R.string.dialog_delete_message);
     }
 
+    @NonNull
     @Override
     String getPositiveButtonText() {
         return getString(R.string.dialog_delete_positive_button);
     }
 
+    @NonNull
     @Override
     String getNegativeButtonText() {
         return getString(R.string.dialog_cancel);

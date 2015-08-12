@@ -1,6 +1,7 @@
 package com.lutzenberger.sascha.file;
 
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 import com.lutzenberger.sascha.swandata.R;
@@ -20,13 +21,17 @@ import static com.lutzenberger.sascha.swandata.Constants.context;
  */
 public final class Directories {
     //Constant for the SwanData directory
+    @NonNull
     public static final File SWAN_DATA_DIRECTORY;
     //Constant for the Settings directory where exported settings will be stored
+    @NonNull
     static final File EXPORTED_SETTINGS_DIRECTORY;
 
     //The root directory of the phone internal storage
+    @NonNull
     private static final File BASE_DIRECTORY;
     //The documents directory in the root directory
+    @NonNull
     private static final File DOCUMENT_DIRECTORY;
     private static boolean existent = false;
 
@@ -66,7 +71,7 @@ public final class Directories {
             createDirectory(DOCUMENT_DIRECTORY, context.getString(
                     R.string.directory_failed_create_document));
 
-            //Create the SwanData direcotry if it fails to do so display the given error message
+            //Create the SwanData directory if it fails to do so display the given error message
             createDirectory(SWAN_DATA_DIRECTORY, context.getString(
                     R.string.directory_failed_create_swan));
 
@@ -83,14 +88,14 @@ public final class Directories {
         }
     }
 
-    private static void createDirectory(File dir, String errorMessasge) throws
+    private static void createDirectory(File dir, String errorMessage) throws
             DirectoryNotCreatedException {
         boolean result = true;
 
         if(!fileExists(dir))
             result = createDirectory(dir);
         if(!result) {
-            Toast.makeText(context, errorMessasge, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
             throw new DirectoryNotCreatedException();
         }
     }

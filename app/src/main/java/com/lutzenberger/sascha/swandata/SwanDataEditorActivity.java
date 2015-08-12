@@ -1,6 +1,7 @@
 package com.lutzenberger.sascha.swandata;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -59,6 +60,7 @@ public class SwanDataEditorActivity extends DataEditorActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @NonNull
     @Override
     protected Data getData(int fieldPosition) {
         dataList = DataFileReader.getSwanDataList();
@@ -79,7 +81,7 @@ public class SwanDataEditorActivity extends DataEditorActivity {
     }
 
     @Override
-    protected void onUpdate(Data data) {
+    protected void onUpdate(@NonNull Data data) {
         if(inList)
             return;
 

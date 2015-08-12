@@ -2,6 +2,7 @@ package com.lutzenberger.sascha.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -76,7 +77,7 @@ public abstract class DataListActivity extends BaseActivity implements DialogLis
 
     //Hides the TextView for number of sampled
     //If needed this has to be overwritten
-    protected void setTextOfNumberSampled(TextView noSamples, String darvic){
+    protected void setTextOfNumberSampled(@NonNull TextView noSamples, @NonNull String darvic){
         noSamples.setVisibility(View.GONE);
     }
 
@@ -231,6 +232,7 @@ public abstract class DataListActivity extends BaseActivity implements DialogLis
      *
      * @return A data list with entries to search
      */
+    @NonNull
     protected abstract List<Data> getDataList();
 
     /**
@@ -238,11 +240,13 @@ public abstract class DataListActivity extends BaseActivity implements DialogLis
      *
      * @return The string to display when no data is found.
      */
+    @NonNull
     protected abstract String getMessageNoData();
 
     /**
      * This method is here to get the relevant Intent when a activity should be started
      */
+    @NonNull
     protected abstract Intent prepareIntent();
 
     /**

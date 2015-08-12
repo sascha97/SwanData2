@@ -166,6 +166,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
      *
      * @return The data item which has to be displayed
      */
+    @NonNull
     protected abstract Data getData(int fieldPosition);
 
     /**
@@ -174,7 +175,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
      *
      * Is used for adding the new data to the list.
      */
-    protected void onUpdate(Data data){
+    protected void onUpdate(@NonNull Data data){
     }
 
     //Used to decide if hidden elements have to be shown
