@@ -247,7 +247,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
 
             //Loads the name for the attribute which should be displayed as heading
             String headerText = pref.getString("name_" + attributeName,
-                    getString(R.string.messsage_column_header_not_defined));
+                    getString(R.string.message_column_header_not_defined));
             //Set the heading
             holder.header.setText(headerText);
 

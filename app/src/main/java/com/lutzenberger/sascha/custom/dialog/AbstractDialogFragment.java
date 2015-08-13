@@ -19,7 +19,7 @@ import android.support.annotation.NonNull;
  * @version 1.0 - 04.08.2015
  *
  */
-abstract class AbstractDialogFragment extends DialogFragment {
+public abstract class AbstractDialogFragment extends DialogFragment {
     private DialogListener dialogListener;
 
     @Override

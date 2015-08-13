@@ -1,5 +1,6 @@
 package com.lutzenberger.sascha.custom.dialog;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 
 import com.lutzenberger.sascha.swandata.R;
@@ -14,6 +15,7 @@ import com.lutzenberger.sascha.swandata.R;
  *
  */
 public class ResetSettingsDialogFragment extends AbstractDialogFragment {
+    @DrawableRes
     @Override
     int getIconId() {
         return R.drawable.ic_delete;

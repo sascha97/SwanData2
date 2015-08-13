@@ -26,7 +26,7 @@ public class SwanCodeListActivity extends DataListActivity {
     @NonNull
     @Override
     protected String getMessageNoData() {
-        return getString(R.string.message_no_smaples_found);
+        return getString(R.string.message_no_samples_found);
     }
 
     @NonNull

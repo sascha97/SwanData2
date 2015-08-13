@@ -8,7 +8,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.lutzenberger.sascha.activity.BaseActivity;
+import com.lutzenberger.sascha.custom.dialog.AbstractDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.DialogListener;
+import com.lutzenberger.sascha.custom.dialog.ReloadDatafileDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.SaveChangesDialogFragment;
 import com.lutzenberger.sascha.file.DataFileReader;
 import com.lutzenberger.sascha.file.DataFileWriter;
@@ -19,8 +21,9 @@ import com.lutzenberger.sascha.task.FileTask;
 
 import java.io.IOException;
 
-public class MainActivity extends BaseActivity implements DialogListener {
+public class MainActivity extends BaseActivity {
     private EditText darvic;
+    private boolean dialogShown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +32,21 @@ public class MainActivity extends BaseActivity implements DialogListener {
 
         //SetUp the Basic Application needs
         Constants.context = this;
+        //Reset changed constant...
+        Constants.resetChanged();
+        //No dialog can be shown
+        dialogShown = false;
         //Load in all preferences
         PreferenceFileUtils.loadInPreferencesDefaultValues();
         //Set up the directories
         Directories.setUpIfNotExistent();
-        //Loading in the files
-        LoadingFiles loadingFiles = new LoadingFiles();
-        loadingFiles.execute();
-
+        //Only executed if the data lists are empty.
+        if(DataFileReader.getSwanCodesList().isEmpty() &&
+                DataFileReader.getSwanDataList().isEmpty()) {
+            //Loading in the files
+            LoadingFiles loadingFiles = new LoadingFiles();
+            loadingFiles.execute();
+        }
         darvic = (EditText) findViewById(R.id.darvic_entered);
 
         setToolbar();
@@ -48,9 +58,7 @@ public class MainActivity extends BaseActivity implements DialogListener {
 
         //If the data files have changed display a dialog and ask the user what to do
         if(Constants.isChanged()) {
-            SaveChangesDialogFragment saveChangesDialogFragment = new SaveChangesDialogFragment();
-            saveChangesDialogFragment.addDialogListener(this);
-            saveChangesDialogFragment.show(getFragmentManager(), "save_changes");
+            showDialog(new SaveChangesDialogFragment(), saveChangesDialogListener, "save_changes");
         }
     }
 
@@ -69,7 +77,13 @@ public class MainActivity extends BaseActivity implements DialogListener {
         switch (item.getItemId()) {
             //If user clicks on the button for reloading the files reload them
             case R.id.menu_reload_files:
-                reloadDataFiles();
+                //If something is changed ask the user what to do else just reload the data files.
+                if(Constants.isChanged()) {
+                    showDialog(new ReloadDatafileDialogFragment(), reloadDataFilesDialogListener,
+                            "reload_data");
+                } else {
+                    reloadDataFiles();
+                }
                 return true;
             //if user wants to add a new swan code start the activity to do so
             case R.id.menu_new_swan_code:
@@ -110,18 +124,6 @@ public class MainActivity extends BaseActivity implements DialogListener {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onDialogNegativeClick() {
-    }
-
-    @Override
-    public void onDialogPositiveClick() {
-        //Write the data to the data files
-        updateDataFiles();
-        //No changes are made anymore
-        Constants.resetChanged();
     }
 
     //Reloads the data files
@@ -216,4 +218,47 @@ public class MainActivity extends BaseActivity implements DialogListener {
             return getString(R.string.message_read_failed);
         }
     }
+
+    private void showDialog(AbstractDialogFragment dialog, DialogListener listener,  String tag) {
+        if(dialogShown)
+            return;
+
+        dialog.addDialogListener(listener);
+        dialog.show(getFragmentManager(), tag);
+        dialogShown = true;
+    }
+
+    private void dialogDisposed() {
+        dialogShown = false;
+    }
+
+    private DialogListener saveChangesDialogListener = new DialogListener() {
+        @Override
+        public void onDialogPositiveClick() {
+            //Write the data to the data files
+            updateDataFiles();
+            //No changes are made anymore
+            Constants.resetChanged();
+
+            dialogDisposed();
+        }
+
+        @Override
+        public void onDialogNegativeClick() {
+            dialogDisposed();
+        }
+    };
+
+    private DialogListener reloadDataFilesDialogListener = new DialogListener() {
+        @Override
+        public void onDialogPositiveClick() {
+            reloadDataFiles();
+            dialogDisposed();
+        }
+
+        @Override
+        public void onDialogNegativeClick() {
+            dialogDisposed();
+        }
+    };
 }

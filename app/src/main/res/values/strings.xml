@@ -14,7 +14,7 @@
     <string name="export_settings">Backup Settings</string>
     <string name="export_settings_summary">All the settings will be backed up to the preferences file stored in the SwanData directory. (If a previous backup exists, this will overwrite the previous backup)</string>
     <string name="import_settings">Restore Settings</string>
-    <string name="import_settings_summary">The settings will be restored from the preferences file in the SwanData directory. This will override all the settings in this program, if any settings are not defined in the preferences file, the default values will be loaded.</string>
+    <string name="import_settings_summary">The settings will be restored from the preferences file in the SwanData directory. This will overwrite all the settings in this program, if any settings are not defined in the preferences file, the default values will be loaded.</string>
     <string name="reset_default_settings">Reset Settings</string>
     <string name="reset_default_settings_summary">All the settings will be restored to their default values.</string>
 
@@ -23,6 +23,9 @@
     <string name="dialog_delete_message">This will delete the selected data from your device. This can not be undone.</string>
     <string name="dialog_delete_positive_button">Delete now</string>
     <string name="dialog_delete_title">Delete data?</string>
+    <string name="dialog_reload_message">This will reload the data files. All the changes that have been made will be lost. This can not be undone.</string>
+    <string name="dialog_reload_positive_button">Reload now</string>
+    <string name="dialog_reload_title">Reload data files?</string>
     <string name="dialog_save_message">Do you want to save your changes now?</string>
     <string name="dialog_save_negative_button">Save later</string>
     <string name="dialog_save_positive_button">Save now</string>
@@ -56,7 +59,7 @@
 
     <!-- Messages -->
     <string name="message_change_settings_to_display">Please change settings to display an item…</string>
-    <string name="messsage_column_header_not_defined">not defined…</string>
+    <string name="message_column_header_not_defined">not defined…</string>
     <string name="message_deleted_data">Deleted selected data</string>
     <string name="message_enter_darvic_code">Please enter a DARVIC code:</string>
     <string name="message_entry_updated">Entry has been updated…</string>
@@ -64,12 +67,12 @@
     <string name="message_files_updated">Files are being updated…</string>
     <string name="message_no_data_found">No data found for this DARVIC code…</string>
     <string name="message_no_displayable_data">No displayable data</string>
-    <string name="message_no_smaples_found">No samples found for this DARVIC code…</string>
+    <string name="message_no_samples_found">No samples found for this DARVIC code…</string>
     <string name="message_number_of_samples">The swan was sampled %1$s times.</string>
     <string name="message_read_failed">Failed reading in the files…</string>
     <string name="message_read_success">Files successfully read in…</string>
     <string name="message_searching_matches">Searching for matches…</string>
-    <string name="message_settings_export_failed">Falied to export settings…</string>
+    <string name="message_settings_export_failed">Failed to export settings…</string>
     <string name="message_settings_export_success">Settings successfully exported…</string>
     <string name="message_settings_import_failed">Failed to import settings…</string>
     <string name="message_settings_import_success">Settings successfully imported…</string>
