@@ -39,10 +39,4 @@ public class DeleteDialogFragment extends AbstractDialogFragment {
     String getPositiveButtonText() {
         return getString(R.string.dialog_delete_positive_button);
     }
-
-    @NonNull
-    @Override
-    String getNegativeButtonText() {
-        return getString(R.string.dialog_cancel);
-    }
 }

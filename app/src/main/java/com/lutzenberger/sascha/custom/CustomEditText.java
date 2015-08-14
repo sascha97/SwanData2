@@ -15,7 +15,7 @@ import android.widget.EditText;
  * @version 1.0 - 01.08.2015
  *
  */
-public class CustomEditText extends EditText{
+public class CustomEditText extends EditText {
     /**
      * Constructor
      *  @param context  The current context.

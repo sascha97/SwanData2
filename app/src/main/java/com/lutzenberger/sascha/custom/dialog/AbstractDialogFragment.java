@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 
+import com.lutzenberger.sascha.swandata.R;
+
 
 /**
  * This class is the abstract basis for every dialog used in this application.
@@ -90,11 +92,13 @@ public abstract class AbstractDialogFragment extends DialogFragment {
     abstract String getPositiveButtonText();
 
     /**
-     * This method has to be implemented by all subclasses to set the text of the negative
-     * Button of the Dialog
+     * This method has to be implemented by all subclasses to change the text of the negative
+     * Button of the Dialog from "Cancel".
      *
      * @return The text of the negative button
      */
     @NonNull
-    abstract String getNegativeButtonText();
+    String getNegativeButtonText() {
+        return getString(R.string.dialog_cancel);
+    }
 }

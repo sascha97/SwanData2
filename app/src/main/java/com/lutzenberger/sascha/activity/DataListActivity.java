@@ -32,7 +32,7 @@ import java.util.concurrent.ExecutionException;
  * @version 1.01 - 08.08.2015
  *
  */
-public abstract class DataListActivity extends BaseActivity implements DialogListener {
+public abstract class DataListActivity extends BaseActivity {
     private SwanListAdapter arrayAdapter;
     private String darvic;
     private int index;
@@ -130,22 +130,24 @@ public abstract class DataListActivity extends BaseActivity implements DialogLis
         whatToDisplay();
     }
 
-    @Override
-    public void onDialogNegativeClick() {
-        //Nothing should happen when the Cancel button of delete is clicked
-    }
+    private DialogListener deleteDialogListener = new DialogListener() {
+        @Override
+        public void onDialogNegativeClick() {
+            //Nothing should happen when the Cancel button of delete is clicked
+        }
 
-    @Override
-    public void onDialogPositiveClick() {
-        //Call the method which is deleting the item
-        onDelete(index);
+        @Override
+        public void onDialogPositiveClick() {
+            //Call the method which is deleting the item
+            onDelete(index);
 
-        //Set the changes flag
-        Constants.hasChanged();
+            //Set the changes flag
+            Constants.hasChanged();
 
-        //Immediately refresh the view because the old one is not longer valid
-        whatToDisplay();
-    }
+            //Immediately refresh the view because the old one is not longer valid
+            whatToDisplay();
+        }
+    };
 
     //Search the data for matches
     private List<Data> searchData() {
@@ -171,7 +173,7 @@ public abstract class DataListActivity extends BaseActivity implements DialogLis
 
         //Displays the dialog to give the user a chance to cancel the action
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
-        deleteDialogFragment.addDialogListener(this);
+        deleteDialogFragment.addDialogListener(deleteDialogListener);
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
 

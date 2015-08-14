@@ -33,7 +33,7 @@ import com.lutzenberger.sascha.swandata.R;
  * @version 1.1 - 09.08.2015
  *
  */
-public abstract class DataEditorActivity extends BaseActivity implements DialogListener {
+public abstract class DataEditorActivity extends BaseActivity {
     private LayoutInflater inflater;
     private SharedPreferences pref;
     private boolean newData;
@@ -139,20 +139,6 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onDialogNegativeClick() {
-    }
-
-    @Override
-    public void onDialogPositiveClick() {
-        onDelete(data.getIndex());
-        Toast.makeText(Constants.context,Constants.context.getString(R.string.message_deleted_data),
-                Toast.LENGTH_LONG).show();
-        //Set the flag that something has changed
-        Constants.hasChanged();
-        finish();
-    }
-
     /**
      * This method is used to delete data from the list.
      * Activity will be ended with finish() afterwards.
@@ -178,6 +164,22 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
     protected void onUpdate(@NonNull Data data){
     }
 
+    private DialogListener deleteDialogListener = new DialogListener() {
+        @Override
+        public void onDialogNegativeClick() {
+        }
+
+        @Override
+        public void onDialogPositiveClick() {
+            onDelete(data.getIndex());
+            Toast.makeText(Constants.context, Constants.context.getString(R.string.message_deleted_data),
+                    Toast.LENGTH_LONG).show();
+            //Set the flag that something has changed
+            Constants.hasChanged();
+            finish();
+        }
+    };
+
     //Used to decide if hidden elements have to be shown
     private boolean getHiddenEmpty(){
         return !newData && pref.getBoolean("show_non_empty", true);
@@ -188,7 +190,7 @@ public abstract class DataEditorActivity extends BaseActivity implements DialogL
         //Displays the delete dialog, the handling of the actions is done over an interface
         //which is already implemented in this activity.
         DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
-        deleteDialogFragment.addDialogListener(this);
+        deleteDialogFragment.addDialogListener(deleteDialogListener);
         deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
     }
 

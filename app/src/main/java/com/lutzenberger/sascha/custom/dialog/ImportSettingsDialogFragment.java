@@ -38,10 +38,4 @@ public class ImportSettingsDialogFragment extends AbstractDialogFragment {
     String getPositiveButtonText() {
         return getString(R.string.import_settings);
     }
-
-    @NonNull
-    @Override
-    String getNegativeButtonText() {
-        return getString(R.string.dialog_cancel);
-    }
 }
