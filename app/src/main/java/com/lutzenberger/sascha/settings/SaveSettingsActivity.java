@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.lutzenberger.sascha.activity.BaseActivity;
+import com.lutzenberger.sascha.custom.dialog.AbstractDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.DialogListener;
 import com.lutzenberger.sascha.custom.dialog.ExportSettingsDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.ImportSettingsDialogFragment;
@@ -35,28 +36,22 @@ public class SaveSettingsActivity extends BaseActivity {
         exportSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExportSettingsDialogFragment exportSettingsDialogFragment = new
-                        ExportSettingsDialogFragment();
-                exportSettingsDialogFragment.addDialogListener(exportSettingsListener);
-                exportSettingsDialogFragment.show(getFragmentManager(), "export_settings");
+                AbstractDialogFragment.showDialog(new ExportSettingsDialogFragment(),
+                        exportSettingsListener, getFragmentManager(), "export_settings");
             }
         });
         importSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImportSettingsDialogFragment importSettingsDialogFragment = new
-                        ImportSettingsDialogFragment();
-                importSettingsDialogFragment.addDialogListener(importSettingsListener);
-                importSettingsDialogFragment.show(getFragmentManager(), "import_settings");
+                AbstractDialogFragment.showDialog(new ImportSettingsDialogFragment(),
+                        importSettingsListener, getFragmentManager(), "import_settings");
             }
         });
         resetSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ResetSettingsDialogFragment resetSettingsDialogFragment = new
-                        ResetSettingsDialogFragment();
-                resetSettingsDialogFragment.addDialogListener(resetSettingsListener);
-                resetSettingsDialogFragment.show(getFragmentManager(), "reset_settings");
+                AbstractDialogFragment.showDialog(new ResetSettingsDialogFragment(),
+                        resetSettingsListener, getFragmentManager(), "reset_settings");
             }
         });
 

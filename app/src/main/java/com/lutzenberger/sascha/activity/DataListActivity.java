@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lutzenberger.sascha.custom.SwanListAdapter;
+import com.lutzenberger.sascha.custom.dialog.AbstractDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.DeleteDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.DialogListener;
 import com.lutzenberger.sascha.settings.SettingsActivity;
@@ -172,9 +173,8 @@ public abstract class DataListActivity extends BaseActivity {
         index = arrayAdapter.getItem(info.position).getIndex();
 
         //Displays the dialog to give the user a chance to cancel the action
-        DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
-        deleteDialogFragment.addDialogListener(deleteDialogListener);
-        deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
+        AbstractDialogFragment.showDialog(new DeleteDialogFragment(), deleteDialogListener,
+                getFragmentManager(), "delete_dialog");
     }
 
     //Will be executed if user clicks on open in the context menu

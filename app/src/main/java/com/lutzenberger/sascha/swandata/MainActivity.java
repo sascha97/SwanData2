@@ -23,7 +23,6 @@ import java.io.IOException;
 
 public class MainActivity extends BaseActivity {
     private EditText darvic;
-    private boolean dialogShown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,6 @@ public class MainActivity extends BaseActivity {
         Constants.context = this;
         //Reset changed constant...
         Constants.resetChanged();
-        //No dialog can be shown
-        dialogShown = false;
         //Load in all preferences
         PreferenceFileUtils.loadInPreferencesDefaultValues();
         //Set up the directories
@@ -58,7 +55,8 @@ public class MainActivity extends BaseActivity {
 
         //If the data files have changed display a dialog and ask the user what to do
         if(Constants.isChanged()) {
-            showDialog(new SaveChangesDialogFragment(), saveChangesDialogListener, "save_changes");
+            AbstractDialogFragment.showDialog(new SaveChangesDialogFragment(),
+                    saveChangesDialogListener, getFragmentManager(), "save_changes");
         }
     }
 
@@ -79,8 +77,8 @@ public class MainActivity extends BaseActivity {
             case R.id.menu_reload_files:
                 //If something is changed ask the user what to do else just reload the data files.
                 if(Constants.isChanged()) {
-                    showDialog(new ReloadDatafileDialogFragment(), reloadDataFilesDialogListener,
-                            "reload_data");
+                    AbstractDialogFragment.showDialog(new ReloadDatafileDialogFragment(),
+                            reloadDataFilesDialogListener, getFragmentManager(), "reload_data");
                 } else {
                     reloadDataFiles();
                 }
@@ -219,19 +217,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private void showDialog(AbstractDialogFragment dialog, DialogListener listener,  String tag) {
-        if(dialogShown)
-            return;
-
-        dialog.addDialogListener(listener);
-        dialog.show(getFragmentManager(), tag);
-        dialogShown = true;
-    }
-
-    private void dialogDisposed() {
-        dialogShown = false;
-    }
-
     private DialogListener saveChangesDialogListener = new DialogListener() {
         @Override
         public void onDialogPositiveClick() {
@@ -239,13 +224,10 @@ public class MainActivity extends BaseActivity {
             updateDataFiles();
             //No changes are made anymore
             Constants.resetChanged();
-
-            dialogDisposed();
         }
 
         @Override
         public void onDialogNegativeClick() {
-            dialogDisposed();
         }
     };
 
@@ -253,12 +235,10 @@ public class MainActivity extends BaseActivity {
         @Override
         public void onDialogPositiveClick() {
             reloadDataFiles();
-            dialogDisposed();
         }
 
         @Override
         public void onDialogNegativeClick() {
-            dialogDisposed();
         }
     };
 }

@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lutzenberger.sascha.custom.dialog.AbstractDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.DeleteDialogFragment;
 import com.lutzenberger.sascha.custom.dialog.DialogListener;
 import com.lutzenberger.sascha.settings.SettingsActivity;
@@ -189,9 +190,8 @@ public abstract class DataEditorActivity extends BaseActivity {
     private void deleteClicked() {
         //Displays the delete dialog, the handling of the actions is done over an interface
         //which is already implemented in this activity.
-        DeleteDialogFragment deleteDialogFragment = new DeleteDialogFragment();
-        deleteDialogFragment.addDialogListener(deleteDialogListener);
-        deleteDialogFragment.show(getFragmentManager(), "delete_dialog");
+        AbstractDialogFragment.showDialog(new DeleteDialogFragment(), deleteDialogListener,
+                getFragmentManager(), "delete_dialog");
     }
 
     //This method handles when edit is clicked
